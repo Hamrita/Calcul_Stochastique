@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Chaînes de Markov | Calcul stochastique</title>
-  <meta name="description" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  <title>Chapitre 2 Chaînes de Markov | Calcul stochastique</title>
+  <meta name="description" content="Chapitre 2 Chaînes de Markov | Calcul stochastique" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  <meta property="og:title" content="Chapitre 2 Chaînes de Markov | Calcul stochastique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  <meta name="twitter:title" content="Chapitre 2 Chaînes de Markov | Calcul stochastique" />
   
   
   
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Calcul stochastique</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a></li>
@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="chaînes-de-markov" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Chaînes de Markov</h1>
+<h1><span class="header-section-number">Chapitre 2</span> Chaînes de Markov</h1>
 <p>La notion de ce qu’on appelle aujourd’hui une chaîne de Markov a été conçue par le mathématicien russe A.A. Markov.</p>
 <p>Une chaîne de Markov est un système mathématique qui subit des transitions d’un état à un autre selon un ensemble donné de règles probabilistes. Les chaînes de Markov sont des processus stochastiques, mais ils diffèrent en ce sens qu’ils doivent manquer de “mémoire”. Autrement dit, la probabilité de l’état suivant du système ne dépend que <strong>seulement</strong> de l’état actuel du système.</p>
 <p>Les chaînes de Markov sont largement utilisées dans de nombreux domaines tels que la finance, la théorie des jeux et la génétique.</p>
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Soit <span class="math inline">\(X_0, X_1,\ldots, X_n, \ldots\)</span> une suite de variables aléatoires sur un espace de probabilité <span class="math inline">\((\Omega,\mathcal{A}, \mathbb{P})\)</span> à valeurs dans <span class="math inline">\(E\)</span> (fini ou infini dénombrable).</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-3" class="definition"><strong>Definition 2.1  </strong></span>La suite <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est une chaîne de Markov si pour tout <span class="math inline">\(n \in \mathbb{N}\)</span> et pour tout <span class="math inline">\((x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}\)</span> tel que <span class="math inline">\(P(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) &gt;0\)</span>, <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)\)</span> ne dépend que des valeurs <span class="math inline">\(n\)</span>, <span class="math inline">\(x_n\)</span> et <span class="math inline">\(x_{n+1}\)</span>.
+<span id="def:unnamed-chunk-3" class="definition"><strong>Définition 2.1  </strong></span>La suite <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est une chaîne de Markov si pour tout <span class="math inline">\(n \in \mathbb{N}\)</span> et pour tout <span class="math inline">\((x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}\)</span> tel que <span class="math inline">\(P(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) &gt;0\)</span>, <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)\)</span> ne dépend que des valeurs <span class="math inline">\(n\)</span>, <span class="math inline">\(x_n\)</span> et <span class="math inline">\(x_{n+1}\)</span>.
 </div>
 
 L’ensemble <span class="math inline">\(E\)</span> est appelé l’<span class="math inline">\(\color{blue}{\mathbf{\text{espace des états}}}\)</span> de la chîne de Markov et les <span class="math inline">\(x_i\)</span> sont appelés <span class="math inline">\(\color{blue}{\mathbf{\text{états}}}\)</span>.
@@ -193,14 +193,14 @@ L’ensemble <span class="math inline">\(E\)</span> est appelé l’<span class=
 
 
 <div class="definition">
-<span id="def:unnamed-chunk-5" class="definition"><strong>Definition 2.2  </strong></span>Une chaîne de Markov <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est dite homogène (dans le temps) si <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n)\)</span> ne dépend pas de <span class="math inline">\(n\)</span>.
+<span id="def:unnamed-chunk-5" class="definition"><strong>Définition 2.2  </strong></span>Une chaîne de Markov <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est dite homogène (dans le temps) si <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n)\)</span> ne dépend pas de <span class="math inline">\(n\)</span>.
 </div>
 
 La dynamique du processus est alors entièrement caractérisé par les <span class="math inline">\(p_{ij}=P(X_{n+1}=j|X_n=i)\)</span>, appelés <span class="math inline">\(\color{blue}{\mathbf{\text{probabilités de transitions}}}\)</span> de l’état <span class="math inline">\(i\)</span> à l’état <span class="math inline">\(j\)</span> si la chaîne est homogène, ou plus généralement
 <span class="math display">\[ p_{ij}^{(n)}=P(X_{n+1}=j|X_n=i)\]</span>
 
 <div class="definition">
-<span id="def:unnamed-chunk-6" class="definition"><strong>Definition 2.3  </strong></span>Une matrice <span class="math inline">\(P=(P_{ij},i,j \in E)\)</span> est une matrice <span class="math inline">\(\color{blue}{\mathbf{\text{stochastique}}}\)</span>, ou matrice <span class="math inline">\(\color{blue}{\mathbf{\text{de transition}}}\)</span> si chaque ligne <span class="math inline">\(P_i=(P_{ij}, j \in E)\)</span> est une distribution de probabilité.
+<span id="def:unnamed-chunk-6" class="definition"><strong>Définition 2.3  </strong></span>Une matrice <span class="math inline">\(P=(P_{ij},i,j \in E)\)</span> est une matrice <span class="math inline">\(\color{blue}{\mathbf{\text{stochastique}}}\)</span>, ou matrice <span class="math inline">\(\color{blue}{\mathbf{\text{de transition}}}\)</span> si chaque ligne <span class="math inline">\(P_i=(P_{ij}, j \in E)\)</span> est une distribution de probabilité.
 </div>
 
 <p>Pour tout <span class="math inline">\(i,j \in E\)</span>, <span class="math inline">\(p_{ij}\)</span> peut alors s’interpréter comme la probabilité d’aller à l’état <span class="math inline">\(j\)</span> sachant qu’on se trouve à l’état <span class="math inline">\(i\)</span> à l’instant précédent.</p>
@@ -238,7 +238,7 @@ P=\left(
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-10" class="example"><strong>Example 2.1  </strong></span>Lors d’une ronde, une méthode simple pour tromper l’ennemi et d’avance ou reculer d’une manière aléatoire, en tirant pile ou face. On désigne par <span class="math inline">\(X_n\)</span> la position de garde à l’instant <span class="math inline">\(n\)</span>. L’évolution peut se modéliser à l’aide d’une matrice de transition
+<span id="exm:unnamed-chunk-10" class="example"><strong>Exemple 2.1  </strong></span>Lors d’une ronde, une méthode simple pour tromper l’ennemi et d’avance ou reculer d’une manière aléatoire, en tirant pile ou face. On désigne par <span class="math inline">\(X_n\)</span> la position de garde à l’instant <span class="math inline">\(n\)</span>. L’évolution peut se modéliser à l’aide d’une matrice de transition
 <span class="math display">\[
  P=\begin{array}{c c} &amp;
 \begin{array}{c c c c} \color{blue}{N} &amp; \color{blue}{E} &amp; \color{blue}{S} &amp; \color{blue}{O} \\
@@ -275,7 +275,7 @@ Le graphe orienté correspondant à cette matrice de transition est:</p>
 <img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 <div class="example">
-<span id="exm:unnamed-chunk-12" class="example"><strong>Example 2.2  </strong></span>La tendance d’un marché boursier peut être haussière (H), ou baissière (B) ou en consolidation (marché en range) (C). Le graphe associé est donné comme suit:
+<span id="exm:unnamed-chunk-12" class="example"><strong>Exemple 2.2  </strong></span>La tendance d’un marché boursier peut être haussière (H), ou baissière (B) ou en consolidation (marché en range) (C). Le graphe associé est donné comme suit:
 </div>
 
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
@@ -351,7 +351,7 @@ Connaissant <span class="math inline">\(\mu_0\)</span> et <span class="math inli
 \end{align*}\]</span></p>
 
 <div class="theorem">
-<p><span id="thm:unnamed-chunk-16" class="theorem"><strong>Theorem 2.1  </strong></span>Soit <span class="math inline">\(\{X_0, X_1, X_2, \ldots \}\)</span> une CM et <span class="math inline">\(P\)</span> sa matrice de transition carré d’ordre <span class="math inline">\(N\)</span>. Si la distribution initiale, <span class="math inline">\(\mu_0\)</span> est donnée, alors la distribution de probabilité de <span class="math inline">\(X_n\)</span> est donnée par <span class="math inline">\(\mu_0 P^n\)</span>.
+<p><span id="thm:unnamed-chunk-16" class="theorem"><strong>Théoreme 2.1  </strong></span>Soit <span class="math inline">\(\{X_0, X_1, X_2, \ldots \}\)</span> une CM et <span class="math inline">\(P\)</span> sa matrice de transition carré d’ordre <span class="math inline">\(N\)</span>. Si la distribution initiale, <span class="math inline">\(\mu_0\)</span> est donnée, alors la distribution de probabilité de <span class="math inline">\(X_n\)</span> est donnée par <span class="math inline">\(\mu_0 P^n\)</span>.
 <span class="math display">\[
 X_0 \sim \mu_0 \Longrightarrow X_n \sim \mu_0 P
 \]</span></p>
@@ -368,7 +368,7 @@ de valeurs pour <span class="math inline">\(X_0, X_1,\ldots, X_n\)</span>. La pr
 
 
 <div class="theorem">
-<span id="thm:unnamed-chunk-18" class="theorem"><strong>Theorem 2.2  (Equations de Chapman-Kolmogorov)  </strong></span>Pour tout $(i, j) E^2 et tout couple <span class="math inline">\((m, n)\)</span> d’entiers positifs, on a l’identité :
+<span id="thm:unnamed-chunk-18" class="theorem"><strong>Théoreme 2.2  (Equations de Chapman-Kolmogorov)  </strong></span>Pour tout $(i, j) E^2 et tout couple <span class="math inline">\((m, n)\)</span> d’entiers positifs, on a l’identité :
 <span class="math display">\[
 \mathbb{P}(X_{m+n} = j|X_0 = i) = \sum_{k\in E}
 \mathbb{P}(X_m = k|X_0 = i)\mathbb{P}(X_n = j|X_0 = k)\]</span>
@@ -378,7 +378,7 @@ p^{(m+n)}_{ij} = \sum_{k \in E} p^{(m)}_{ik} p^{(n)}_{kj} \text{ ou } (P^{m+n})_
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-19" class="example"><strong>Example 2.3  </strong></span>Soit une CM définie par la matrice de transition <span class="math display">\[
+<p><span id="exm:unnamed-chunk-19" class="example"><strong>Exemple 2.3  </strong></span>Soit une CM définie par la matrice de transition <span class="math display">\[
   P=\left( 
   \begin{array}{cccc}
   0.2 &amp; 0.4 &amp; 0.1 &amp; 0.3\\
@@ -539,7 +539,7 @@ Calculer la probabilité de l’événement <span class="math inline">\(A_3\)</s
 <p>L’espace des états d’une CM peut être partitionné en un ensemble de classes communicantes disjointes.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-26" class="definition"><strong>Definition 2.4  </strong></span>On dit que l’état <span class="math inline">\(j\)</span> est <span class="math inline">\(\color{blue}{\mathbf{\text{accessible}}}\)</span> à partir de l’état <span class="math inline">\(i\)</span>, s’il existe un entier <span class="math inline">\(n \geq 0\)</span> tel que <span class="math inline">\(P^{(n)}_{ij} &gt;0\)</span>. On note <span class="math inline">\(i \longrightarrow j\)</span>.</p>
+<p><span id="def:unnamed-chunk-26" class="definition"><strong>Définition 2.4  </strong></span>On dit que l’état <span class="math inline">\(j\)</span> est <span class="math inline">\(\color{blue}{\mathbf{\text{accessible}}}\)</span> à partir de l’état <span class="math inline">\(i\)</span>, s’il existe un entier <span class="math inline">\(n \geq 0\)</span> tel que <span class="math inline">\(P^{(n)}_{ij} &gt;0\)</span>. On note <span class="math inline">\(i \longrightarrow j\)</span>.</p>
 <p>Sur le graphe, si <span class="math inline">\(i \neq j\)</span>, <span class="math inline">\(i\longrightarrow j\)</span> s’il existe un chemin (orienté) du sommet <span class="math inline">\(i\)</span> vers le sommet <span class="math inline">\(j\)</span>.</p>
 Si <span class="math inline">\(j\)</span> est accessible à partir de <span class="math inline">\(i\)</span> et <span class="math inline">\(i\)</span> est accessible depuis <span class="math inline">\(j\)</span>, on dit que <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> <span class="math inline">\(\color{blue}{\mathbf{\text{communiquent}}}\)</span> et on note <span class="math inline">\(i \longleftrightarrow j\)</span>.
 </div>
@@ -547,19 +547,19 @@ Si <span class="math inline">\(j\)</span> est accessible à partir de <span clas
 <p>On note que si <span class="math inline">\(i \longrightarrow k\)</span> et <span class="math inline">\(k \longrightarrow j\)</span>, alors <span class="math inline">\(i \longrightarrow j\)</span> (la relation d’accessibilité est transitive).</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-27" class="definition"><strong>Definition 2.5  </strong></span>Les états <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> sont dans la même classe communicante si <span class="math inline">\(i \longleftrightarrow j\)</span>.
+<span id="def:unnamed-chunk-27" class="definition"><strong>Définition 2.5  </strong></span>Les états <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> sont dans la même classe communicante si <span class="math inline">\(i \longleftrightarrow j\)</span>.
 </div>
 
 
 <div class="example">
-<span id="exm:unnamed-chunk-28" class="example"><strong>Example 2.4  </strong></span>Trouvez les classes communicantes associées au diagramme de transition suivant.
+<span id="exm:unnamed-chunk-28" class="example"><strong>Exemple 2.4  </strong></span>Trouvez les classes communicantes associées au diagramme de transition suivant.
 </div>
 
 <p><img src="images/graph2.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>D’après le diagramme, on remarque que <span class="math inline">\(1 \longleftrightarrow 2\)</span>, <span class="math inline">\(2 \longleftrightarrow 3\)</span> et <span class="math inline">\(4 \longleftrightarrow 5\)</span>. Donc on a deux classes communicantes <span class="math inline">\(\{1,2,3\}\)</span> et <span class="math inline">\(\{4,5 \}\)</span>.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-30" class="definition"><strong>Definition 2.6  </strong></span>Une classe d’états communicante est fermée s’il est impossible de quitter
+<span id="def:unnamed-chunk-30" class="definition"><strong>Définition 2.6  </strong></span>Une classe d’états communicante est fermée s’il est impossible de quitter
 cette classe. Autrement dit, la classe <span class="math inline">\(C\)</span> communicante est fermée si <span class="math inline">\(p_{ij} = 0\)</span> pour tout <span class="math inline">\(i \in C\)</span> et <span class="math inline">\(j \notin C\)</span>.
 </div>
 
@@ -570,14 +570,14 @@ cette classe. Autrement dit, la classe <span class="math inline">\(C\)</span> co
 </ul>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-31" class="definition"><strong>Definition 2.7  </strong></span>Si la chaîne de Markov ne possède qu’une unique classe, c’est à dire que tous
+<p><span id="def:unnamed-chunk-31" class="definition"><strong>Définition 2.7  </strong></span>Si la chaîne de Markov ne possède qu’une unique classe, c’est à dire que tous
 ses éléments communiquent, la chaîne sera dite <span class="math inline">\(\color{blue}{\mathbf{\text{irréductible}}}\)</span>.</p>
 <p>Un état <span class="math inline">\(i\)</span> est dite <span class="math inline">\(\color{blue}{\mathbf{\text{absorbant}}}\)</span> si <span class="math inline">\(\{i\}\)</span> est une classe fermée.</p>
 </div>
 
 
 <div class="example">
-<span id="exm:unnamed-chunk-32" class="example"><strong>Example 2.5  </strong></span>On considère la CMD à tois états 1, 2, 3 et de matrice stochastique
+<span id="exm:unnamed-chunk-32" class="example"><strong>Exemple 2.5  </strong></span>On considère la CMD à tois états 1, 2, 3 et de matrice stochastique
 <span class="math display">\[
   P=\left( 
     \begin{array}{ccc}
@@ -600,7 +600,7 @@ Comme <span class="math inline">\(1 \longleftrightarrow 2\)</span> et <span clas
 <pre><code>[1] TRUE</code></pre>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-33" class="example"><strong>Example 2.6  </strong></span>Soit la CMD à quatre états définie par la matrice stochastique
+<p><span id="exm:unnamed-chunk-33" class="example"><strong>Exemple 2.6  </strong></span>Soit la CMD à quatre états définie par la matrice stochastique
 <span class="math display">\[
   P=\left( 
     \begin{array}{cccc}
@@ -635,7 +635,7 @@ T_x = \min\{n \geq 0 : X_n = x\},
 premier moment où la chaîne atteint l’état <span class="math inline">\(x\)</span>.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-34" class="definition"><strong>Definition 2.8  </strong></span>Soit <span class="math inline">\(A\)</span> un sous ensemble de l’espace d’états <span class="math inline">\(E\)</span>. Le <strong>temps d’atteinte</strong> de <span class="math inline">\(A\)</span> est la variable aléatoire <span class="math inline">\(T_A\)</span> définie par:
+<span id="def:unnamed-chunk-34" class="definition"><strong>Définition 2.8  </strong></span>Soit <span class="math inline">\(A\)</span> un sous ensemble de l’espace d’états <span class="math inline">\(E\)</span>. Le <strong>temps d’atteinte</strong> de <span class="math inline">\(A\)</span> est la variable aléatoire <span class="math inline">\(T_A\)</span> définie par:
 <span class="math display">\[
 T_A = \min\{n \geq 0 : X_n \in A \},
 \]</span>
@@ -647,13 +647,13 @@ T_A = \min\{n \geq 0 : X_n \in A \},
 <p>Le temps d’atteinte est appelé aussi <strong>temps d’arrêt</strong>. Si <span class="math inline">\(A\)</span> est une classe fermée, <span class="math inline">\(T_A\)</span> sera appelé le <strong>temps d’absorption</strong> et <span class="math inline">\(h_{A|i}\)</span> la <strong>probabilité d’absorption</strong>.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-35" class="definition"><strong>Definition 2.9  </strong></span>Le <strong>temps moyen d’atteinte</strong> de <span class="math inline">\(A\)</span>, à partir de <span class="math inline">\(i\)</span> est:
+<span id="def:unnamed-chunk-35" class="definition"><strong>Définition 2.9  </strong></span>Le <strong>temps moyen d’atteinte</strong> de <span class="math inline">\(A\)</span>, à partir de <span class="math inline">\(i\)</span> est:
 <span class="math display">\[ m_{iA}=\mathbb{E}\left(T_A | X_0=i \right)\]</span>
 </div>
 
 
 <div class="example">
-<span id="exm:unnamed-chunk-36" class="example"><strong>Example 2.7  </strong></span>On considère la chaîne suivante
+<span id="exm:unnamed-chunk-36" class="example"><strong>Exemple 2.7  </strong></span>On considère la chaîne suivante
 </div>
 
 <p><img src="images/graphe3.png" width="45%" style="display: block; margin: auto;" /></p>
@@ -711,10 +711,10 @@ T_A = \min\{n \geq 0 : X_n \in A \},
 [2,]  0.4  0.6</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb41-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
-<pre><code>[1] 1 2 2 2 1 2</code></pre>
+<pre><code>[1] 1 1 2 1 2 2</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb43-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
-<pre><code>[1] 0.16</code></pre>
+<pre><code>[1] 0.13</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
 <pre><code>[1] 1</code></pre>
 
@@ -772,7 +772,8 @@ gitbook.start({
 },
 "download": ["Calcul_Stochastique.pdf", "Calcul_Stochastique.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "subsection",
+"scroll_highlight": true
 }
 });
 });
