@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611873277045.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4010112475",
+    "id" : "FBCA8D46",
+    "lastKnownWriteTime" : 1611873789,
+    "last_content_update" : 1611873789405,
+    "path" : "D:/Enseignement/Stochastique/My_book/Calcul_Stochastique/01-intro.Rmd",
+    "project_path" : "01-intro.Rmd",
+    "properties" : {
+        "cursorPosition" : "599,0",
+        "scrollLine" : "571"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

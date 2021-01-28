@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Chaînes de Markov | Calcul stochastique</title>
+  <meta name="description" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Chaînes de Markov | Calcul stochastique" />
+  
+  
+  
+
+<meta name="author" content="Mohamed Essaied Hamrita" />
+
+
+<meta name="date" content="2021-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a></li>
+<li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
+<li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
+<li class="chapter" data-level="2.2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#loi-des-x_n"><i class="fa fa-check"></i><b>2.2</b> Loi des <span class="math inline">\(X_n\)</span></a></li>
+<li class="chapter" data-level="2.3" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#classification-des-états"><i class="fa fa-check"></i><b>2.3</b> Classification des états</a></li>
+<li class="chapter" data-level="2.4" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#temps-dabsorption"><i class="fa fa-check"></i><b>2.4</b> Temps d’absorption</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#temps-darrêt"><i class="fa fa-check"></i><b>2.4.1</b> Temps d’arrêt</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#simulation-dune-chaîne-de-markov-discrète"><i class="fa fa-check"></i><b>2.5</b> Simulation d’une chaîne de Markov discrète</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#exemple-illustratif"><i class="fa fa-check"></i><b>2.5.1</b> Exemple illustratif</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Calcul stochastique</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chaînes-de-markov" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Chaînes de Markov</h1>
+<p>La notion de ce qu’on appelle aujourd’hui une chaîne de Markov a été conçue par le mathématicien russe A.A. Markov.</p>
+<p>Une chaîne de Markov est un système mathématique qui subit des transitions d’un état à un autre selon un ensemble donné de règles probabilistes. Les chaînes de Markov sont des processus stochastiques, mais ils diffèrent en ce sens qu’ils doivent manquer de “mémoire”. Autrement dit, la probabilité de l’état suivant du système ne dépend que <strong>seulement</strong> de l’état actuel du système.</p>
+<p>Les chaînes de Markov sont largement utilisées dans de nombreux domaines tels que la finance, la théorie des jeux et la génétique.</p>
+<div id="définitions-et-exemples" class="section level2">
+<h2><span class="header-section-number">2.1</span> Définitions et exemples</h2>
+<p>Soit <span class="math inline">\(X_0, X_1,\ldots, X_n, \ldots\)</span> une suite de variables aléatoires sur un espace de probabilité <span class="math inline">\((\Omega,\mathcal{A}, \mathbb{P})\)</span> à valeurs dans <span class="math inline">\(E\)</span> (fini ou infini dénombrable).</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-3" class="definition"><strong>Definition 2.1  </strong></span>La suite <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est une chaîne de Markov si pour tout <span class="math inline">\(n \in \mathbb{N}\)</span> et pour tout <span class="math inline">\((x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}\)</span> tel que <span class="math inline">\(P(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) &gt;0\)</span>, <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)\)</span> ne dépend que des valeurs <span class="math inline">\(n\)</span>, <span class="math inline">\(x_n\)</span> et <span class="math inline">\(x_{n+1}\)</span>.
+</div>
+
+L’ensemble <span class="math inline">\(E\)</span> est appelé l’<span class="math inline">\(\color{blue}{\mathbf{\text{espace des états}}}\)</span> de la chîne de Markov et les <span class="math inline">\(x_i\)</span> sont appelés <span class="math inline">\(\color{blue}{\mathbf{\text{états}}}\)</span>.
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-4" class="proposition"><strong>Proposition 2.1  </strong></span>Soit <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> une chaine de Markov d’espace d’états <span class="math inline">\(E\)</span>. Pour tout <span class="math inline">\(n \in \mathbb{N}\)</span> et pour tout <span class="math inline">\((x_0,x_1x\ldots,x_{n+1})\in E^{n+2}\)</span>, on a
+<span class="math display">\[P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)=P(X_{n+1}=x_{n+1}|X_n=x_n)\]</span>
+</div>
+
+
+<div class="definition">
+<span id="def:unnamed-chunk-5" class="definition"><strong>Definition 2.2  </strong></span>Une chaîne de Markov <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est dite homogène (dans le temps) si <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n)\)</span> ne dépend pas de <span class="math inline">\(n\)</span>.
+</div>
+
+La dynamique du processus est alors entièrement caractérisé par les <span class="math inline">\(p_{ij}=P(X_{n+1}=j|X_n=i)\)</span>, appelés <span class="math inline">\(\color{blue}{\mathbf{\text{probabilités de transitions}}}\)</span> de l’état <span class="math inline">\(i\)</span> à l’état <span class="math inline">\(j\)</span> si la chaîne est homogène, ou plus généralement
+<span class="math display">\[ p_{ij}^{(n)}=P(X_{n+1}=j|X_n=i)\]</span>
+
+<div class="definition">
+<span id="def:unnamed-chunk-6" class="definition"><strong>Definition 2.3  </strong></span>Une matrice <span class="math inline">\(P=(P_{ij},i,j \in E)\)</span> est une matrice <span class="math inline">\(\color{blue}{\mathbf{\text{stochastique}}}\)</span>, ou matrice <span class="math inline">\(\color{blue}{\mathbf{\text{de transition}}}\)</span> si chaque ligne <span class="math inline">\(P_i=(P_{ij}, j \in E)\)</span> est une distribution de probabilité.
+</div>
+
+<p>Pour tout <span class="math inline">\(i,j \in E\)</span>, <span class="math inline">\(p_{ij}\)</span> peut alors s’interpréter comme la probabilité d’aller à l’état <span class="math inline">\(j\)</span> sachant qu’on se trouve à l’état <span class="math inline">\(i\)</span> à l’instant précédent.</p>
+<p>Par exemple, la matrice suivante est une matrice stochastique</p>
+<p><span class="math display">\[
+P=\left( 
+\begin{array}{cc}
+0.2 &amp; 0.8\\
+0.4 &amp; 0.6
+\end{array}
+\right)
+\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">(P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]  0.2  0.8
+[2,]  0.4  0.6</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># vérifions que P est une matrice stochastique</span></a>
+<a class="sourceLine" id="cb3-2" title="2">P<span class="op">&gt;=</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>P<span class="op">&lt;=</span><span class="dv">1</span>  <span class="co"># 0&lt;= p &lt;=1</span></a></code></pre></div>
+<pre><code>     [,1] [,2]
+[1,] TRUE TRUE
+[2,] TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">rowSums</span>(P)<span class="op">==</span><span class="dv">1</span> <span class="co"># somme pj = 1</span></a></code></pre></div>
+<pre><code>[1] TRUE TRUE</code></pre>
+<p>A toute matrice de transition, on peut associer un <span class="math inline">\(\color{blue}{\mathbf{\text{graphe orienté}}}\)</span>. Les sommets sont les états de la chaîne, et l’orientation est donnée par la probabilité <span class="math inline">\(p_{ij}&gt;0\)</span>.</p>
+<p>Le graphe de la chaîne associé à la matrice de transition définie ci-dessus est donné par:</p>
+<p><img src="images/graph1.png" width="301" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># représenter un graphe sous R</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co"># install.packages(diagram)</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">library</span>(diagram) <span class="co"># charger l&#39;extension &#39;diagram&#39;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="kw">colnames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="kw">rownames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="kw">plotmat</span>(<span class="kw">t</span>(P), <span class="dt">pos=</span><span class="kw">c</span>(<span class="dv">2</span>),<span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.7</span>, </a>
+<a class="sourceLine" id="cb7-8" title="8">      <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">1.1</span>)</a></code></pre></div>
+<p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-10" class="example"><strong>Example 2.1  </strong></span>Lors d’une ronde, une méthode simple pour tromper l’ennemi et d’avance ou reculer d’une manière aléatoire, en tirant pile ou face. On désigne par <span class="math inline">\(X_n\)</span> la position de garde à l’instant <span class="math inline">\(n\)</span>. L’évolution peut se modéliser à l’aide d’une matrice de transition
+<span class="math display">\[
+ P=\begin{array}{c c} &amp;
+\begin{array}{c c c c} \color{blue}{N} &amp; \color{blue}{E} &amp; \color{blue}{S} &amp; \color{blue}{O} \\
+\end{array}
+\\
+\begin{array}{c c c c}
+\color{blue}{N} \\
+\color{blue}{E}\\
+\color{blue}{S} \\
+\color{blue}{O}
+\end{array}
+&amp;
+\left(
+\begin{array}{c c c c}
+0 &amp; 0.5 &amp; 0 &amp; 0.5 \\
+0.5 &amp; 0 &amp; 0.5 &amp; 0 \\
+0 &amp; 0.5 &amp; 0 &amp; 0.5 \\
+0.5 &amp; 0 &amp; 0.5 &amp; 0
+\end{array}
+\right)
+\end{array}\]</span>
+</div>
+
+<p>L’ensemble des états, <span class="math inline">\(E\)</span>, est formé de 4 états {N, E, S, O}. La probabilité de se déplacer à l’état <span class="math inline">\(E\)</span> sachant qu’on se trouve à l’état <span class="math inline">\(N\)</span> est:
+<span class="math display">\[
+P(X_{n+1}=E|X_n=N)=p_{12}=0.5
+\]</span>
+Le graphe orienté correspondant à cette matrice de transition est:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">nn=<span class="kw">c</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;E&quot;</span>, <span class="st">&quot;S&quot;</span>,<span class="st">&quot;O&quot;</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">P1=<span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>),<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb8-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(nn,nn))</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(P1), <span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.6</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
+<a class="sourceLine" id="cb8-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.7</span>, <span class="dt">relsize =</span> <span class="fl">0.9</span>)</a></code></pre></div>
+<img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
+<div class="example">
+<span id="exm:unnamed-chunk-12" class="example"><strong>Example 2.2  </strong></span>La tendance d’un marché boursier peut être haussière (H), ou baissière (B) ou en consolidation (marché en range) (C). Le graphe associé est donné comme suit:
+</div>
+
+<p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+On déduit la matrice de transition
+<span class="math display">\[
+P=\left( 
+\begin{array}{ccc}
+0.85 &amp; 0.06 &amp; 0.09 \\
+0.05 &amp; 0.87 &amp; 0.08 \\
+0.5 &amp; 0.25 &amp; 0.25
+\end{array}
+\right)
+\]</span>
+On note qu’un jour haussier est suivi par un autre jour haussier dans 85% des temps, par un jour baissier dans 6% des temps et par un jour de consolidation dans 9% des temps.
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-14" class="exercise"><strong>Exercise 2.1  </strong></span>Dans un certain pays, il ne fait jamais beau deux jours de suite. Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances. Si un jour il pleut ou il neige, il y a une chance sur deux qu’il ait changement de temps le lendemain, et s’il y a changement, il y a une chance sur deux que ce soit pour du beau temps.</p>
+<ol style="list-style-type: decimal">
+<li>Former une chaîne de Markov et en déterminer sa matrice de transition. Représenter le graphe orienté associé.</li>
+<li>Si on suppose l’on a que deux états (beau temps et mauvais temps), déterminer la matrice de la nouvelle chaîne ainsi obtenue.</li>
+</ol>
+</div>
+
+<p><strong>Solution 1.1</strong></p>
+<ol style="list-style-type: decimal">
+<li>On a l’ensemble des états suivants <span class="math inline">\(E=\{B,P,N \}\)</span>. Le temps pour un jour ne dépend que seulement de temps du jour précédent. On a donc un processus de Markov.</li>
+</ol>
+<p>Il ne fait jamais beau deux jours de suite <span class="math inline">\(\Longrightarrow P(X_{n+1}=B|X_n=B)=0\)</span>.</p>
+<p>Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances <span class="math inline">\(\Longrightarrow P(X_{n+1}=P|X_n=B)=P(X_{n+1}=N|X_n=B)=0.5\)</span>.</p>
+<p>Si un jour il pleut ou il neige, il y a une chance sur deux qu’il ait changement de temps le lendemain <span class="math inline">\(\Longrightarrow P(X_{n+1}=P|X_n=P)=P(X_{n+1}=N|X_n=N)=0.5\)</span>.</p>
+<p>et s’il y a changement, il y a une chance sur deux que ce soit pour du beau temps <span class="math inline">\(P(X_{n+1}=B|X_n=P)=P(X_{n+1}=B|X_n=N)=0.5\times 0.5=0.25\)</span>.</p>
+<p>Ainsi, la matrice stochastique est donnée par:
+<span class="math display">\[
+  P=\left( 
+  \begin{array}{ccc}
+  0 &amp; 0.5 &amp; 0.5\\
+  0.25 &amp; 0.5 &amp; 0.25\\
+  0.25 &amp; 0.25 &amp; 0.5
+  \end{array}
+  \right)
+  \]</span>
+et le graphe orienté associé est:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">noms=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;P&quot;</span>,<span class="st">&quot;N&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2">PB=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>), <span class="dt">nc=</span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb9-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(noms,noms))</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(PB), <span class="dt">box.size =</span> <span class="fl">0.06</span>, <span class="dt">box.prop =</span> <span class="fl">0.5</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
+<a class="sourceLine" id="cb9-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">0.85</span>,<span class="dt">dtext =</span> <span class="fl">0.6</span>)</a></code></pre></div>
+<p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Le nouvel ensemble des états est <span class="math inline">\(E_1=\{B, M \}\)</span>, <span class="math inline">\(M\)</span> pour désigner mauvais temps (soit il pleut soit il neige).
+<span class="math display">\[P(X_{n+1}=B|X_n=M)=P(X_{n+1}=B|X_n=P)+P(X_{n+1}=B|X_n=N)=0.5+0.5=1\]</span>
+<span class="math display">\[P(X_{n+1}=M|X_n=M)=P(X_{n+1}=P|X_n=P)+P(X_{n+1}=N|X_n=N) \]</span></li>
+</ol>
+</div>
+<div id="loi-des-x_n" class="section level2">
+<h2><span class="header-section-number">2.2</span> Loi des <span class="math inline">\(X_n\)</span></h2>
+<p>Le comportement d’une chaîne de Markov <span class="math inline">\(X\)</span> dépend entièrement de sa matrice de transition <span class="math inline">\(P\)</span>, et de la position initiale <span class="math inline">\(X_0\)</span>. On appelle <span class="math inline">\(\mu_0\)</span> la <span class="math inline">\(\color{blue}{\mathbf{\text{loi initiale}}}\)</span> de <span class="math inline">\(X\)</span>, c’est une mesure définie par
+<span class="math display">\[
+\mu_0(x)=\mathbb{P}(X_0=x)
+\]</span>
+Connaissant <span class="math inline">\(\mu_0\)</span> et <span class="math inline">\(P\)</span>, on peut calculer directement la loi de <span class="math inline">\(X_n\)</span>.</p>
+<p>La distribution de <span class="math inline">\(X_1\)</span> est:</p>
+<p><span class="math display">\[\begin{align*} 
+\mathbb{P}(X_1 = j) = \sum_{i=1}^N \mathbb{P}(X_1 = j | X_0 = i)\mathbb{P}(X_0 = i) \\
+=
+\sum_{i=1}^N \mu_0(i) p_{ij}=(\mu_0 P)_j\; \text{ pour tout }j
+\end{align*}\]</span></p>
+<p>La distribution de <span class="math inline">\(X_2\)</span> est:</p>
+<p><span class="math display">\[\begin{align*} 
+\mathbb{P}(X_2 = j) = \sum_{i=1}^N \mathbb{P}(X_1 = j | X_0 = i)\mathbb{P}(X_0 = i) \\
+=
+\sum_{i=1}^N \mu_0(i) (P^2)_{ij}=(\mu_0 P^2)_j\; \text{ pour tout }j
+\end{align*}\]</span></p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-16" class="theorem"><strong>Theorem 2.1  </strong></span>Soit <span class="math inline">\(\{X_0, X_1, X_2, \ldots \}\)</span> une CM et <span class="math inline">\(P\)</span> sa matrice de transition carré d’ordre <span class="math inline">\(N\)</span>. Si la distribution initiale, <span class="math inline">\(\mu_0\)</span> est donnée, alors la distribution de probabilité de <span class="math inline">\(X_n\)</span> est donnée par <span class="math inline">\(\mu_0 P^n\)</span>.
+<span class="math display">\[
+X_0 \sim \mu_0 \Longrightarrow X_n \sim \mu_0 P
+\]</span></p>
+</div>
+
+<p><strong>Probabilité d’une trajectoire</strong></p>
+<p>Rappelons qu’une trajectoire est une séquence
+de valeurs pour <span class="math inline">\(X_0, X_1,\ldots, X_n\)</span>. La propriété de Markov nous permet de trouver la probabilité de n’importe quelle trajectoire en multipliant la probabilité de départ et toutes les probabilités à un pas ultérieures.</p>
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-17" class="proposition"><strong>Proposition 2.2  </strong></span>Pour toute suite <span class="math inline">\(\{x_0, x_1, \ldots , x_n\}\)</span> dans <span class="math inline">\(E\)</span>, on a
+<span class="math inline">\(P(X_0 = x_0, X_1 = x_1,X_2 = x_2, \ldots , X_n = x_n) =\mu_0(x_0)P(x_0, x_1)P(x_1, x_2)\ldots P(x_{n−1}, x_n)\)</span>.
+</div>
+
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-18" class="theorem"><strong>Theorem 2.2  (Equations de Chapman-Kolmogorov)  </strong></span>Pour tout $(i, j) E^2 et tout couple <span class="math inline">\((m, n)\)</span> d’entiers positifs, on a l’identité :
+<span class="math display">\[
+\mathbb{P}(X_{m+n} = j|X_0 = i) = \sum_{k\in E}
+\mathbb{P}(X_m = k|X_0 = i)\mathbb{P}(X_n = j|X_0 = k)\]</span>
+<span class="math display">\[\text{ou encore }
+p^{(m+n)}_{ij} = \sum_{k \in E} p^{(m)}_{ik} p^{(n)}_{kj} \text{ ou } (P^{m+n})_{ij}=(P^m)_{ik}(P^n)_{kj}\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-19" class="example"><strong>Example 2.3  </strong></span>Soit une CM définie par la matrice de transition <span class="math display">\[
+  P=\left( 
+  \begin{array}{cccc}
+  0.2 &amp; 0.4 &amp; 0.1 &amp; 0.3\\
+  0 &amp; 0.5 &amp; 0.4 &amp; 0.1\\
+  0.1 &amp; 0 &amp; 0.6 &amp; 0.3\\
+  0.4 &amp; 0.15 &amp; 0.25 &amp; 0.2
+  \end{array}
+    \right)
+  \]</span>
+et de distribution initiale <span class="math inline">\(\mu_0 \sim (0.3,0.2,0.5,0)\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Déterminer <span class="math inline">\(\mathbb{P}(X_2=2)\)</span>.</li>
+<li>Déterminer la probabilité des trajectoires: 1,2,3,4 et 2,3,1,1.</li>
+</ol>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{P}(X_2=2)=\left(\mu_0 P^2 \right)_{2}\)</span>.</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\text{Or } \mu_0 P^2=(0.3,0.2,0.5,0) \left( 
+  \begin{array}{cccc}
+  0.2 &amp; 0.4 &amp; 0.1 &amp; 0.3\\
+  0 &amp; 0.5 &amp; 0.4 &amp; 0.1\\
+  0.1 &amp; 0 &amp; 0.6 &amp; 0.3\\
+  0.4 &amp; 0.15 &amp; 0.25 &amp; 0.2
+  \end{array}
+    \right) \left( 
+  \begin{array}{cccc}
+  0.2 &amp; 0.4 &amp; 0.1 &amp; 0.3\\
+  0 &amp; 0.5 &amp; 0.4 &amp; 0.1\\
+  0.1 &amp; 0 &amp; 0.6 &amp; 0.3\\
+  0.4 &amp; 0.15 &amp; 0.25 &amp; 0.2
+  \end{array}
+    \right)\\
+    = (0.167,0.193,0.41,0.23)\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \quad \;
+\end{align*}\]</span></p>
+<p>D’où <span class="math inline">\(\mathbb{P}(X_2=2)=0.193\)</span>.</p>
+<p>Sous R, le produit matriciel s’effectue à l’aide de la fonction <code>%*%</code>. Pour la puissance d’ordre <span class="math inline">\(n \geq 2\)</span> d’une matrice carré, on peut utiliser la fonction <code>%^%</code> définie ci-dessous.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">P4=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.1</span>,.<span class="dv">4</span>,.<span class="dv">4</span>,.<span class="dv">5</span>,<span class="dv">0</span>,.<span class="dv">15</span>,.<span class="dv">1</span>,.<span class="dv">4</span>,.<span class="dv">6</span>,.<span class="dv">25</span>, <span class="fl">.3</span>,.<span class="dv">1</span>,.<span class="dv">3</span>,.<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2">mu0=<span class="kw">c</span>(.<span class="dv">3</span>,.<span class="dv">2</span>,.<span class="dv">5</span>,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb10-3" title="3">mu0<span class="op">%*%</span>P4<span class="op">%*%</span>P4  <span class="co"># %*% : produit matriciel</span></a></code></pre></div>
+<pre><code>      [,1]  [,2] [,3] [,4]
+[1,] 0.167 0.193 0.41 0.23</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># puissance nième d&#39;une matrice carré</span></a>
+<a class="sourceLine" id="cb12-2" title="2">power_matrix=<span class="cf">function</span>(A,n){</a>
+<a class="sourceLine" id="cb12-3" title="3"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">0</span>) <span class="kw">return</span>(<span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">nrow</span>(A))))</a>
+<a class="sourceLine" id="cb12-4" title="4"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">1</span>) <span class="kw">return</span>(A)</a>
+<a class="sourceLine" id="cb12-5" title="5"> <span class="cf">if</span>(n<span class="op">&gt;</span><span class="dv">1</span>) <span class="kw">return</span>(A<span class="op">%*%</span><span class="kw">power_matrix</span>(A,(n<span class="dv">-1</span>)))</a>
+<a class="sourceLine" id="cb12-6" title="6">}</a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="st">&quot;%^%&quot;</span>&lt;-power_matrix</a>
+<a class="sourceLine" id="cb12-8" title="8">P4<span class="op">%^%</span><span class="dv">3</span>     <span class="co"># P4^3</span></a></code></pre></div>
+<pre><code>       [,1]  [,2]   [,3]  [,4]
+[1,] 0.1415 0.259 0.3835 0.216
+[2,] 0.1385 0.193 0.4405 0.228
+[3,] 0.1925 0.163 0.3885 0.256
+[4,] 0.1670 0.244 0.3670 0.222</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{P}(1,2,3,4)=\mathbb{P}(X_0=1)\times P_{12}\times P_{23}\times P_{34}= 0.3 \times 0.4 \times 0.4 \times 0.3 =\)</span> 0.0144.</li>
+</ol>
+<p><span class="math inline">\(\mathbb{P}(2,3,1,1)=\mathbb{P}(X_0=2)\times P_{23}\times P_{31}\times P_{11}= 0.2 \times 0.4 \times 0.1 \times 0.2 =\)</span> 0.0016.</p>
+<p>Pour le calcul de la probabilité d’une trajectoire donnée sous R, on peut utiliser la fonction suivante:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">ProbTraj&lt;-<span class="cf">function</span>(traj,mu0,X0, P){</a>
+<a class="sourceLine" id="cb14-2" title="2">  n&lt;-<span class="kw">length</span>(traj)<span class="op">-</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb14-3" title="3">  pi&lt;-<span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) pi[k]&lt;-P[traj[k],traj[k<span class="op">+</span><span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb14-5" title="5">mu0[X0]<span class="op">*</span><span class="kw">prod</span>(pi)</a>
+<a class="sourceLine" id="cb14-6" title="6">}</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),mu0,<span class="dt">X0=</span><span class="dv">1</span>,P4)</a></code></pre></div>
+<pre><code>[1] 0.0144</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),mu0,<span class="dt">X0=</span><span class="dv">2</span>,P4)</a></code></pre></div>
+<pre><code>[1] 0.0016</code></pre>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-22" class="exercise"><strong>Exercise 2.2  </strong></span> On considère une CM à trois états dont la matrice de transition est la suivante :
+<span class="math display">\[ P=\left( 
+  \begin{array}{ccc}
+0.6 &amp; 0.2 &amp; 0.2 \\
+0.4 &amp; 0 &amp; 0.6 \\
+0 &amp; 0.8 &amp; 0.2
+\end{array}
+\right)\]</span>
+Calculer <span class="math inline">\(\mathbb{P}(X_2=3|X_0=1)\)</span>.</p>
+</div>
+
+<p><strong>Solution 1.2</strong></p>
+<p><span class="math inline">\(\mathbb{P}(X_2=3|X_0=1)\)</span> est la probabilité de se déplacer de l’état 1 à l’état 2 en <strong>deux</strong> étapes. Donc les trajectoires possibles sont: (1,2,3); (1,1,3) ou (1,3,3) avec <span class="math inline">\(\mu_0=(1,0,0)\)</span>.
+<span class="math display">\[\begin{align*}
+\mathbb{P}(X_2=3|X_0=1)= \left( P^2\right)_{13} =\left( 
+  \begin{array}{ccc}
+0.6 &amp; 0.2 &amp; 0.2 \\
+. &amp; . &amp; . \\
+. &amp; . &amp; .
+\end{array}
+\right)\left( 
+  \begin{array}{ccc}
+. &amp; . &amp; 0.2 \\
+. &amp; . &amp; 0.4 \\
+. &amp; . &amp; 0.2
+\end{array}
+\right)\\
+= 0.6 \times 0.2 + 0.2 \times 0.6 +0.2 \times 0.2 = 0.28.
+\end{align*}\]</span></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">P=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.4</span>,<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="fl">0.6</span>,<span class="fl">0.2</span>),<span class="dt">nc=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb18-2" title="2">P[<span class="dv">1</span>,]<span class="op">%*%</span>P[,<span class="dv">3</span>]</a></code></pre></div>
+<pre><code>     [,1]
+[1,] 0.28</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># ou encore</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="co"># (1,2,3); (1,1,3); (1,3,3)</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)</a></code></pre></div>
+<pre><code>[1] 0.28</code></pre>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-24" class="exercise"><strong>Exercise 2.3  </strong></span> On considère une chaîne de Markov à deux états dont la matrice de transition est la suivante :
+<span class="math display">\[ P=\left( 
+  \begin{array}{cc}
+0.4 &amp; 0.6 \\
+0.6 &amp; 0.4 
+\end{array}
+\right)\]</span>
+Calculer la probabilité de l’événement <span class="math inline">\(A_3\)</span> de passer pour <span class="math inline">\(n \leq 5\)</span> trois fois par l’état 2 si la loi initiale est <span class="math inline">\(\mu_0=(0.3,0.7)\)</span>.</p>
+</div>
+
+<p><strong>Solution 1.3</strong></p>
+<p><span class="math inline">\(A_3=\{n \leq 5\)</span>, on passe 3 fois par l’état 2 <span class="math inline">\(\}\)</span>.</p>
+<p>Tout d’abord, déterminons les différentes possibilités.</p>
+<p>Si l’état initial est l’état <span class="math inline">\(\color{blue}{1}\)</span>, on aura les possibilités suivantes:</p>
+<p><span class="math inline">\(x_1^1=(1, 1, 2, 2, 2)\)</span>, <span class="math inline">\(x_1^2=(1, 2,1, 2, 2)\)</span>, <span class="math inline">\(x_1^3=(1 ,2 ,2 ,1 , 2)\)</span> et <span class="math inline">\(x_1^4=(1 , 2, 2, 2, 1)\)</span></p>
+<p>D’où <span class="math inline">\(\mathbb{P}_1(A_3)=\mathbb{P}(X=x_1^1)+\mathbb{P}(X=x_1^2)+\mathbb{P}(X=x_1^3)+\mathbb{P}(X=x_1^4)\)</span></p>
+<p>Avec <span class="math inline">\(\mathbb{P}(X=x_1^1)=\mathbb{P}(X_0=1)\times p_{11}\times p_{12}\times p_{22}\times p_{22}=0.3 \times 0.4 \times 0.6 \times 0.4 \times 0.4=\)</span> 0.01152;</p>
+<p><span class="math inline">\(\mathbb{P}(X=x_1^2)=\mathbb{P}(X_0=1) \times p_{12}\times p_{21}\times p_{12}\times p_{22}=0.3\times 0.6^3 \times 0.4 =\)</span> 0.02592;</p>
+<p><span class="math inline">\(\mathbb{P}(X=x_1^3)=\mathbb{P}(X_0=1)\times p_{12}\times p_{22}\times p_{21}\times p_{12}=0.3\times 0.6 \times 0.4 \times 0.6^2 =\)</span> 0.02592;</p>
+<p><span class="math inline">\(\mathbb{P}(X=x_1^4)=\mathbb{P}(X_0=1)\times p_{12}\times p_{22}\times p_{22}\times p_{21}=0.3\times 0.6^2 \times 0.4^2 =\)</span> 0.01728;</p>
+<p>Donc <span class="math inline">\(\mathbb{P}_1(A_3)= 0.01152+0.02592+0.02592+0.01728=\)</span> 0.08064.</p>
+<p>Si l’état initial est l’état <span class="math inline">\(\color{blue}{2}\)</span>, on aura:</p>
+<p><span class="math inline">\(x_2^1=(2,1, 1, 2, 2)\)</span>, <span class="math inline">\(x_2^2=(2, 1, 2, 1,2)\)</span>, <span class="math inline">\(x_2^3=(2 , 1 , 2, 2, 1)\)</span>, <span class="math inline">\(x_2^4=(2, 2, 1, 2, 1)\)</span>, <span class="math inline">\(x_2^5=(2, 2 , 1 , 1 , 2)\)</span> et <span class="math inline">\(x_2^6=(2, 2, 2 , 1 , 1)\)</span>.</p>
+<p>D’où <span class="math inline">\(\mathbb{P}_2(A_3)=P(X=x_2^1)+P(X=x_2^2)+P(X=x_2^3)+P(X=x_2^4)+P(X=x_2^5)+P(X=x_2^6)\)</span>.</p>
+<p><span class="math inline">\(\mathbb{P}_2(A_3)=0.3192\)</span>.</p>
+<p>Ainsi <span class="math inline">\(\mathbb{P}(A_3)=\mu_0(1)\times \mathbb{P}_1(A_3)+\mu_0(2)\times \mathbb{P}_2(A_3)=\)</span> 0.247632.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">tab1=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb22-2" title="2">mu0=<span class="kw">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb22-3" title="3">P2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.6</span>,<span class="fl">0.4</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb22-4" title="4">(<span class="dt">probs1=</span><span class="kw">apply</span>(tab1,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">1</span>,P2))</a></code></pre></div>
+<pre><code>[1] 0.01152 0.02592 0.02592 0.01728</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">sum</span>(probs1)    <span class="co"># P1(A3)</span></a></code></pre></div>
+<pre><code>[1] 0.08064</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">tab2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb26-2" title="2">(<span class="dt">probs2=</span><span class="kw">apply</span>(tab2,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">2</span>,P2))</a></code></pre></div>
+<pre><code>[1] 0.04032 0.09072 0.06048 0.06048 0.04032 0.02688</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">sum</span>(probs2)    <span class="co"># P2(A3)</span></a></code></pre></div>
+<pre><code>[1] 0.3192</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">PA3=mu0<span class="op">%*%</span><span class="kw">c</span>(<span class="kw">sum</span>(probs1),<span class="kw">sum</span>(probs2)) ; <span class="kw">as.vector</span>(PA3)    <span class="co">#P(A3)</span></a></code></pre></div>
+<pre><code>[1] 0.247632</code></pre>
+</div>
+<div id="classification-des-états" class="section level2">
+<h2><span class="header-section-number">2.3</span> Classification des états</h2>
+<p>L’espace des états d’une CM peut être partitionné en un ensemble de classes communicantes disjointes.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-26" class="definition"><strong>Definition 2.4  </strong></span>On dit que l’état <span class="math inline">\(j\)</span> est <span class="math inline">\(\color{blue}{\mathbf{\text{accessible}}}\)</span> à partir de l’état <span class="math inline">\(i\)</span>, s’il existe un entier <span class="math inline">\(n \geq 0\)</span> tel que <span class="math inline">\(P^{(n)}_{ij} &gt;0\)</span>. On note <span class="math inline">\(i \longrightarrow j\)</span>.</p>
+<p>Sur le graphe, si <span class="math inline">\(i \neq j\)</span>, <span class="math inline">\(i\longrightarrow j\)</span> s’il existe un chemin (orienté) du sommet <span class="math inline">\(i\)</span> vers le sommet <span class="math inline">\(j\)</span>.</p>
+Si <span class="math inline">\(j\)</span> est accessible à partir de <span class="math inline">\(i\)</span> et <span class="math inline">\(i\)</span> est accessible depuis <span class="math inline">\(j\)</span>, on dit que <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> <span class="math inline">\(\color{blue}{\mathbf{\text{communiquent}}}\)</span> et on note <span class="math inline">\(i \longleftrightarrow j\)</span>.
+</div>
+
+<p>On note que si <span class="math inline">\(i \longrightarrow k\)</span> et <span class="math inline">\(k \longrightarrow j\)</span>, alors <span class="math inline">\(i \longrightarrow j\)</span> (la relation d’accessibilité est transitive).</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-27" class="definition"><strong>Definition 2.5  </strong></span>Les états <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> sont dans la même classe communicante si <span class="math inline">\(i \longleftrightarrow j\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-28" class="example"><strong>Example 2.4  </strong></span>Trouvez les classes communicantes associées au diagramme de transition suivant.
+</div>
+
+<p><img src="images/graph2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>D’après le diagramme, on remarque que <span class="math inline">\(1 \longleftrightarrow 2\)</span>, <span class="math inline">\(2 \longleftrightarrow 3\)</span> et <span class="math inline">\(4 \longleftrightarrow 5\)</span>. Donc on a deux classes communicantes <span class="math inline">\(\{1,2,3\}\)</span> et <span class="math inline">\(\{4,5 \}\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-30" class="definition"><strong>Definition 2.6  </strong></span>Une classe d’états communicante est fermée s’il est impossible de quitter
+cette classe. Autrement dit, la classe <span class="math inline">\(C\)</span> communicante est fermée si <span class="math inline">\(p_{ij} = 0\)</span> pour tout <span class="math inline">\(i \in C\)</span> et <span class="math inline">\(j \notin C\)</span>.
+</div>
+
+<p>Dans l’exemple précédent:</p>
+<ul>
+<li>La classe <span class="math inline">\(\{1,2,3\}\)</span> n’est pas fermée car on peut la quitter (<span class="math inline">\(2 \longrightarrow 4\)</span>).</li>
+<li>La classe <span class="math inline">\(\{4,5\}\)</span> est fermée car on ne peut pas la quitter.</li>
+</ul>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-31" class="definition"><strong>Definition 2.7  </strong></span>Si la chaîne de Markov ne possède qu’une unique classe, c’est à dire que tous
+ses éléments communiquent, la chaîne sera dite <span class="math inline">\(\color{blue}{\mathbf{\text{irréductible}}}\)</span>.</p>
+<p>Un état <span class="math inline">\(i\)</span> est dite <span class="math inline">\(\color{blue}{\mathbf{\text{absorbant}}}\)</span> si <span class="math inline">\(\{i\}\)</span> est une classe fermée.</p>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-32" class="example"><strong>Example 2.5  </strong></span>On considère la CMD à tois états 1, 2, 3 et de matrice stochastique
+<span class="math display">\[
+  P=\left( 
+    \begin{array}{ccc}
+    1/2 &amp; 1/2 &amp; 0 \\
+    1/2 &amp; 1/4 &amp; 1/4 \\
+    0 &amp; 1/3 &amp; 2/3\\
+    \end{array}
+    \right)
+\]</span>
+Comme <span class="math inline">\(1 \longleftrightarrow 2\)</span> et <span class="math inline">\(2 \longleftrightarrow 3\)</span>, alors cette CM est <strong>irréductible</strong>.
+</div>
+
+<p>Pour étudier la classification d’une CMD sous R, on peut procéder comme suit:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># install.packeges(&quot;markovchain&quot;)   # Installation de l&#39;extension markovchain</span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="kw">library</span>(markovchain)</a>
+<a class="sourceLine" id="cb32-3" title="3">pp=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>), <span class="dt">nc=</span><span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb32-4" title="4">          <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)))</a>
+<a class="sourceLine" id="cb32-5" title="5">cm1=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span>pp)</a>
+<a class="sourceLine" id="cb32-6" title="6"><span class="kw">is.irreducible</span>(cm1)  <span class="co"># tester si la CM est irreductible</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-33" class="example"><strong>Example 2.6  </strong></span>Soit la CMD à quatre états définie par la matrice stochastique
+<span class="math display">\[
+  P=\left( 
+    \begin{array}{cccc}
+    1/2 &amp; 1/2 &amp; 0 &amp;0\\
+    1/2 &amp; 1/2 &amp; 0 &amp; 0 \\
+   0&amp; 0 &amp; 1/4 &amp; 3/4\\
+    0 &amp; 0 &amp; 0 &amp; 1
+    \end{array}
+    \right)
+\]</span>
+Cette CM possède trois classes: <span class="math inline">\(\{1,2\}\)</span>, <span class="math inline">\(\{3\}\)</span> et <span class="math inline">\(\{4\}\)</span>, donc elle est <strong>non irréductible</strong>.</p>
+L’états 4 est <strong>absorbant</strong> car <span class="math inline">\(\{4\}\)</span> est une classe fermée.
+</div>
+
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">p15=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.75</span>,<span class="dv">1</span>), <span class="dt">nc=</span><span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb34-2" title="2">           <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>)))</a>
+<a class="sourceLine" id="cb34-3" title="3">cm2=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span> p15)</a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="kw">is.irreducible</span>(cm2)  <span class="co"># tester si la CM est irréductible</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">absorbingStates</span>(cm2) <span class="co"># déterminer les états absorbants</span></a></code></pre></div>
+<pre><code>[1] &quot;4&quot;</code></pre>
+</div>
+<div id="temps-dabsorption" class="section level2">
+<h2><span class="header-section-number">2.4</span> Temps d’absorption</h2>
+<p>Dans cette section on se pose la question suivante : Etant donné une chaîne <span class="math inline">\(X\)</span> et <span class="math inline">\(x\)</span> dans l’espace d’états <span class="math inline">\(E\)</span>, quel est le temps moyen (éventuellement infini) que met <span class="math inline">\(X\)</span> à arriver au temps <span class="math inline">\(x\)</span>.</p>
+<div id="temps-darrêt" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Temps d’arrêt</h3>
+<p>Pour <span class="math inline">\(x \in E\)</span> on définit le temps aléatoire
+<span class="math display">\[
+T_x = \min\{n \geq 0 : X_n = x\},
+\]</span>
+premier moment où la chaîne atteint l’état <span class="math inline">\(x\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-34" class="definition"><strong>Definition 2.8  </strong></span>Soit <span class="math inline">\(A\)</span> un sous ensemble de l’espace d’états <span class="math inline">\(E\)</span>. Le <strong>temps d’atteinte</strong> de <span class="math inline">\(A\)</span> est la variable aléatoire <span class="math inline">\(T_A\)</span> définie par:
+<span class="math display">\[
+T_A = \min\{n \geq 0 : X_n \in A \},
+\]</span>
+</div>
+
+<p>Notons que la probabilité d’atteindre <span class="math inline">\(A\)</span> dépuis <span class="math inline">\(i\)</span> est <span class="math inline">\(h_{A|i} = P(T_A &lt; \infty |X_0 = i)\)</span>.</p>
+<p><span class="math inline">\(T_A\)</span> est le temps nécessaire pour atteindre l’ensemble <span class="math inline">\(A\)</span> pour la première fois. <span class="math inline">\(T_A\)</span> peut prendre les valeurs <span class="math inline">\(0,1,2,\ldots , \infty\)</span>.</p>
+<p>Si la chaîne ne peut jamais atteindre <span class="math inline">\(A\)</span>, alors <span class="math inline">\(T_A= \infty\)</span>.</p>
+<p>Le temps d’atteinte est appelé aussi <strong>temps d’arrêt</strong>. Si <span class="math inline">\(A\)</span> est une classe fermée, <span class="math inline">\(T_A\)</span> sera appelé le <strong>temps d’absorption</strong> et <span class="math inline">\(h_{A|i}\)</span> la <strong>probabilité d’absorption</strong>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-35" class="definition"><strong>Definition 2.9  </strong></span>Le <strong>temps moyen d’atteinte</strong> de <span class="math inline">\(A\)</span>, à partir de <span class="math inline">\(i\)</span> est:
+<span class="math display">\[ m_{iA}=\mathbb{E}\left(T_A | X_0=i \right)\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-36" class="example"><strong>Example 2.7  </strong></span>On considère la chaîne suivante
+</div>
+
+<p><img src="images/graphe3.png" width="45%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li>Déterminer le vecteur des probabilités d’ateinte de l’état 4.</li>
+<li>Déterminer le temps moyen d’atteinte de <span class="math inline">\(A=\{1,4\}\)</span>, à partie de 2.</li>
+</ol>
+</div>
+</div>
+<div id="simulation-dune-chaîne-de-markov-discrète" class="section level2">
+<h2><span class="header-section-number">2.5</span> Simulation d’une chaîne de Markov discrète</h2>
+<div id="exemple-illustratif" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Exemple illustratif</h3>
+<p>L’idée générale pour simuler une chaînes de Markov discrète peut être illustrée par un exemple simple à 2 états. Supposons que notre espace d’états est {1,2} et que la matrice de transition est:
+<span class="math display">\[ P=\left(
+\begin{array}{cc}
+0.2 &amp; 0.8 \\
+0.4 &amp; 0.6
+\end{array}
+\right)\]</span></p>
+<p>Supposons maintenant que notre chaîne de Markov commence à l’état 1 de sorte que <span class="math inline">\(X_0 = 1\)</span>. Puisque nous commençons à l’état 1, nos probabilités de transition sont définies par la première ligne de <span class="math inline">\(P\)</span>. Notre chaîne peut soit rester à l’état 1 avec une probabilité <span class="math inline">\(P_{11}=0.2\)</span>, soit passer à l’état 2 avec une probabilité <span class="math inline">\(P_{12}=0.8\)</span>. Par conséquent, pour simuler <span class="math inline">\(X_1\)</span>, il faut générer une variable aléatoire selon les probabilités <span class="math inline">\(P_{11} = P (X_1 = 1 | X_0 = 1) = 0.2\)</span> et <span class="math inline">\(P_{12} = P (X_1 = 2 | X_0 = 0) = 0.8\)</span>.</p>
+<p>En général, nous pouvons générer n’importe quelle variable aléatoire discrète selon un ensemble de probabilités <span class="math inline">\(p = \{p_1,\ldots, p_K\}\)</span> avec la méthode de transformation inverse. Notez également que cela équivaut à prendre un seul tirage à partir d’une distribution multinomiale avec un vecteur de probabilité <span class="math inline">\(p\)</span> - nous utilisons cette méthode dans l’algorithme ci-dessous.</p>
+<p><strong>Algorithme</strong></p>
+<ol style="list-style-type: decimal">
+<li>Obtenir la matrice de transition de probabilité <span class="math inline">\(S\times S\)</span>, <span class="math inline">\(P\)</span>.</li>
+<li>Définir <span class="math inline">\(t=0\)</span>.</li>
+<li>Choisissez un état initial <span class="math inline">\(X_0 = x_0\)</span>.</li>
+<li>pour <span class="math inline">\(t=1, \ldots , T\)</span>:
+<ol style="list-style-type: lower-alpha">
+<li>Obtenir la ligne de <span class="math inline">\(P\)</span> correspondante à l’état actuel <span class="math inline">\(X_t\)</span></li>
+<li>Génère <span class="math inline">\(X_{t + 1}\)</span> à partir d’une distribution multinomiale avec un vecteur de probabilité égal à la ligne que nous avons obtenue ci-dessus.</li>
+</ol></li>
+</ol>
+<p>Nous implémentons cet algorithm dans la fonction suivante:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># simuler des CMD selon la matrice de transition P</span></a>
+<a class="sourceLine" id="cb38-2" title="2">sim_CMD &lt;-<span class="st"> </span><span class="cf">function</span>( P, <span class="dt">N =</span> <span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span> ) {</a>
+<a class="sourceLine" id="cb38-3" title="3">  <span class="co"># nombre des états</span></a>
+<a class="sourceLine" id="cb38-4" title="4">  n_etats &lt;-<span class="st"> </span><span class="kw">nrow</span>(P)</a>
+<a class="sourceLine" id="cb38-5" title="5">  etats &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)</a>
+<a class="sourceLine" id="cb38-6" title="6">  <span class="co"># valeur de l&#39;état initial </span></a>
+<a class="sourceLine" id="cb38-7" title="7">  etats[<span class="dv">1</span>] &lt;-<span class="st"> </span>x0</a>
+<a class="sourceLine" id="cb38-8" title="8">  <span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>N) {</a>
+<a class="sourceLine" id="cb38-9" title="9">    <span class="co"># vecteur de prob pour simuller l&#39;état suivant X_{t+1}</span></a>
+<a class="sourceLine" id="cb38-10" title="10">    p &lt;-<span class="st"> </span>P[etats[t<span class="dv">-1</span>], ]</a>
+<a class="sourceLine" id="cb38-11" title="11">    <span class="co">## tirer depuis la distribution multinomiale et déterminer l&#39;état</span></a>
+<a class="sourceLine" id="cb38-12" title="12">    etats[t] &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rmultinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, p) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb38-13" title="13">  }</a>
+<a class="sourceLine" id="cb38-14" title="14">  <span class="kw">return</span>(etats)</a>
+<a class="sourceLine" id="cb38-15" title="15">}</a></code></pre></div>
+<div id="simulation-de-lexemple-illustratif" class="section level4">
+<h4><span class="header-section-number">2.5.1.1</span> Simulation de l’exemple illustratif</h4>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">(P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>), <span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]  0.2  0.8
+[2,]  0.4  0.6</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
+<pre><code>[1] 1 2 2 2 1 2</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<pre><code>[1] 0.16</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<pre><code>[1] 1</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Calcul_Stochastique.pdf", "Calcul_Stochastique.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
