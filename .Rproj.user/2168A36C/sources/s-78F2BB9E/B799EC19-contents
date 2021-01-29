@@ -125,6 +125,8 @@
 \lhead{\bf\sffamily\nouppercase{\rightmark}}
 \rfoot{\bf FSEG Sousse}
 \lfoot{\bf\sffamily Mohamed Essaied Hamrita}
+\usepackage[]{natbib}
+\bibliographystyle{plain}
 
 \title{Calcul stochastique}
 \author{Mohamed Essaied Hamrita}
@@ -1007,7 +1009,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 1 2 2 2
+[1] 1 2 2 1 2 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -1018,7 +1020,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.18
+[1] 0.12
 \end{verbatim}
 
 \begin{Shaded}
@@ -1048,33 +1050,8 @@ Some \emph{significant} applications are demonstrated in this chapter.
 \hypertarget{example-two}{%
 \section{Example two}\label{example-two}}
 
-\hypertarget{bibliographie}{%
-\chapter*{Bibliographie}\label{bibliographie}}
-\addcontentsline{toc}{chapter}{Bibliographie}
-
 \hypertarget{refs}{}
-\leavevmode\hypertarget{ref-bremaud}{}%
-Pierre, Brémaud. 2009. \emph{Initiation Aux Probabilités et Aux Chaînes de Markov}. 2e édition entièrement révisée. Berlin Heidelberg: Springer.
 
-\leavevmode\hypertarget{ref-R-base}{}%
-R Core Team. 2020. \emph{R: A Language and Environment for Statistical Computing}. Vienna, Austria: R Foundation for Statistical Computing. \url{https://www.R-project.org/}.
-
-\leavevmode\hypertarget{ref-Ross97}{}%
-Ross, Sheldon M. 2019. \emph{Introduction to Probability Models}. Twelfth. San Diego, CA, USA: Academic Press.
-
-\leavevmode\hypertarget{ref-ross1996stochastic}{}%
-Ross, S. M. 1996. \emph{Stochastic Processes}. Wiley Series in Probability and Statistics: Probability and Statistics. Wiley.
-
-\leavevmode\hypertarget{ref-R-diagram}{}%
-Soetaert, Karline. 2020a. \emph{Diagram: Functions for Visualising Simple Graphs (Networks), Plotting Flow Diagrams}. \url{https://CRAN.R-project.org/package=diagram}.
-
-\leavevmode\hypertarget{ref-R-shape}{}%
----------. 2020b. \emph{Shape: Functions for Plotting Graphical Shapes, Colors}. \url{https://CRAN.R-project.org/package=shape}.
-
-\leavevmode\hypertarget{ref-R-markovchain}{}%
-Spedicato, Giorgio Alfredo, Tae Seung Kang, Sai Bhargav Yalamanchi, Deepak Yadav, and Ignacio Cordón. 2021. \emph{Markovchain: Easy Handling Discrete Time Markov Chains}. \url{https://CRAN.R-project.org/package=markovchain}.
-
-\leavevmode\hypertarget{ref-tijms2003first}{}%
-Tijms, H. C. 2003. \emph{A First Course in Stochastic Models}. Wiley. \url{https://books.google.tn/books?id=WibF8iVHaiMC}.
+  \bibliography{book.bib,packages.bib}
 
 \end{document}
