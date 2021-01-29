@@ -125,6 +125,32 @@
 \lhead{\bf\sffamily\nouppercase{\rightmark}}
 \rfoot{\bf FSEG Sousse}
 \lfoot{\bf\sffamily Mohamed Essaied Hamrita}
+\usepackage[Rejne]{fncychap}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lipsum}
+\makeatletter
+\ChNameVar{\rm\scshape}
+\ChNumVar{\rm}
+\ChTitleVar{\huge\rm\scshape\centering}
+\ChRuleWidth{5pt}
+\renewcommand{\DOCH}{%
+  \leavevmode\leaders\vrule height \RW\hfill\quad
+  \CNV\FmN{\@chapapp}\space \CNoV\Roman{chapter}%
+  \quad\leaders\vrule height \RW\hfill\null
+  \par\nobreak
+  \vskip 10pt
+}
+\renewcommand{\DOTI}[1]{%
+  \hrule\vskip 10pt
+  \CTV\FmTi{#1}\par\nobreak
+  \vskip 10pt
+  \hrule
+  \vskip 40pt}
+\renewcommand{\DOTIS}[1]{%
+  \hrule\vskip 10pt
+  \CTV\FmTi{#1}\par\nobreak
+  \vskip 40pt}
+\makeatother
 
 \title{Calcul stochastique}
 \author{Mohamed Essaied Hamrita}
@@ -1007,7 +1033,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 2 1 2 2
+[1] 1 1 2 2 2 2
 \end{verbatim}
 
 \begin{Shaded}
@@ -1018,7 +1044,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.22
+[1] 0.24
 \end{verbatim}
 
 \begin{Shaded}
