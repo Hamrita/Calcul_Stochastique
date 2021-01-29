@@ -9,3 +9,10 @@
 \newcommand{\Rr}{\mathbb{R}}
 \newcommand{\Pp}{\mathbb{P}}
 %\usepackage{unicode-math}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\bf\thepage}
+\lhead{\bf\sffamily\nouppercase{\rightmark}}
+\rfoot{\bf FSEG Sousse}
+\lfoot{\bf\sffamily Mohamed Essaied Hamrita}

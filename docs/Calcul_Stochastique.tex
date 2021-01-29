@@ -118,6 +118,13 @@
 \newcommand{\Rr}{\mathbb{R}}
 \newcommand{\Pp}{\mathbb{P}}
 %\usepackage{unicode-math}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\bf\thepage}
+\lhead{\bf\sffamily\nouppercase{\rightmark}}
+\rfoot{\bf FSEG Sousse}
+\lfoot{\bf\sffamily Mohamed Essaied Hamrita}
 \usepackage[]{natbib}
 \bibliographystyle{plain}
 
@@ -1002,7 +1009,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 1 2 1 2
+[1] 1 1 1 2 1 2
 \end{verbatim}
 
 \begin{Shaded}
@@ -1013,7 +1020,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.18
+[1] 0.16
 \end{verbatim}
 
 \begin{Shaded}
