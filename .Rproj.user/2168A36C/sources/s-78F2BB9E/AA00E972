@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1297003391",
+    "hash" : "0",
     "id" : "AA00E972",
-    "lastKnownWriteTime" : 1611873158,
-    "last_content_update" : 1611873158706,
+    "lastKnownWriteTime" : 1611922881,
+    "last_content_update" : 1611922881194,
     "path" : "D:/Enseignement/Stochastique/My_book/Calcul_Stochastique/book.bib",
     "project_path" : "book.bib",
     "properties" : {
-        "cursorPosition" : "29,0",
-        "scrollLine" : "11"
+        "cursorPosition" : "45,1",
+        "scrollLine" : "30"
     },
     "read_only" : false,
     "read_only_alternatives" : [

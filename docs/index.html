@@ -131,7 +131,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Calcul stochastique</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#notion-de-probabilité"><i class="fa fa-check"></i><b>1.1</b> Notion de probabilité</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
 <li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
 <li class="chapter" data-level="2.2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#loi-des-x_n"><i class="fa fa-check"></i><b>2.2</b> Loi des <span class="math inline">\(X_n\)</span></a></li>
@@ -177,7 +179,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rappel-sur-le-calcul-des-probabilités" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Rappel sur le calcul des probabilités</h1>
+<div id="notion-de-probabilité" class="section level2">
+<h2><span class="header-section-number">1.1</span> Notion de probabilité</h2>
+<p>Une notion basique dans la théorie des probabilités est l’<strong>expérience aléatoire</strong> dont on ne connait pas son résultat en avance. L’ensemble de tous les résultats de l’expérience est l’<strong>ensemble des possibles</strong> ou encore l’<strong>univers</strong> et noté <span class="math inline">\(\Omega\)</span>.</p>
+<p>Un <strong>évènement</strong> est un sous ensemble de l’uivers.</p>
+<p>On donne quelques exemples:</p>
+<p><strong>1.</strong> Si l’expérience consiste à jeter une pièce de monnaie, alors <span class="math inline">\(\Omega=\{P,F\}\)</span>.</p>
+<p><strong>2.</strong> Si l’expérience consiste à jeter un dé cubique dont ses faces sont numérotées de 1 à 6, alors <span class="math inline">\(\Omega=\{1,2,3,4,5,6 \}\)</span>.</p>
+<p>Pour chaque évènement <span class="math inline">\(E\)</span> de l’univers <span class="math inline">\(\Omega\)</span>, on définit un nombre <span class="math inline">\(P(E)\)</span> qui satisfait les axiomes suivants:</p>
+<ul>
+<li><strong>Axiome 1:</strong> <span class="math inline">\(0 \leq P(E) \leq 1\)</span>;</li>
+<li><strong>Axiome 2:</strong> <span class="math inline">\(P(\Omega)=1\)</span>;</li>
+<li><strong>Axiome 3:</strong> Pour toute séquence des évènements <span class="math inline">\(E_1 , E_2, \ldots , E_n\)</span> qui sont mutuellement exclusifs (<span class="math inline">\(E_i \cap E_j=\emptyset , \; \forall \; i \neq j\)</span> et <span class="math inline">\(\displaystyle{\bigcup\limits_{i=1}^nE_i=\Omega}\)</span>), on a
+<span class="math display">\[
+P \left(\bigcup\limits_{i=1}^nE_i \right)=\sum_{i=1}^n P(E_i)
+\]</span></li>
+</ul>
+<p>Quelques conséquences de ces axiomes sont tirées:</p>
+<ul>
+<li>Si <span class="math inline">\(E \subset F\)</span>, alors <span class="math inline">\(P(E) \leq P(F)\)</span>.</li>
+<li><span class="math inline">\(P ( \bar{E})=1-P(E)\)</span> où <span class="math inline">\(\bar{E}\)</span> est le complémentaire de <span class="math inline">\(E\)</span>.</li>
+<li><span class="math inline">\(P \left(\bigcup\limits_{i=1}^nE_i \right)=\displaystyle\sum_{i=1}^n P(E_i)\)</span>, lorsque <span class="math inline">\(E_i\)</span> sont mutuellement exclusifs.</li>
+<li><span class="math inline">\(P \left(\bigcup\limits_{i=1}^nE_i \right)\leq\displaystyle \sum_{i=1}^n P(E_i)\)</span> (Inégalité de Boole).</li>
+</ul>
 
+</div>
 </div>
             </section>
 

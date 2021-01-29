@@ -150,6 +150,48 @@
 \hypertarget{rappel-sur-le-calcul-des-probabilituxe9s}{%
 \chapter{Rappel sur le calcul des probabilités}\label{rappel-sur-le-calcul-des-probabilituxe9s}}
 
+\hypertarget{notion-de-probabilituxe9}{%
+\section{Notion de probabilité}\label{notion-de-probabilituxe9}}
+
+Une notion basique dans la théorie des probabilités est l'\textbf{expérience aléatoire} dont on ne connait pas son résultat en avance. L'ensemble de tous les résultats de l'expérience est l'\textbf{ensemble des possibles} ou encore l'\textbf{univers} et noté \(\Omega\).
+
+Un \textbf{évènement} est un sous ensemble de l'uivers.
+
+On donne quelques exemples:
+
+\textbf{1.} Si l'expérience consiste à jeter une pièce de monnaie, alors \(\Omega=\{P,F\}\).
+
+\textbf{2.} Si l'expérience consiste à jeter un dé cubique dont ses faces sont numérotées de 1 à 6, alors \(\Omega=\{1,2,3,4,5,6 \}\).
+
+Pour chaque évènement \(E\) de l'univers \(\Omega\), on définit un nombre \(P(E)\) qui satisfait les axiomes suivants:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Axiome 1:} \(0 \leq P(E) \leq 1\);
+\item
+  \textbf{Axiome 2:} \(P(\Omega)=1\);
+\item
+  \textbf{Axiome 3:} Pour toute séquence des évènements \(E_1 , E_2, \ldots , E_n\) qui sont mutuellement exclusifs (\(E_i \cap E_j=\emptyset , \; \forall \; i \neq j\) et \(\displaystyle{\bigcup\limits_{i=1}^nE_i=\Omega}\)), on a
+  \[
+  P \left(\bigcup\limits_{i=1}^nE_i \right)=\sum_{i=1}^n P(E_i)
+  \]
+\end{itemize}
+
+Quelques conséquences de ces axiomes sont tirées:
+
+\begin{itemize}
+\tightlist
+\item
+  Si \(E \subset F\), alors \(P(E) \leq P(F)\).
+\item
+  \(P ( \bar{E})=1-P(E)\) où \(\bar{E}\) est le complémentaire de \(E\).
+\item
+  \(P \left(\bigcup\limits_{i=1}^nE_i \right)=\displaystyle\sum_{i=1}^n P(E_i)\), lorsque \(E_i\) sont mutuellement exclusifs.
+\item
+  \(P \left(\bigcup\limits_{i=1}^nE_i \right)\leq\displaystyle \sum_{i=1}^n P(E_i)\) (Inégalité de Boole).
+\end{itemize}
+
 \hypertarget{chauxeenes-de-markov}{%
 \chapter{Chaînes de Markov}\label{chauxeenes-de-markov}}
 
@@ -960,7 +1002,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 1 2 1 2
+[1] 1 1 2 1 2 2
 \end{verbatim}
 
 \begin{Shaded}
@@ -971,7 +1013,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.19
+[1] 0.24
 \end{verbatim}
 
 \begin{Shaded}
