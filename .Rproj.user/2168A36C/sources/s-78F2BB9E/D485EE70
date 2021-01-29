@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "755252966",
     "id" : "D485EE70",
-    "lastKnownWriteTime" : 1611938647,
-    "last_content_update" : 1611938647253,
+    "lastKnownWriteTime" : 1611964709,
+    "last_content_update" : 1611964709843,
     "path" : "D:/Enseignement/Stochastique/My_book/Calcul_Stochastique/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
-        "cursorPosition" : "37,22",
-        "scrollLine" : "29"
+        "cursorPosition" : "3,15",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
