@@ -35,7 +35,7 @@ colorize <- function(x, color) {
 
 Une notion basique dans la théorie des probabilités est l'__expérience aléatoire__ dont on ne connait pas son résultat en avance. L'ensemble de tous les résultats de l'expérience est l'__ensemble des possibles__ ou encore l'__univers__ et noté $\Omega$.
 
-Un __évènement__ est un sous ensemble de l'uivers. 
+Un __évènement__ est un sous ensemble de l'univers. 
 
 On donne quelques exemples:
 
