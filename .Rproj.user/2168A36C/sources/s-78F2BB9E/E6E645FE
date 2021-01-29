@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "386608182",
+    "hash" : "2568759772",
     "id" : "E6E645FE",
-    "lastKnownWriteTime" : 1611872164,
-    "last_content_update" : 1611872164,
+    "lastKnownWriteTime" : 1611930291,
+    "last_content_update" : 1611930291747,
     "path" : "D:/Enseignement/Stochastique/My_book/Calcul_Stochastique/README.md",
     "project_path" : "README.md",
     "properties" : {
+        "cursorPosition" : "1,48",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

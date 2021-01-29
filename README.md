@@ -1,1 +1,2 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+Ceci est un polycopié du cours Calcul stochastique destiné aux étudiants de la première année mastère de recherche Fiance à la FSEG de Sousse.
+(https://hamrita.github.io/Calcul_Stochastique/)
