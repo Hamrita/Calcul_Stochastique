@@ -109,3 +109,12 @@ $P(A\cap B)=p(\{4,2 \})=1/36$ et $P(A)=1/6$, $P(B)=1/6$. Donc $P(A)\times P(B)=1
 
 
 ## Variables aléatoires
+
+```{definition}
+Soit une expérience aléatoire d'univers $\Omega$.
+
+Une variable aléatoire $X$ est une application de l'ensemble $\Omega$ vers un ensemble de réalisations.
+
+Pour tout évènement $A$, on $P(X \in A)=P(X^{-1}(A))$.
+```
+
