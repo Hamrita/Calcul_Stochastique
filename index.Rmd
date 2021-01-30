@@ -58,3 +58,54 @@ Quelques conséquences de ces axiomes sont tirées:
    *  \( P ( \bar{E})=1-P(E) \) où \( \bar{E} \) est le complémentaire de \( E \).
    * \( P \left(\bigcup\limits_{i=1}^nE_i \right)=\displaystyle\sum_{i=1}^n P(E_i) \), lorsque \( E_i\) sont mutuellement exclusifs.
    * \( P \left(\bigcup\limits_{i=1}^nE_i \right)\leq\displaystyle \sum_{i=1}^n P(E_i) \) (Inégalité de Boole).
+   
+```{example}
+L'expérience consiste à lancer une pièce de monnaie équilibrée. Donc \(P(\{P\})= P(\{F\})=0.5\)
+```
+
+```{example}
+On lance un dé cubique équilibré dont ses faces sont numérotées de 1 à 6.
+
+\(P(\{i \})= \dfrac{1}{6}, \; \forall\, i=1,2,\ldots,6 \).
+
+La probabilité d'obtenir un nombre pair est
+
+\(P(\{2,4,6\})= P(\{2 \})+P(\{4 \}) +P(\{6 \}) = \dfrac{1}{2}\).
+```
+
+### Probabilité conditionnelle
+
+```{definition}
+Soient $A$ et $B$ deux évènements tels que $P(B)\neq0$. La probabilité de __A sachant B__ est le nombre
+$$
+  P(A|B)=\frac{P(A \cap B)}{P(B)}
+$$
+```
+
+```{example}
+Une urne contient 10 boules numérotées de 1 à 10 indiscernables au toucher. On tire au hasard une boule. Sachant que le numéro de la boule tirée est au moins égale à 5, quelle est la probabilité qu'il soit égale à 10?
+
+Soit $A$ l'évènement d'avoir une boule portant le numéro 10. Soit $B$ l'évènement d'avoir une boule portant un numéro supèrieur ou égale à 5. La probabilité demandée est $P(A|B)$
+$$
+P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
+$$
+```
+
+### Indépendance
+
+```{definition}
+On dit que deux évènements, A et B, sont __indépendants__ si $P(A\cap B)=P(A)\times P(B)
+```
+
+Si $A$ et $B$ deux évènements indépendants, alors $P(A|B)=P(A)$ et $P(B|A)=P(B)$.
+
+```{example}
+On lance deux dés cubiques équilibrés numérotés de 1 à 6. Soit $A$ l'événement d'obtenir une somme égale six et $B$ désigne l'événement où le premier dé est égal à quatre. 
+
+Vérifier que les deux évènements $A$ et $B$ sont indépendants.
+
+$P(A\cap B)=p(\{4,2 \})=1/36$ et $P(A)=1/6$, $P(B)=1/6$. Donc $P(A)\times P(B)=1/6 \times 1/6 =1/36 =P(A\cap B)$. Ainsi, les évènements $A$ et $B$ sont indépendants.
+```
+
+
+## Variables aléatoires

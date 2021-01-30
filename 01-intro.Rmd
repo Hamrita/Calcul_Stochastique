@@ -10,19 +10,19 @@ Les chaînes de Markov sont largement utilisées dans de nombreux domaines tels 
 Soit $X_0, X_1,\ldots, X_n, \ldots$ une suite de variables aléatoires sur un espace de probabilité $(\Omega,\mathcal{A}, \mathbb{P})$ à valeurs dans $E$ (fini ou infini dénombrable).
 
 ```{definition}
-La suite $(X_n)_{n \in \mathbb{N}}$ est une chaîne de Markov si pour tout $n \in \mathbb{N}$ et pour tout $(x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}$ tel que $P(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) >0$, $P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)$ ne dépend que des valeurs $n$, $x_n$ et $x_{n+1}$.
+La suite $(X_n)_{n \in \mathbb{N}}$ est une chaîne de Markov si pour tout $n \in \mathbb{N}$ et pour tout $(x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}$ tel que $\mathbb{P}(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) >0$, $\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)$ ne dépend que des valeurs $n$, $x_n$ et $x_{n+1}$.
 ```
 L'ensemble $E$ est appelé l'$\color{blue}{\mathbf{\text{espace des états}}}$ de la chîne de Markov et les $x_i$ sont appelés $\color{blue}{\mathbf{\text{états}}}$.
 ```{proposition}
 Soit $(X_n)_{n \in \mathbb{N}}$ une chaine de Markov d'espace d'états $E$. Pour tout $n \in \mathbb{N}$ et pour tout $(x_0,x_1x\ldots,x_{n+1})\in E^{n+2}$, on a
-$$P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)=P(X_{n+1}=x_{n+1}|X_n=x_n)$$
+$$\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)=\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)$$
 ```
 
 ```{definition}
 Une chaîne de Markov $(X_n)_{n \in \mathbb{N}}$ est dite homogène (dans le temps) si $\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)$ ne dépend pas de $n$. 
 ```
 
-La dynamique du processus est alors entièrement caractérisé par les $p_{ij}=\P(X_{n+1}=j|X_n=i)$, appelés $\color{blue}{\mathbf{\text{probabilités de transitions}}}$ de l'état $i$ à l'état $j$ si la chaîne est homogène, ou plus généralement
+La dynamique du processus est alors entièrement caractérisé par les $p_{ij}=\mathbb{P}(X_{n+1}=j|X_n=i)$, appelés $\color{blue}{\mathbf{\text{probabilités de transitions}}}$ de l'état $i$ à l'état $j$ si la chaîne est homogène, ou plus généralement
 $$ p_{ij}^{(n)}=\mathbb{P}(X_{n+1}=j|X_n=i)$$
 ```{definition}
 Une matrice $P=(P_{ij},i,j \in E)$ est une matrice $\color{blue}{\mathbf{\text{stochastique}}}$, ou matrice $\color{blue}{\mathbf{\text{de transition}}}$ si chaque ligne $P_i=(P_{ij}, j \in E)$ est une distribution de probabilité.
@@ -94,7 +94,7 @@ $$
 
 L'ensemble des états, $E$, est formé de 4 états {N, E, S, O}. La probabilité de se déplacer à l'état $E$ sachant qu'on se trouve à l'état $N$ est:
 $$
-P(X_{n+1}=E|X_n=N)=p_{12}=0.5
+\mathbb{P}(X_{n+1}=E|X_n=N)=p_{12}=0.5
 $$
 Le graphe orienté correspondant à cette matrice de transition est:
 ```{r, comment=NA}
@@ -139,13 +139,13 @@ Dans un certain pays, il ne fait jamais beau deux jours de suite. Si un jour il 
 
   1. On a l'ensemble des états suivants $E=\{B,P,N \}$. Le temps pour un jour ne dépend que seulement de temps du jour précédent. On a donc un processus de Markov. 
   
-  Il ne fait jamais beau deux jours de suite $\Longrightarrow P(X_{n+1}=B|X_n=B)=0$.
+  Il ne fait jamais beau deux jours de suite $\Longrightarrow \mathbb{P}(X_{n+1}=B|X_n=B)=0$.
   
-  Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances $\Longrightarrow P(X_{n+1}=P|X_n=B)=P(X_{n+1}=N|X_n=B)=0.5$.
+  Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances $\Longrightarrow \mathbb{P}(X_{n+1}=P|X_n=B)=\mathbb{P}(X_{n+1}=N|X_n=B)=0.5$.
   
-  Si un jour il pleut ou il neige, il y a une chance sur deux qu'il ait changement de temps le lendemain $\Longrightarrow P(X_{n+1}=P|X_n=P)=P(X_{n+1}=N|X_n=N)=0.5$.
+  Si un jour il pleut ou il neige, il y a une chance sur deux qu'il ait changement de temps le lendemain $\Longrightarrow P(X_{n+1}=P|X_n=P)=\mathbb{P}(X_{n+1}=N|X_n=N)=0.5$.
   
-  et s'il y a changement, il y a une chance sur deux que ce soit pour du beau temps $P(X_{n+1}=B|X_n=P)=P(X_{n+1}=B|X_n=N)=0.5\times 0.5=0.25$.
+  et s'il y a changement, il y a une chance sur deux que ce soit pour du beau temps $\mathbb{P}(X_{n+1}=B|X_n=P)=\mathbb{P}(X_{n+1}=B|X_n=N)=0.5\times 0.5=0.25$.
   
   Ainsi, la matrice stochastique est donnée par:
   $$
@@ -166,10 +166,29 @@ plotmat(t(PB), box.size = 0.06, box.prop = 0.5, box.col = "gray",
           arr.pos = 0.6, relsize = 0.85,dtext = 0.6)
 ```
 
-   2. Le nouvel ensemble des états est $E_1=\{B, M \}$, $M$ pour désigner mauvais temps (soit il pleut soit il neige).
-   $$P(X_{n+1}=B|X_n=M)=P(X_{n+1}=B|X_n=P)+P(X_{n+1}=B|X_n=N)=0.5+0.5=1$$
-   $$P(X_{n+1}=M|X_n=M)=P(X_{n+1}=P|X_n=P)+P(X_{n+1}=N|X_n=N) $$
-   
+   2. Le nouvel ensemble des états est $E_1=\{B, M \}$, $M$ pour désigner mauvais temps (soit il pleut, soit il neige).
+   $$\mathbb{P}(X_{n+1}=B|X_n=M)=\mathbb{P}(X_{n+1}=B|X_n=P)+\mathbb{P}(X_{n+1}=B|X_n=N)=0.5+0.5=1$$
+   \(\mathbb{P}(X_{n+1}=B|X_n=B)=0 \).
+  \begin{align*} 
+  \mathbb{P}(X_{n+1}=M|X_n=M)&=\mathbb{P}(X_{n+1}=P|X_n=P)+\mathbb{P}(X_{n+1}=P|X_n=N)\\
+  & = \mathbb{P}(X_{n+1}=N|X_n=N)+\mathbb{P}(X_{n+1}=N|X_n=N)\\
+  &= \dfrac{1}{2}+\dfrac{1}{4}= \dfrac{3}{4}
+  \end{align*}
+\begin{align*} 
+  \mathbb{P}(X_{n+1}=M|X_n=B)&=\mathbb{P}(X_{n+1}=P|X_n=B)=\mathbb{P}(X_{n+1}=N|X_n=B)\\
+  &= \dfrac{1}{4}
+  \end{align*}  
+Ainsi, la matrice de transition d'espace d'états $\{B,M\}$ est:
+
+$$
+P_1=\left( 
+\begin{array}{cc}
+0 & 1\\
+\frac{1}{4} & \frac{3}{4}
+\end{array}
+\right)
+$$
+
 ## Loi des $X_n$
 
 Le comportement d’une chaîne de Markov $X$ dépend entièrement de sa matrice de transition $P$, et de la position initiale $X_0$. On appelle $\mu_0$ la $\color{blue}{\mathbf{\text{loi initiale}}}$ de $X$, c’est une mesure définie par
