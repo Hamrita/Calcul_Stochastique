@@ -194,11 +194,11 @@ L’ensemble <span class="math inline">\(E\)</span> est appelé l’<span class=
 
 
 <div class="definition">
-<span id="def:unnamed-chunk-5" class="definition"><strong>Définition 2.2  </strong></span>Une chaîne de Markov <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est dite homogène (dans le temps) si <span class="math inline">\(P(X_{n+1}=x_{n+1}|X_n=x_n)\)</span> ne dépend pas de <span class="math inline">\(n\)</span>.
+<span id="def:unnamed-chunk-5" class="definition"><strong>Définition 2.2  </strong></span>Une chaîne de Markov <span class="math inline">\((X_n)_{n \in \mathbb{N}}\)</span> est dite homogène (dans le temps) si <span class="math inline">\(\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)\)</span> ne dépend pas de <span class="math inline">\(n\)</span>.
 </div>
 
-La dynamique du processus est alors entièrement caractérisé par les <span class="math inline">\(p_{ij}=P(X_{n+1}=j|X_n=i)\)</span>, appelés <span class="math inline">\(\color{blue}{\mathbf{\text{probabilités de transitions}}}\)</span> de l’état <span class="math inline">\(i\)</span> à l’état <span class="math inline">\(j\)</span> si la chaîne est homogène, ou plus généralement
-<span class="math display">\[ p_{ij}^{(n)}=P(X_{n+1}=j|X_n=i)\]</span>
+La dynamique du processus est alors entièrement caractérisé par les <span class="math inline">\(p_{ij}=\P(X_{n+1}=j|X_n=i)\)</span>, appelés <span class="math inline">\(\color{blue}{\mathbf{\text{probabilités de transitions}}}\)</span> de l’état <span class="math inline">\(i\)</span> à l’état <span class="math inline">\(j\)</span> si la chaîne est homogène, ou plus généralement
+<span class="math display">\[ p_{ij}^{(n)}=\mathbb{P}(X_{n+1}=j|X_n=i)\]</span>
 
 <div class="definition">
 <span id="def:unnamed-chunk-6" class="definition"><strong>Définition 2.3  </strong></span>Une matrice <span class="math inline">\(P=(P_{ij},i,j \in E)\)</span> est une matrice <span class="math inline">\(\color{blue}{\mathbf{\text{stochastique}}}\)</span>, ou matrice <span class="math inline">\(\color{blue}{\mathbf{\text{de transition}}}\)</span> si chaque ligne <span class="math inline">\(P_i=(P_{ij}, j \in E)\)</span> est une distribution de probabilité.
@@ -712,10 +712,10 @@ T_A = \min\{n \geq 0 : X_n \in A \},
 [2,]  0.4  0.6</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb41-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
-<pre><code>[1] 1 2 2 2 2 1</code></pre>
+<pre><code>[1] 1 2 2 2 1 2</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb43-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
-<pre><code>[1] 0.27</code></pre>
+<pre><code>[1] 0.18</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
 <pre><code>[1] 1</code></pre>
 
