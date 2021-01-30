@@ -19,11 +19,11 @@ $$P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)=P(X_{n+1}=x_{n+1}|X
 ```
 
 ```{definition}
-Une chaîne de Markov $(X_n)_{n \in \mathbb{N}}$ est dite homogène (dans le temps) si $P(X_{n+1}=x_{n+1}|X_n=x_n)$ ne dépend pas de $n$. 
+Une chaîne de Markov $(X_n)_{n \in \mathbb{N}}$ est dite homogène (dans le temps) si $\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)$ ne dépend pas de $n$. 
 ```
 
-La dynamique du processus est alors entièrement caractérisé par les $p_{ij}=P(X_{n+1}=j|X_n=i)$, appelés $\color{blue}{\mathbf{\text{probabilités de transitions}}}$ de l'état $i$ à l'état $j$ si la chaîne est homogène, ou plus généralement
-$$ p_{ij}^{(n)}=P(X_{n+1}=j|X_n=i)$$
+La dynamique du processus est alors entièrement caractérisé par les $p_{ij}=\P(X_{n+1}=j|X_n=i)$, appelés $\color{blue}{\mathbf{\text{probabilités de transitions}}}$ de l'état $i$ à l'état $j$ si la chaîne est homogène, ou plus généralement
+$$ p_{ij}^{(n)}=\mathbb{P}(X_{n+1}=j|X_n=i)$$
 ```{definition}
 Une matrice $P=(P_{ij},i,j \in E)$ est une matrice $\color{blue}{\mathbf{\text{stochastique}}}$, ou matrice $\color{blue}{\mathbf{\text{de transition}}}$ si chaque ligne $P_i=(P_{ij}, j \in E)$ est une distribution de probabilité.
 ```
