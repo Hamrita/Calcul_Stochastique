@@ -262,9 +262,31 @@ P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
 <div class="definition">
 <p><span id="def:unnamed-chunk-9" class="definition"><strong>Définition 1.3  </strong></span>Soit une expérience aléatoire d’univers <span class="math inline">\(\Omega\)</span>.</p>
 <p>Une variable aléatoire <span class="math inline">\(X\)</span> est une application de l’ensemble <span class="math inline">\(\Omega\)</span> vers un ensemble de réalisations.</p>
-Pour tout évènement <span class="math inline">\(A\)</span>, on <span class="math inline">\(P(X \in A)=P(X^{-1}(A))\)</span>.
+Pour tout évènement <span class="math inline">\(A\)</span>, on <span class="math inline">\(P(X \in A)=P(X^{-1}(A))\)</span> où <span class="math inline">\(X^{-1}(A)\)</span> est l’évènement comprenant tous les éléments <span class="math inline">\(\omega \in \Omega\)</span> tels que <span class="math inline">\(X(\omega) \in A\)</span>.
 </div>
 
+<p>La <strong>fonction de répartition</strong> <span class="math inline">\(F\)</span> d’une variable aléatoire <span class="math inline">\(X\)</span> est définie par
+<span class="math display">\[
+F(x)=P(X \leq x)=P(X \in ]-\infty, x]), \; \forall \, x \in \mathbb{R}
+\]</span>
+Une variable aléatoire <span class="math inline">\(X\)</span> est dite <strong>discrète</strong> si son ensemble des valeurs possibles est dénombrables. Dans ce cas, on a
+<span class="math display">\[
+F(x)=\sum_{k \leq x }P(X=k)
+\]</span>
+Une variable aléatoire <span class="math inline">\(X\)</span> est dite <strong>continue</strong> s’il existe une fonction <span class="math inline">\(f(x)\)</span>, appelée <em>densité de probabilité</em>, telle que
+<span class="math display">\[
+P(X\in B)=\int_Bf(x)dx \; \text{ pour tout ensemble  }B
+\]</span>
+Puisque <span class="math inline">\(F(x)=\displaystyle \int_{-\infty}^x f(x) dx\)</span>, alors
+<span class="math display">\[
+f(x)=\frac{d}{dx}F(x)
+\]</span>
+La fonction de répartition <strong>jointe</strong> d’un couple aléatoire <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> est <span class="math inline">\(F(x,y)=P(X \leq x, Y \leq y)\)</span>.</p>
+<p>Les fonctions de répartition de <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>,
+<span class="math display">\[
+F_X(x)=P(X\leq x) \text{ et }F_Y(y)=P(Y\leq y)
+\]</span>
+peuvent être déduites de <span class="math inline">\(F(x,y)\)</span>.</p>
 
 </div>
 </div>

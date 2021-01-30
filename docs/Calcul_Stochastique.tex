@@ -281,8 +281,32 @@ Vérifier que les deux évènements \(A\) et \(B\) sont indépendants.
 
 Une variable aléatoire \(X\) est une application de l'ensemble \(\Omega\) vers un ensemble de réalisations.
 
-Pour tout évènement \(A\), on \(P(X \in A)=P(X^{-1}(A))\).
+Pour tout évènement \(A\), on \(P(X \in A)=P(X^{-1}(A))\) où \(X^{-1}(A)\) est l'évènement comprenant tous les éléments \(\omega \in \Omega\) tels que \(X(\omega) \in A\).
 \end{definition}
+
+La \textbf{fonction de répartition} \(F\) d'une variable aléatoire \(X\) est définie par
+\[
+F(x)=P(X \leq x)=P(X \in ]-\infty, x]), \; \forall \, x \in \mathbb{R}
+\]
+Une variable aléatoire \(X\) est dite \textbf{discrète} si son ensemble des valeurs possibles est dénombrables. Dans ce cas, on a
+\[
+F(x)=\sum_{k \leq x }P(X=k)
+\]
+Une variable aléatoire \(X\) est dite \textbf{continue} s'il existe une fonction \(f(x)\), appelée \emph{densité de probabilité}, telle que
+\[
+P(X\in B)=\int_Bf(x)dx \; \text{ pour tout ensemble  }B
+\]
+Puisque \(F(x)=\displaystyle \int_{-\infty}^x f(x) dx\), alors
+\[
+f(x)=\frac{d}{dx}F(x)
+\]
+La fonction de répartition \textbf{jointe} d'un couple aléatoire \(X\) et \(Y\) est \(F(x,y)=P(X \leq x, Y \leq y)\).
+
+Les fonctions de répartition de \(X\) et \(Y\),
+\[
+F_X(x)=P(X\leq x) \text{ et }F_Y(y)=P(Y\leq y)
+\]
+peuvent être déduites de \(F(x,y)\).
 
 \hypertarget{chauxeenes-de-markov}{%
 \chapter{Chaînes de Markov}\label{chauxeenes-de-markov}}
@@ -1113,7 +1137,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 1 2 2 2
+[1] 1 2 1 1 2 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -1124,7 +1148,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.18
+[1] 0.21
 \end{verbatim}
 
 \begin{Shaded}
