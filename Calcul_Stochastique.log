@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.1.29)  30 JAN 2021 23:44
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.1.31)  31 JAN 2021 19:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -145,11 +145,11 @@ Package: expl3 2021-01-09 L3 programming layer (loader)
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend
 -xetex.def
-File: l3backend-xetex.def 2021-01-09 L3 backend support: XeTeX
+File: l3backend-xetex.def 2020-01-29 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count194
-\g__color_stack_int=\count195
-\l__kernel_color_stack_int=\count196
+\l__color_backend_stack_int=\count195
+\g__color_backend_stack_int=\count196
 \g__graphics_track_int=\count197
 \l__pdf_internal_box=\box49
 \g__pdf_backend_object_int=\count198
@@ -1091,79 +1091,79 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Chapitre 1.
 [5]
 Missing character: There is no ∩ in font [lmroman10-regular]:mapping=tex-text;!
-[6]
+[6] [7] [8]
 Chapitre 2.
-[7
+[9
 
 ]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 359.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 435.
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-16-1.pdf Graphic fil
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-17-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-16-1.pdf>
-[8]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-18-1.pdf Graphic fil
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-17-1.pdf>
+[10]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-19-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-18-1.pdf>
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-19-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[9]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-20-1.pdf Graphic fil
+[11]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-21-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-20-1.pdf>
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-21-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[10] [11]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-22-1.pdf Graphic fil
+[12] [13]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-23-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-22-1.pdf>
-[12]
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-23-1.pdf>
+[14]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 555.
+(Font)              scaled to size 14.4pt on input line 631.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 555.
+(Font)              scaled to size 14.4013pt on input line 631.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 555.
+(Font)              scaled to size 14.39845pt on input line 631.
 Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
-[13] [14] [15] [16]
+[15] [16] [17] [18]
 File: images/graph2.png Graphic file (type bmp)
 <images/graph2.png>
-[17]
+[19]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[18] [19] [20]
+[20] [21] [22]
 Chapitre 3.
-[21
+[23
 
-] [22
+] [24
 
 ]
 Chapitre 4.
-[23] [24
-
-]
-Chapitre 5.
 [25] [26
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 1213--1215
+Chapitre 5.
+[27] [28
+
+]
+Underfull \hbox (badness 2103) in paragraph at lines 1289--1291
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. []$[][][][][] [] [] [] [][][][][] [] [][][][]
 [][] [] [][] [] [][][][][] [] [][] []
  []
 
-[27] (./Calcul_Stochastique.aux) ) 
+[29] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20857 strings out of 479207
- 366992 string characters out of 5872785
- 975917 words of memory out of 5000000
- 40062 multiletter control sequences out of 15000+600000
+ 20882 strings out of 479207
+ 367694 string characters out of 5872785
+ 977652 words of memory out of 5000000
+ 40087 multiletter control sequences out of 15000+600000
  410906 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,14n,122p,954b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,16n,122p,954b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Calcul_Stochastique.pdf (27 pages).
+Output written on Calcul_Stochastique.pdf (29 pages).

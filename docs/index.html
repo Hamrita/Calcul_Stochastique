@@ -137,6 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#indépendance"><i class="fa fa-check"></i><b>1.1.2</b> Indépendance</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.2</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#espérance-mathématique"><i class="fa fa-check"></i><b>1.3</b> Espérance mathématique</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#propriétés-de-la-covariance"><i class="fa fa-check"></i>Propriétés de la covariance</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
 <li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
@@ -286,8 +289,77 @@ La fonction de répartition <strong>jointe</strong> d’un couple aléatoire <sp
 <span class="math display">\[
 F_X(x)=P(X\leq x) \text{ et }F_Y(y)=P(Y\leq y)
 \]</span>
-peuvent être déduites de <span class="math inline">\(F(x,y)\)</span>.</p>
+peuvent être déduites de <span class="math inline">\(F(x,y)\)</span>. En effet,
+<span class="math display">\[
+F_X(x)=\lim_{y \longrightarrow \infty}F(x,y) \; \text{ et }\;F_Y(y)=\lim_{x \longrightarrow \infty}F(x,y)
+\]</span>
+Les variables aléatoires <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont <strong>indépendantes</strong> si
+<span class="math display">\[
+F(x,y)=F_X(x) F_Y(y)
+\]</span>
+<span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont <strong>continues</strong> s’il existe une fonction <span class="math inline">\(f(x,y)\)</span>, dite densité de probabilité <em>jointe</em>, telle que
+<span class="math display">\[
+P(X\in A, Y\in B)=\int_A\int_B f(x,y)dxdy\;\; \forall A,B
+\]</span>
+La fonction de répartition d’une suite de <span class="math inline">\(n\)</span> variables aléatoires <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> est définie par:
+<span class="math display">\[
+F(X_1, X_2, \ldots, X_n)=P(X_1\leq x_1, X_2\leq x_2, \ldots, X_n \leq x_n)
+\]</span>
+et sont indépendantes si
+<span class="math display">\[
+F(X_1, X_2, \ldots, X_n)=F_{X_1}(x_1)F_{X_2}(x_2)\ldots F_{X_n}(x_n)
+\]</span></p>
+</div>
+<div id="espérance-mathématique" class="section level2">
+<h2><span class="header-section-number">1.3</span> Espérance mathématique</h2>
 
+<div class="definition">
+<p><span id="def:unnamed-chunk-10" class="definition"><strong>Définition 1.4  </strong></span>L’<strong>espérance mathématique</strong> ou <strong>moyenne</strong> d’une variavle aléatoire <span class="math inline">\(X\)</span>, notée <span class="math inline">\(\mathbb{E}(X)\)</span>, est définie par:</p>
+<p><span class="math display">\[\begin{align*}
+\mathbb{E}(X) &amp; = \int_{\mathbb{R}}x dF(x)\\
+ &amp; = \begin{cases}
+   \displaystyle \sum_x xP(X=x)\; \text{si }X \text{ est discrète}\\
+ \displaystyle  \int_{\mathbb{R}} xf(x)dx \; \text{si }X \text{ est continue}
+     \end{cases}
+  \end{align*}\]</span></p>
+</div>
+
+<p>De même, on définit l’espérance d’une fonction de <span class="math inline">\(X\)</span>, <span class="math inline">\(g(X)\)</span>, par:
+<span class="math display">\[
+\mathbb{E}\left[ g(X)\right]=\int_{\mathbb{R}}x dF_g(x)=\int_{\mathbb{R}}g(x) dF(x)
+\]</span>
+L’espérance d’une somme de variables aléatoires est la somme des espérances:
+<span class="math display">\[
+\mathbb{E}\left[\sum_{i=1}^n X_i \right]=\sum_{i=1}^n\mathbb{E}(X_i)
+\]</span>
+La <strong>variance</strong> d’une variable aléatoire, <span class="math inline">\(X\)</span>, est définie par
+<span class="math display">\[
+\mathbb{V}(X)=\mathbb{E}\left[{(X-\mathbb{E}(X))}^2 \right]=\mathbb{E}(X^2)-{\mathbb{E}(X)}^2
+\]</span>
+Deux variables aléatoires, <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>, sont dites <strong>non corréllées</strong> si leur covariance, définie par:
+<span class="math display">\[
+\text{Cov}(X,Y)=\mathbb{E}\left[(X-\mathbb{E}(X))(Y-\mathbb{E}(Y))\right]=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)
+\]</span>
+est <strong>nulle</strong>. Noter que si <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont indépendantes, alors elles sont non corréllées (<span class="math inline">\(\text{Cov}(X,Y)=0\)</span>).</p>
+<div id="propriétés-de-la-covariance" class="section level3 unnumbered">
+<h3>Propriétés de la covariance</h3>
+<p>Pour toutes variables aléatoires <span class="math inline">\(X, Y, Z\)</span> et <span class="math inline">\(a \in \mathbb{R}\)</span>, on a:</p>
+<p><strong>1.</strong> Cov<span class="math inline">\((X,X)=\mathbb{V}(X)\)</span> et Cov<span class="math inline">\((X,Y)=\)</span> Cov$(Y,X) $</p>
+<p><strong>2.</strong> Cov<span class="math inline">\((aX,Y)=a\)</span>Cov<span class="math inline">\((X,Y)\)</span>.</p>
+<p><strong>3.</strong> Cov<span class="math inline">\((X,Y+Z)=\)</span> Cov<span class="math inline">\((X,Y)+\)</span> Cov<span class="math inline">\((X,Z)\)</span>.</p>
+<p>Une généralisation de la troisième propriétés est donnée par:
+<span class="math display">\[
+\text{Cov}\left( \sum_{i=1}^nX_i,\sum_{j=1}^m Y_i \right)=\sum_{i=1}^n \sum_{j=1}^m \text{Cov}(X_i,Y_j)
+\]</span>
+Une expression utile pour la variance de la somme des variables aléatoires peut être déduite comme suit:
+<span class="math display">\[\begin{align*}
+\mathbb{V}\left(\sum_{i=1}^nX_i \right)&amp; =\text{Cov}\left(\sum_{i=1}^nX_i,\sum_{i=1}^nX_i\right)\\
+&amp;=\sum_{i=1}^n \sum_{j=1}^n\text{Cov}(X_i,X_j)\\
+&amp;=\sum_{i=1}^n\text{Cov}(X_i,X_i)+\sum_{i=1}^n\sum_{i\neq j}\text{Cov}(X_i,X_j)\\
+&amp;=\sum_{i=1}^n\mathbb{V}(X_i)+2\sum_{i=1}^n\sum_{j &lt;i} \text{Cov}(X_i,X_j)
+\end{align*}\]</span></p>
+
+</div>
 </div>
 </div>
             </section>

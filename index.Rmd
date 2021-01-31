@@ -140,4 +140,83 @@ Les fonctions de répartition de $X$ et $Y$,
 $$
 F_X(x)=P(X\leq x) \text{ et }F_Y(y)=P(Y\leq y)
 $$
-peuvent être déduites de $F(x,y)$.
+peuvent être déduites de $F(x,y)$. En effet,
+$$
+F_X(x)=\lim_{y \longrightarrow \infty}F(x,y) \; \text{ et }\;F_Y(y)=\lim_{x \longrightarrow \infty}F(x,y)
+$$
+Les variables aléatoires $X$ et $Y$ sont __indépendantes__ si
+$$
+F(x,y)=F_X(x) F_Y(y)
+$$
+$X$ et $Y$ sont __continues__ s'il existe une fonction $f(x,y)$, dite densité de probabilité *jointe*, telle que
+$$
+P(X\in A, Y\in B)=\int_A\int_B f(x,y)dxdy\;\; \forall A,B
+$$
+La fonction de répartition d'une suite de $n$ variables aléatoires $X_1, X_2, \ldots, X_n$ est définie par:
+$$
+F(X_1, X_2, \ldots, X_n)=P(X_1\leq x_1, X_2\leq x_2, \ldots, X_n \leq x_n)
+$$
+et sont indépendantes si
+$$
+F(X_1, X_2, \ldots, X_n)=F_{X_1}(x_1)F_{X_2}(x_2)\ldots F_{X_n}(x_n)
+$$
+
+## Espérance mathématique
+
+```{definition}
+L'__espérance mathématique__ ou __moyenne__ d'une variavle aléatoire $X$, notée $\mathbb{E}(X)$, est définie par:
+
+   \begin{align*}
+\mathbb{E}(X) & = \int_{\mathbb{R}}x dF(x)\\
+ & = \begin{cases}
+   \displaystyle \sum_x xP(X=x)\; \text{si }X \text{ est discrète}\\
+ \displaystyle  \int_{\mathbb{R}} xf(x)dx \; \text{si }X \text{ est continue}
+     \end{cases}
+  \end{align*}
+
+```
+
+De même, on définit l'espérance d'une fonction de $X$, $g(X)$, par:
+$$
+\mathbb{E}\left[ g(X)\right]=\int_{\mathbb{R}}x dF_g(x)=\int_{\mathbb{R}}g(x) dF(x)
+$$
+L'espérance d'une somme de variables aléatoires est la somme des espérances:
+$$
+\mathbb{E}\left[\sum_{i=1}^n X_i \right]=\sum_{i=1}^n\mathbb{E}(X_i)
+$$
+La __variance__ d'une variable aléatoire, $X$, est définie par
+$$
+\mathbb{V}(X)=\mathbb{E}\left[{(X-\mathbb{E}(X))}^2 \right]=\mathbb{E}(X^2)-{\mathbb{E}(X)}^2
+$$
+Deux variables aléatoires, $X$ et $Y$, sont dites __non corréllées__ si leur covariance, définie par:
+$$
+\text{Cov}(X,Y)=\mathbb{E}\left[(X-\mathbb{E}(X))(Y-\mathbb{E}(Y))\right]=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)
+$$
+est __nulle__. Noter que si $X$ et $Y$ sont indépendantes, alors elles sont non corréllées ($\text{Cov}(X,Y)=0$).
+
+### Propriétés de la covariance{-}
+
+Pour toutes variables aléatoires $X, Y, Z$ et $a \in \mathbb{R}$, on a:
+  
+__1.__ Cov$(X,X)=\mathbb{V}(X)$ et Cov$(X,Y)=$ Cov$(Y,X) $
+
+__2.__ Cov$(aX,Y)=a$Cov$(X,Y)$.
+
+__3.__ Cov$(X,Y+Z)=$ Cov$(X,Y)+$ Cov$(X,Z)$.
+
+Une généralisation de la troisième propriétés est donnée par:
+$$
+\text{Cov}\left( \sum_{i=1}^nX_i,\sum_{j=1}^m Y_i \right)=\sum_{i=1}^n \sum_{j=1}^m \text{Cov}(X_i,Y_j)
+$$
+Une expression utile pour la variance de la somme des variables aléatoires peut être déduite comme suit:
+\begin{align*}
+\mathbb{V}\left(\sum_{i=1}^nX_i \right)& =\text{Cov}\left(\sum_{i=1}^nX_i,\sum_{i=1}^nX_i\right)\\
+&=\sum_{i=1}^n \sum_{j=1}^n\text{Cov}(X_i,X_j)\\
+&=\sum_{i=1}^n\text{Cov}(X_i,X_i)+\sum_{i=1}^n\sum_{i\neq j}\text{Cov}(X_i,X_j)\\
+&=\sum_{i=1}^n\mathbb{V}(X_i)+2\sum_{i=1}^n\sum_{j <i} \text{Cov}(X_i,X_j)
+\end{align*}
+
+
+
+
+
