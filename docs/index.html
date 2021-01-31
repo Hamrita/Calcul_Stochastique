@@ -246,7 +246,7 @@ P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
 <h3><span class="header-section-number">1.1.2</span> Indépendance</h3>
 
 <div class="definition">
-<span id="def:unnamed-chunk-7" class="definition"><strong>Définition 1.2  </strong></span>On dit que deux évènements, A et B, sont <strong>indépendants</strong> si $P(AB)=P(A)P(B)
+<span id="def:unnamed-chunk-7" class="definition"><strong>Définition 1.2  </strong></span>On dit que deux évènements, A et B, sont <strong>indépendants</strong> si <span class="math inline">\(P(A\cap B)=P(A)\times P(B)\)</span>
 </div>
 
 <p>Si <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> deux évènements indépendants, alors <span class="math inline">\(P(A|B)=P(A)\)</span> et <span class="math inline">\(P(B|A)=P(B)\)</span>.</p>
@@ -358,6 +358,27 @@ Une expression utile pour la variance de la somme des variables aléatoires peut
 &amp;=\sum_{i=1}^n\text{Cov}(X_i,X_i)+\sum_{i=1}^n\sum_{i\neq j}\text{Cov}(X_i,X_j)\\
 &amp;=\sum_{i=1}^n\mathbb{V}(X_i)+2\sum_{i=1}^n\sum_{j &lt;i} \text{Cov}(X_i,X_j)
 \end{align*}\]</span></p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-11" class="definition"><strong>Définition 1.5  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont <em>indépendantes et identiquement distribuées</em>, noté <span class="math inline">\(X_i \sim iid\)</span>, d’espérance <span class="math inline">\(m\)</span> et de variance <span class="math inline">\(\sigma^2\)</span>, alors:</p>
+<ul>
+<li><span class="math inline">\(\overline{X}=\displaystyle \frac{1}{n}\sum_{i=1}^n X_i\)</span> est appelée moyenne empirique.</li>
+<li><span class="math inline">\(\mathbb{E}(\overline{X})=m\)</span> et <span class="math inline">\(\mathbb{V}(\overline{X})=\displaystyle \frac{\sigma^2}{n}\)</span>.</li>
+<li>Cov<span class="math inline">\((\overline{X},X_i-\overline{X})=0,\)</span> <span class="math inline">\(i=1,2,\ldots,n\)</span>.</li>
+</ul>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-12" class="example"><strong>Exemple 1.5  </strong></span>Calculer la variance d’une variable aléatoire <span class="math inline">\(X\)</span> suivant une loi binomiale de paramètres <span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>.</p>
+<p>Puisqu’une telle variable aléatoire représente le nombre de succès dans <span class="math inline">\(n\)</span> essais indépendants lorsque chaque essai a une probabilité commune p d’être un succès,
+nous pouvons écrire
+<span class="math display">\[
+X=X_1+X_2+\ldots+X_n
+\]</span>
+où <span class="math inline">\(X_i \stackrel{iid}{\sim}B(p)\)</span> telle que</p>
+</div>
+
 
 </div>
 </div>

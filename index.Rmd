@@ -94,7 +94,7 @@ $$
 ### Indépendance
 
 ```{definition}
-On dit que deux évènements, A et B, sont __indépendants__ si $P(A\cap B)=P(A)\times P(B)
+On dit que deux évènements, A et B, sont __indépendants__ si $P(A\cap B)=P(A)\times P(B)$
 ```
 
 Si $A$ et $B$ deux évènements indépendants, alors $P(A|B)=P(A)$ et $P(B|A)=P(B)$.
@@ -215,6 +215,28 @@ Une expression utile pour la variance de la somme des variables aléatoires peut
 &=\sum_{i=1}^n\text{Cov}(X_i,X_i)+\sum_{i=1}^n\sum_{i\neq j}\text{Cov}(X_i,X_j)\\
 &=\sum_{i=1}^n\mathbb{V}(X_i)+2\sum_{i=1}^n\sum_{j <i} \text{Cov}(X_i,X_j)
 \end{align*}
+
+```{definition}
+Si $X_1,X_2,\ldots, X_n$ sont *indépendantes et identiquement distribuées*, noté $X_i \sim iid$, d'espérance $m$ et de variance $\sigma^2$, alors:
+
+   * $\overline{X}=\displaystyle \frac{1}{n}\sum_{i=1}^n X_i$ est appelée moyenne empirique.
+   * $\mathbb{E}(\overline{X})=m$ et $\mathbb{V}(\overline{X})=\displaystyle \frac{\sigma^2}{n}$.
+   * Cov$(\overline{X},X_i-\overline{X})=0,$ $i=1,2,\ldots,n$.
+
+
+```
+
+```{example}
+Calculer la variance d'une variable aléatoire $X$ suivant une loi binomiale de paramètres $n$ et $p$.
+
+Puisqu'une telle variable aléatoire représente le nombre de succès dans $n$ essais indépendants lorsque chaque essai a une probabilité commune p d'être un succès,
+nous pouvons écrire
+$$
+X=X_1+X_2+\ldots+X_n
+$$
+où $X_i \stackrel{iid}{\sim}B(p)$ telle que
+
+```
 
 
 
