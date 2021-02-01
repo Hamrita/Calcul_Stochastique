@@ -367,4 +367,39 @@ où $\mathrm{i}=\sqrt{-1}$.
 
 ```
 
+```{proposition}
+Soit $X$ une variable aléatoire, $a$ et $b$ deux réels.
+Alors les propriétés suivantes sont toujours vraies :
+
+__1.__ Pour tout $t \in \mathbb{R}$, $\left|\psi_X(t)\right| \leq 1$.
+
+__2.__ $\psi_X(0)=1$.
+
+__3.__ Pour tout $t \in \mathbb{R}$, $\psi_X(−t) = \overline{\psi_X(t)}$.
+
+__4.__ Pour tout $t \in \mathbb{R}$, $\psi_{aX+b}(t) = e^{\mathrm{i}tb} \psi_X(at)$.
+
+__5.__ $\psi_X(t)$ est continue sur $\mathbb{R}$.
+
+```
+
+```{proposition}
+Si le moment d'ordre $n$ d'une variable aléatoire $X$ existe, alors la fonction caractéristique de
+$X$ est $n$ fois dérivable et :
+  $$
+  \mathbb{E}\left({X}^n \right)=\dfrac{1}{{\mathrm{i}}^n}{\psi}^n(0)
+  $$
+```
+
+```{example, name="Loi normal standard"}
+La fonction caractéristique de la loi normale standard est: $\psi(t)={e}^{-t^2/2}$.
+```
+
+```{example, name="Loi exponentielle"}
+La fonction caractéristique de la loi exponentielle de paramètre $\lambda$ est:
+  $$
+  \psi(t)=\dfrac{\lambda}{\lambda-\mathrm{i}t}
+  $$
+```
+
 ## Espérance conditionnelle

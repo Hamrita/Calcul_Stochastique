@@ -553,6 +553,39 @@ The 2nd centralized moment&#39;s value is:
 où <span class="math inline">\(\mathrm{i}=\sqrt{-1}\)</span>.</p>
 </div>
 
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-17" class="proposition"><strong>Proposition 1.1  </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire, <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> deux réels.
+Alors les propriétés suivantes sont toujours vraies :</p>
+<p><strong>1.</strong> Pour tout <span class="math inline">\(t \in \mathbb{R}\)</span>, <span class="math inline">\(\left|\psi_X(t)\right| \leq 1\)</span>.</p>
+<p><strong>2.</strong> <span class="math inline">\(\psi_X(0)=1\)</span>.</p>
+<p><strong>3.</strong> Pour tout <span class="math inline">\(t \in \mathbb{R}\)</span>, <span class="math inline">\(\psi_X(−t) = \overline{\psi_X(t)}\)</span>.</p>
+<p><strong>4.</strong> Pour tout <span class="math inline">\(t \in \mathbb{R}\)</span>, <span class="math inline">\(\psi_{aX+b}(t) = e^{\mathrm{i}tb} \psi_X(at)\)</span>.</p>
+<p><strong>5.</strong> <span class="math inline">\(\psi_X(t)\)</span> est continue sur <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-18" class="proposition"><strong>Proposition 1.2  </strong></span>Si le moment d’ordre <span class="math inline">\(n\)</span> d’une variable aléatoire <span class="math inline">\(X\)</span> existe, alors la fonction caractéristique de
+<span class="math inline">\(X\)</span> est <span class="math inline">\(n\)</span> fois dérivable et :
+<span class="math display">\[
+  \mathbb{E}\left({X}^n \right)=\dfrac{1}{{\mathrm{i}}^n}{\psi}^n(0)
+  \]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-19" class="example"><strong>Exemple 1.8  (Loi normal standard)  </strong></span>La fonction caractéristique de la loi normale standard est: <span class="math inline">\(\psi(t)={e}^{-t^2/2}\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-20" class="example"><strong>Exemple 1.9  (Loi exponentielle)  </strong></span>La fonction caractéristique de la loi exponentielle de paramètre <span class="math inline">\(\lambda\)</span> est:
+<span class="math display">\[
+  \psi(t)=\dfrac{\lambda}{\lambda-\mathrm{i}t}
+  \]</span>
+</div>
+
 </div>
 <div id="espérance-conditionnelle" class="section level2">
 <h2><span class="header-section-number">1.6</span> Espérance conditionnelle</h2>
