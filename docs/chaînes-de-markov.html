@@ -224,28 +224,28 @@ P=\left(
 \end{array}
 \right)
 \]</span></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">(P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">(P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]  0.2  0.8
 [2,]  0.4  0.6</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># vérifions que P est une matrice stochastique</span></a>
-<a class="sourceLine" id="cb3-2" title="2">P<span class="op">&gt;=</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>P<span class="op">&lt;=</span><span class="dv">1</span>  <span class="co"># 0&lt;= p &lt;=1</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># vérifions que P est une matrice stochastique</span></a>
+<a class="sourceLine" id="cb15-2" title="2">P<span class="op">&gt;=</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>P<span class="op">&lt;=</span><span class="dv">1</span>  <span class="co"># 0&lt;= p &lt;=1</span></a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,] TRUE TRUE
 [2,] TRUE TRUE</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">rowSums</span>(P)<span class="op">==</span><span class="dv">1</span> <span class="co"># somme pj = 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">rowSums</span>(P)<span class="op">==</span><span class="dv">1</span> <span class="co"># somme pj = 1</span></a></code></pre></div>
 <pre><code>[1] TRUE TRUE</code></pre>
 <p>A toute matrice de transition, on peut associer un <span class="math inline">\(\color{blue}{\mathbf{\text{graphe orienté}}}\)</span>. Les sommets sont les états de la chaîne, et l’orientation est donnée par la probabilité <span class="math inline">\(p_{ij}&gt;0\)</span>.</p>
 <p>Le graphe de la chaîne associé à la matrice de transition définie ci-dessus est donné par:</p>
 <p><img src="images/graph1.png" width="301" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># représenter un graphe sous R</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co"># install.packages(diagram)</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">library</span>(diagram) <span class="co"># charger l&#39;extension &#39;diagram&#39;</span></a>
-<a class="sourceLine" id="cb7-4" title="4">P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">colnames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="kw">rownames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="kw">plotmat</span>(<span class="kw">t</span>(P), <span class="dt">pos=</span><span class="kw">c</span>(<span class="dv">2</span>),<span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.7</span>, </a>
-<a class="sourceLine" id="cb7-8" title="8">      <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">1.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># représenter un graphe sous R</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="co"># install.packages(diagram)</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="kw">library</span>(diagram) <span class="co"># charger l&#39;extension &#39;diagram&#39;</span></a>
+<a class="sourceLine" id="cb19-4" title="4">P&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="kw">colnames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
+<a class="sourceLine" id="cb19-6" title="6"><span class="kw">rownames</span>(P) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;S1&quot;</span>, <span class="st">&quot;S2&quot;</span>)</a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="kw">plotmat</span>(<span class="kw">t</span>(P), <span class="dt">pos=</span><span class="kw">c</span>(<span class="dv">2</span>),<span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.7</span>, </a>
+<a class="sourceLine" id="cb19-8" title="8">      <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">1.1</span>)</a></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 
 <div class="example">
@@ -278,11 +278,11 @@ P=\left(
 \mathbb{P}(X_{n+1}=E|X_n=N)=p_{12}=0.5
 \]</span>
 Le graphe orienté correspondant à cette matrice de transition est:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">nn=<span class="kw">c</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;E&quot;</span>, <span class="st">&quot;S&quot;</span>,<span class="st">&quot;O&quot;</span>)</a>
-<a class="sourceLine" id="cb8-2" title="2">P1=<span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>),<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>,</a>
-<a class="sourceLine" id="cb8-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(nn,nn))</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(P1), <span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.6</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
-<a class="sourceLine" id="cb8-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.7</span>, <span class="dt">relsize =</span> <span class="fl">0.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">nn=<span class="kw">c</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;E&quot;</span>, <span class="st">&quot;S&quot;</span>,<span class="st">&quot;O&quot;</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2">P1=<span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>),<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb20-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(nn,nn))</a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(P1), <span class="dt">box.size =</span> <span class="fl">0.05</span>, <span class="dt">box.prop =</span> <span class="fl">0.6</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
+<a class="sourceLine" id="cb20-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.7</span>, <span class="dt">relsize =</span> <span class="fl">0.9</span>)</a></code></pre></div>
 <img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 <div class="example">
@@ -329,11 +329,11 @@ On note qu’un jour haussier est suivi par un autre jour haussier dans 85% des 
   \right)
   \]</span>
 et le graphe orienté associé est:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">noms=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;P&quot;</span>,<span class="st">&quot;N&quot;</span>)</a>
-<a class="sourceLine" id="cb9-2" title="2">PB=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>), <span class="dt">nc=</span><span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb9-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(noms,noms))</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(PB), <span class="dt">box.size =</span> <span class="fl">0.06</span>, <span class="dt">box.prop =</span> <span class="fl">0.5</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
-<a class="sourceLine" id="cb9-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">0.85</span>,<span class="dt">dtext =</span> <span class="fl">0.6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">noms=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;P&quot;</span>,<span class="st">&quot;N&quot;</span>)</a>
+<a class="sourceLine" id="cb21-2" title="2">PB=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>), <span class="dt">nc=</span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb21-3" title="3">          <span class="dt">dimnames =</span> <span class="kw">list</span>(noms,noms))</a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="kw">plotmat</span>(<span class="kw">t</span>(PB), <span class="dt">box.size =</span> <span class="fl">0.06</span>, <span class="dt">box.prop =</span> <span class="fl">0.5</span>, <span class="dt">box.col =</span> <span class="st">&quot;gray&quot;</span>, </a>
+<a class="sourceLine" id="cb21-5" title="5">          <span class="dt">arr.pos =</span> <span class="fl">0.6</span>, <span class="dt">relsize =</span> <span class="fl">0.85</span>,<span class="dt">dtext =</span> <span class="fl">0.6</span>)</a></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Le nouvel ensemble des états est <span class="math inline">\(E_1=\{B, M \}\)</span>, <span class="math inline">\(M\)</span> pour désigner mauvais temps (soit il pleut, soit il neige).
@@ -447,19 +447,19 @@ et de distribution initiale <span class="math inline">\(\mu_0 \sim (0.3,0.2,0.5,
 \end{align*}\]</span></p>
 <p>D’où <span class="math inline">\(\mathbb{P}(X_2=2)=0.193\)</span>.</p>
 <p>Sous R, le produit matriciel s’effectue à l’aide de la fonction <code>%*%</code>. Pour la puissance d’ordre <span class="math inline">\(n \geq 2\)</span> d’une matrice carré, on peut utiliser la fonction <code>%^%</code> définie ci-dessous.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">P4=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.1</span>,.<span class="dv">4</span>,.<span class="dv">4</span>,.<span class="dv">5</span>,<span class="dv">0</span>,.<span class="dv">15</span>,.<span class="dv">1</span>,.<span class="dv">4</span>,.<span class="dv">6</span>,.<span class="dv">25</span>, <span class="fl">.3</span>,.<span class="dv">1</span>,.<span class="dv">3</span>,.<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb10-2" title="2">mu0=<span class="kw">c</span>(.<span class="dv">3</span>,.<span class="dv">2</span>,.<span class="dv">5</span>,<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb10-3" title="3">mu0<span class="op">%*%</span>P4<span class="op">%*%</span>P4  <span class="co"># %*% : produit matriciel</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">P4=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.1</span>,.<span class="dv">4</span>,.<span class="dv">4</span>,.<span class="dv">5</span>,<span class="dv">0</span>,.<span class="dv">15</span>,.<span class="dv">1</span>,.<span class="dv">4</span>,.<span class="dv">6</span>,.<span class="dv">25</span>, <span class="fl">.3</span>,.<span class="dv">1</span>,.<span class="dv">3</span>,.<span class="dv">2</span>), <span class="dt">nc=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb22-2" title="2">mu0=<span class="kw">c</span>(.<span class="dv">3</span>,.<span class="dv">2</span>,.<span class="dv">5</span>,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb22-3" title="3">mu0<span class="op">%*%</span>P4<span class="op">%*%</span>P4  <span class="co"># %*% : produit matriciel</span></a></code></pre></div>
 <pre><code>      [,1]  [,2] [,3] [,4]
 [1,] 0.167 0.193 0.41 0.23</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># puissance nième d&#39;une matrice carré</span></a>
-<a class="sourceLine" id="cb12-2" title="2">power_matrix=<span class="cf">function</span>(A,n){</a>
-<a class="sourceLine" id="cb12-3" title="3"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">0</span>) <span class="kw">return</span>(<span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">nrow</span>(A))))</a>
-<a class="sourceLine" id="cb12-4" title="4"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">1</span>) <span class="kw">return</span>(A)</a>
-<a class="sourceLine" id="cb12-5" title="5"> <span class="cf">if</span>(n<span class="op">&gt;</span><span class="dv">1</span>) <span class="kw">return</span>(A<span class="op">%*%</span><span class="kw">power_matrix</span>(A,(n<span class="dv">-1</span>)))</a>
-<a class="sourceLine" id="cb12-6" title="6">}</a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="st">&quot;%^%&quot;</span>&lt;-power_matrix</a>
-<a class="sourceLine" id="cb12-8" title="8">P4<span class="op">%^%</span><span class="dv">3</span>     <span class="co"># P4^3</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># puissance nième d&#39;une matrice carré</span></a>
+<a class="sourceLine" id="cb24-2" title="2">power_matrix=<span class="cf">function</span>(A,n){</a>
+<a class="sourceLine" id="cb24-3" title="3"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">0</span>) <span class="kw">return</span>(<span class="kw">diag</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">nrow</span>(A))))</a>
+<a class="sourceLine" id="cb24-4" title="4"> <span class="cf">if</span>(n<span class="op">==</span><span class="dv">1</span>) <span class="kw">return</span>(A)</a>
+<a class="sourceLine" id="cb24-5" title="5"> <span class="cf">if</span>(n<span class="op">&gt;</span><span class="dv">1</span>) <span class="kw">return</span>(A<span class="op">%*%</span><span class="kw">power_matrix</span>(A,(n<span class="dv">-1</span>)))</a>
+<a class="sourceLine" id="cb24-6" title="6">}</a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="st">&quot;%^%&quot;</span>&lt;-power_matrix</a>
+<a class="sourceLine" id="cb24-8" title="8">P4<span class="op">%^%</span><span class="dv">3</span>     <span class="co"># P4^3</span></a></code></pre></div>
 <pre><code>       [,1]  [,2]   [,3]  [,4]
 [1,] 0.1415 0.259 0.3835 0.216
 [2,] 0.1385 0.193 0.4405 0.228
@@ -470,15 +470,15 @@ et de distribution initiale <span class="math inline">\(\mu_0 \sim (0.3,0.2,0.5,
 </ol>
 <p><span class="math inline">\(\mathbb{P}(2,3,1,1)=\mathbb{P}(X_0=2)\times P_{23}\times P_{31}\times P_{11}= 0.2 \times 0.4 \times 0.1 \times 0.2 =\)</span> 0.0016.</p>
 <p>Pour le calcul de la probabilité d’une trajectoire donnée sous R, on peut utiliser la fonction suivante:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">ProbTraj&lt;-<span class="cf">function</span>(traj,mu0,X0, P){</a>
-<a class="sourceLine" id="cb14-2" title="2">  n&lt;-<span class="kw">length</span>(traj)<span class="op">-</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb14-3" title="3">  pi&lt;-<span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb14-4" title="4">  <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) pi[k]&lt;-P[traj[k],traj[k<span class="op">+</span><span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb14-5" title="5">mu0[X0]<span class="op">*</span><span class="kw">prod</span>(pi)</a>
-<a class="sourceLine" id="cb14-6" title="6">}</a>
-<a class="sourceLine" id="cb14-7" title="7"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),mu0,<span class="dt">X0=</span><span class="dv">1</span>,P4)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">ProbTraj&lt;-<span class="cf">function</span>(traj,mu0,X0, P){</a>
+<a class="sourceLine" id="cb26-2" title="2">  n&lt;-<span class="kw">length</span>(traj)<span class="op">-</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb26-3" title="3">  pi&lt;-<span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb26-4" title="4">  <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) pi[k]&lt;-P[traj[k],traj[k<span class="op">+</span><span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb26-5" title="5">mu0[X0]<span class="op">*</span><span class="kw">prod</span>(pi)</a>
+<a class="sourceLine" id="cb26-6" title="6">}</a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),mu0,<span class="dt">X0=</span><span class="dv">1</span>,P4)</a></code></pre></div>
 <pre><code>[1] 0.0144</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),mu0,<span class="dt">X0=</span><span class="dv">2</span>,P4)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),mu0,<span class="dt">X0=</span><span class="dv">2</span>,P4)</a></code></pre></div>
 <pre><code>[1] 0.0016</code></pre>
 
 <div class="exercise">
@@ -511,14 +511,14 @@ Calculer <span class="math inline">\(\mathbb{P}(X_2=3|X_0=1)\)</span>.</p>
 \right)\\
 = 0.6 \times 0.2 + 0.2 \times 0.6 +0.2 \times 0.2 = 0.28.
 \end{align*}\]</span></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">P=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.4</span>,<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="fl">0.6</span>,<span class="fl">0.2</span>),<span class="dt">nc=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb18-2" title="2">P[<span class="dv">1</span>,]<span class="op">%*%</span>P[,<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">P=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.4</span>,<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="fl">0.6</span>,<span class="fl">0.2</span>),<span class="dt">nc=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb30-2" title="2">P[<span class="dv">1</span>,]<span class="op">%*%</span>P[,<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>     [,1]
 [1,] 0.28</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># ou encore</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="co"># (1,2,3); (1,1,3); (1,3,3)</span></a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span></a>
-<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># ou encore</span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="co"># (1,2,3); (1,1,3); (1,3,3)</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)<span class="op">+</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="st">  </span><span class="kw">ProbTraj</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">X0=</span><span class="dv">1</span>,P)</a></code></pre></div>
 <pre><code>[1] 0.28</code></pre>
 
 <div class="exercise">
@@ -548,19 +548,19 @@ Calculer la probabilité de l’événement <span class="math inline">\(A_3\)</s
 <p>D’où <span class="math inline">\(\mathbb{P}_2(A_3)=P(X=x_2^1)+P(X=x_2^2)+P(X=x_2^3)+P(X=x_2^4)+P(X=x_2^5)+P(X=x_2^6)\)</span>.</p>
 <p><span class="math inline">\(\mathbb{P}_2(A_3)=0.3192\)</span>.</p>
 <p>Ainsi <span class="math inline">\(\mathbb{P}(A_3)=\mu_0(1)\times \mathbb{P}_1(A_3)+\mu_0(2)\times \mathbb{P}_2(A_3)=\)</span> 0.247632.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">tab1=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb22-2" title="2">mu0=<span class="kw">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)</a>
-<a class="sourceLine" id="cb22-3" title="3">P2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.6</span>,<span class="fl">0.4</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb22-4" title="4">(<span class="dt">probs1=</span><span class="kw">apply</span>(tab1,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">1</span>,P2))</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">tab1=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb34-2" title="2">mu0=<span class="kw">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb34-3" title="3">P2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.6</span>,<span class="fl">0.4</span>),<span class="dt">nc=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb34-4" title="4">(<span class="dt">probs1=</span><span class="kw">apply</span>(tab1,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">1</span>,P2))</a></code></pre></div>
 <pre><code>[1] 0.01152 0.02592 0.02592 0.01728</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">sum</span>(probs1)    <span class="co"># P1(A3)</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">sum</span>(probs1)    <span class="co"># P1(A3)</span></a></code></pre></div>
 <pre><code>[1] 0.08064</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">tab2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb26-2" title="2">(<span class="dt">probs2=</span><span class="kw">apply</span>(tab2,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">2</span>,P2))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">tab2=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">nr=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb38-2" title="2">(<span class="dt">probs2=</span><span class="kw">apply</span>(tab2,<span class="dv">2</span>,ProbTraj,mu0,<span class="dv">2</span>,P2))</a></code></pre></div>
 <pre><code>[1] 0.04032 0.09072 0.06048 0.06048 0.04032 0.02688</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">sum</span>(probs2)    <span class="co"># P2(A3)</span></a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">sum</span>(probs2)    <span class="co"># P2(A3)</span></a></code></pre></div>
 <pre><code>[1] 0.3192</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">PA3=mu0<span class="op">%*%</span><span class="kw">c</span>(<span class="kw">sum</span>(probs1),<span class="kw">sum</span>(probs2)) ; <span class="kw">as.vector</span>(PA3)    <span class="co">#P(A3)</span></a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">PA3=mu0<span class="op">%*%</span><span class="kw">c</span>(<span class="kw">sum</span>(probs1),<span class="kw">sum</span>(probs2)) ; <span class="kw">as.vector</span>(PA3)    <span class="co">#P(A3)</span></a></code></pre></div>
 <pre><code>[1] 0.247632</code></pre>
 </div>
 <div id="classification-des-états" class="section level2">
@@ -620,12 +620,12 @@ Comme <span class="math inline">\(1 \longleftrightarrow 2\)</span> et <span clas
 </div>
 
 <p>Pour étudier la classification d’une CMD sous R, on peut procéder comme suit:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># install.packeges(&quot;markovchain&quot;)   # Installation de l&#39;extension markovchain</span></a>
-<a class="sourceLine" id="cb32-2" title="2"><span class="kw">library</span>(markovchain)</a>
-<a class="sourceLine" id="cb32-3" title="3">pp=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>), <span class="dt">nc=</span><span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb32-4" title="4">          <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)))</a>
-<a class="sourceLine" id="cb32-5" title="5">cm1=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span>pp)</a>
-<a class="sourceLine" id="cb32-6" title="6"><span class="kw">is.irreducible</span>(cm1)  <span class="co"># tester si la CM est irreductible</span></a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># install.packeges(&quot;markovchain&quot;)   # Installation de l&#39;extension markovchain</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="kw">library</span>(markovchain)</a>
+<a class="sourceLine" id="cb44-3" title="3">pp=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>), <span class="dt">nc=</span><span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb44-4" title="4">          <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)))</a>
+<a class="sourceLine" id="cb44-5" title="5">cm1=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span>pp)</a>
+<a class="sourceLine" id="cb44-6" title="6"><span class="kw">is.irreducible</span>(cm1)  <span class="co"># tester si la CM est irreductible</span></a></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 
 <div class="example">
@@ -644,12 +644,12 @@ Cette CM possède trois classes: <span class="math inline">\(\{1,2\}\)</span>, <
 L’états 4 est <strong>absorbant</strong> car <span class="math inline">\(\{4\}\)</span> est une classe fermée.
 </div>
 
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">p15=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.75</span>,<span class="dv">1</span>), <span class="dt">nc=</span><span class="dv">4</span>, </a>
-<a class="sourceLine" id="cb34-2" title="2">           <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>)))</a>
-<a class="sourceLine" id="cb34-3" title="3">cm2=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span> p15)</a>
-<a class="sourceLine" id="cb34-4" title="4"><span class="kw">is.irreducible</span>(cm2)  <span class="co"># tester si la CM est irréductible</span></a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">p15=<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.25</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.75</span>,<span class="dv">1</span>), <span class="dt">nc=</span><span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb46-2" title="2">           <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>)))</a>
+<a class="sourceLine" id="cb46-3" title="3">cm2=<span class="kw">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="dt">transitionMatrix=</span> p15)</a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="kw">is.irreducible</span>(cm2)  <span class="co"># tester si la CM est irréductible</span></a></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">absorbingStates</span>(cm2) <span class="co"># déterminer les états absorbants</span></a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">absorbingStates</span>(cm2) <span class="co"># déterminer les états absorbants</span></a></code></pre></div>
 <pre><code>[1] &quot;4&quot;</code></pre>
 </div>
 <div id="temps-dabsorption" class="section level2">
@@ -717,34 +717,34 @@ T_A = \min\{n \geq 0 : X_n \in A \},
 </ol></li>
 </ol>
 <p>Nous implémentons cet algorithm dans la fonction suivante:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># simuler des CMD selon la matrice de transition P</span></a>
-<a class="sourceLine" id="cb38-2" title="2">sim_CMD &lt;-<span class="st"> </span><span class="cf">function</span>( P, <span class="dt">N =</span> <span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span> ) {</a>
-<a class="sourceLine" id="cb38-3" title="3">  <span class="co"># nombre des états</span></a>
-<a class="sourceLine" id="cb38-4" title="4">  n_etats &lt;-<span class="st"> </span><span class="kw">nrow</span>(P)</a>
-<a class="sourceLine" id="cb38-5" title="5">  etats &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)</a>
-<a class="sourceLine" id="cb38-6" title="6">  <span class="co"># valeur de l&#39;état initial </span></a>
-<a class="sourceLine" id="cb38-7" title="7">  etats[<span class="dv">1</span>] &lt;-<span class="st"> </span>x0</a>
-<a class="sourceLine" id="cb38-8" title="8">  <span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>N) {</a>
-<a class="sourceLine" id="cb38-9" title="9">    <span class="co"># vecteur de prob pour simuller l&#39;état suivant X_{t+1}</span></a>
-<a class="sourceLine" id="cb38-10" title="10">    p &lt;-<span class="st"> </span>P[etats[t<span class="dv">-1</span>], ]</a>
-<a class="sourceLine" id="cb38-11" title="11">    <span class="co">## tirer depuis la distribution multinomiale et déterminer l&#39;état</span></a>
-<a class="sourceLine" id="cb38-12" title="12">    etats[t] &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rmultinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, p) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb38-13" title="13">  }</a>
-<a class="sourceLine" id="cb38-14" title="14">  <span class="kw">return</span>(etats)</a>
-<a class="sourceLine" id="cb38-15" title="15">}</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co"># simuler des CMD selon la matrice de transition P</span></a>
+<a class="sourceLine" id="cb50-2" title="2">sim_CMD &lt;-<span class="st"> </span><span class="cf">function</span>( P, <span class="dt">N =</span> <span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span> ) {</a>
+<a class="sourceLine" id="cb50-3" title="3">  <span class="co"># nombre des états</span></a>
+<a class="sourceLine" id="cb50-4" title="4">  n_etats &lt;-<span class="st"> </span><span class="kw">nrow</span>(P)</a>
+<a class="sourceLine" id="cb50-5" title="5">  etats &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)</a>
+<a class="sourceLine" id="cb50-6" title="6">  <span class="co"># valeur de l&#39;état initial </span></a>
+<a class="sourceLine" id="cb50-7" title="7">  etats[<span class="dv">1</span>] &lt;-<span class="st"> </span>x0</a>
+<a class="sourceLine" id="cb50-8" title="8">  <span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>N) {</a>
+<a class="sourceLine" id="cb50-9" title="9">    <span class="co"># vecteur de prob pour simuller l&#39;état suivant X_{t+1}</span></a>
+<a class="sourceLine" id="cb50-10" title="10">    p &lt;-<span class="st"> </span>P[etats[t<span class="dv">-1</span>], ]</a>
+<a class="sourceLine" id="cb50-11" title="11">    <span class="co">## tirer depuis la distribution multinomiale et déterminer l&#39;état</span></a>
+<a class="sourceLine" id="cb50-12" title="12">    etats[t] &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rmultinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, p) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb50-13" title="13">  }</a>
+<a class="sourceLine" id="cb50-14" title="14">  <span class="kw">return</span>(etats)</a>
+<a class="sourceLine" id="cb50-15" title="15">}</a></code></pre></div>
 <div id="simulation-de-lexemple-illustratif" class="section level4">
 <h4><span class="header-section-number">2.5.1.1</span> Simulation de l’exemple illustratif</h4>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">(P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>), <span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">(P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>), <span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]  0.2  0.8
 [2,]  0.4  0.6</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
-<pre><code>[1] 1 2 2 1 2 2</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
-<pre><code>[1] 0.24</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
+<pre><code>[1] 1 2 1 2 2 1</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<pre><code>[1] 0.29</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
 <pre><code>[1] 1</code></pre>
 
 </div>

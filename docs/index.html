@@ -467,11 +467,77 @@ Si <span class="math inline">\(Y \sim N(m,\sigma^2)\)</span>, alors
 <span class="math display">\[
 \phi_Y(t)=\mathbb{E}\left[e^{t(\sigma X+m)} \right]=\exp\left[\dfrac{\sigma^2t^2}{2}+m \right]
 \]</span>
-Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l’extension <code>MGF</code> qui est téléchargeable depuis l’adresse suivante: <a href="https://github.com/alexandernel14/MGF" class="uri">https://github.com/alexandernel14/MGF</a>.</p>
-<p>Une description de l’installation et l’utilisation de cette extension est donnée dans cette capsule video:</p>
-<iframe src="https://www.youtube.com/watch?v=2CaRpHh__6I" allow="autoplay; encrypted-media" allowfullscreen>
-</iframe>
-<p><a href="https://www.youtube.com/watch?v=2CaRpHh__6I" class="uri">https://www.youtube.com/watch?v=2CaRpHh__6I</a></p>
+Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l’extension <strong><code>MGF</code></strong> qui est téléchargeable depuis l’adresse suivante: <a href="https://github.com/alexandernel14/MGF" class="uri">https://github.com/alexandernel14/MGF</a>.</p>
+<p>Une description de l’installation et l’utilisation de cette extension est donnée comme suit:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># installer &#39;devtools&#39;: install.packages(&quot;devtools&quot;)</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># installer &#39;MGF&#39; depuis github</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#devtools::install_github(&quot;alexandernel14/MGF&quot;,force = T)</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># charger l&#39;extension &#39;MGF&#39;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(MGF)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co"># fonction génératrice de la loi binomiale</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">mgf</span>(<span class="st">&quot;Binomial&quot;</span>)</a></code></pre></div>
+<pre><code>[1] &quot;(1-p+p*exp(t))^n&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># t=0, ordre 1</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">1</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">p=</span><span class="fl">0.4</span>)</a></code></pre></div>
+<pre><code>The Moment Generating Function for the  Binomial distribution is: 
+[1] &quot;(1-p+p*exp(t))^n&quot;
+The formula for the 1st moment is: 
+(1 - p + p * exp(t))^(n - 1) * (n * (p * exp(t)))
+The value of the 1st moment is: 
+[1] 4
+The formula of the 1st centralized moment is: 
+(1 - p + p * exp(t))^(n - 1) * (n * (p * exp(t)))/(1 - p + p * 
+    exp(t))^n
+The 1st centralized moment&#39;s value is: 
+[1] 4</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># t=0, ordre 2</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">2</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">p=</span><span class="fl">0.4</span>)</a></code></pre></div>
+<pre><code>The Moment Generating Function for the  Binomial distribution is: 
+[1] &quot;(1-p+p*exp(t))^n&quot;
+The formula for the 2nd moment is: 
+(1 - p + p * exp(t))^((n - 1) - 1) * ((n - 1) * (p * exp(t))) * 
+    (n * (p * exp(t))) + (1 - p + p * exp(t))^(n - 1) * (n * 
+    (p * exp(t)))
+The value of the 2nd moment is: 
+[1] 18.4
+The formula of the 2nd centralized moment is: 
+((1 - p + p * exp(t))^((n - 1) - 1) * ((n - 1) * (p * exp(t))) * 
+    (n * (p * exp(t))) + (1 - p + p * exp(t))^(n - 1) * (n * 
+    (p * exp(t))))/(1 - p + p * exp(t))^n - (1 - p + p * exp(t))^(n - 
+    1) * (n * (p * exp(t))) * ((1 - p + p * exp(t))^(n - 1) * 
+    (n * (p * exp(t))))/((1 - p + p * exp(t))^n)^2
+The 2nd centralized moment&#39;s value is: 
+[1] 2.4</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># fonction génératrice de la loi normale</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">mgf</span>(<span class="st">&quot;Normal&quot;</span>)</a></code></pre></div>
+<pre><code>[1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># t=0, ordre 1</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>The Moment Generating Function for the  Normal distribution is: 
+[1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;
+The formula for the 1st moment is: 
+exp(mu * t + 0.5 * sigma^2 * t^2) * (mu + 0.5 * sigma^2 * (2 * 
+    t))
+The value of the 1st moment is: 
+[1] 0
+The formula of the 1st centralized moment is: 
+mu + 0.5 * sigma^2 * (2 * t)
+The 1st centralized moment&#39;s value is: 
+[1] 0</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># t=0, ordre 2</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>The Moment Generating Function for the  Normal distribution is: 
+[1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;
+The formula for the 2nd moment is: 
+exp(mu * t + 0.5 * sigma^2 * t^2) * (mu + 0.5 * sigma^2 * (2 * 
+    t)) * (mu + 0.5 * sigma^2 * (2 * t)) + exp(mu * t + 0.5 * 
+    sigma^2 * t^2) * (0.5 * sigma^2 * 2)
+The value of the 2nd moment is: 
+[1] 1
+The formula of the 2nd centralized moment is: 
+0.5 * sigma^2 * 2
+The 2nd centralized moment&#39;s value is: 
+[1] 1</code></pre>
 </div>
 <div id="fonctions-caractéristiques" class="section level2">
 <h2><span class="header-section-number">1.5</span> Fonctions caractéristiques</h2>

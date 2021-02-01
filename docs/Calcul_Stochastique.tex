@@ -113,6 +113,13 @@
 %\usepackage{kbordermatrix}
 \usepackage[utf8]{inputenc}
 \usepackage[top=2cm, right=2cm,left=2.5cm,bottom=2cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
 %\newtheorem{sol}[exercise]{Solution}
 \newcommand{\Nn}{\mathbb{N}}
 \newcommand{\Rr}{\mathbb{R}}
@@ -497,11 +504,126 @@ Si \(Y \sim N(m,\sigma^2)\), alors
 \[
 \phi_Y(t)=\mathbb{E}\left[e^{t(\sigma X+m)} \right]=\exp\left[\dfrac{\sigma^2t^2}{2}+m \right]
 \]
-Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l'extension \texttt{MGF} qui est téléchargeable depuis l'adresse suivante: \url{https://github.com/alexandernel14/MGF}.
+Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l'extension \textbf{\texttt{MGF}} qui est téléchargeable depuis l'adresse suivante: \url{https://github.com/alexandernel14/MGF}.
 
-Une description de l'installation et l'utilisation de cette extension est donnée dans cette capsule video:
+Une description de l'installation et l'utilisation de cette extension est donnée comme suit:
 
-\url{https://www.youtube.com/watch?v=2CaRpHh__6I}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# installer 'devtools': install.packages("devtools")}
+\CommentTok{# installer 'MGF' depuis github}
+\CommentTok{#devtools::install_github("alexandernel14/MGF",force = T)}
+\CommentTok{# charger l'extension 'MGF'}
+\KeywordTok{library}\NormalTok{(MGF)}
+\CommentTok{# fonction génératrice de la loi binomiale}
+\KeywordTok{mgf}\NormalTok{(}\StringTok{"Binomial"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "(1-p+p*exp(t))^n"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# t=0, ordre 1}
+\KeywordTok{MGF_evaluator}\NormalTok{(}\StringTok{"Binomial"}\NormalTok{,}\DataTypeTok{t=}\DecValTok{0}\NormalTok{, }\DataTypeTok{order_of_moment=}\DecValTok{1}\NormalTok{, }\DataTypeTok{n=}\DecValTok{10}\NormalTok{, }\DataTypeTok{p=}\FloatTok{0.4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The Moment Generating Function for the  Binomial distribution is: 
+[1] "(1-p+p*exp(t))^n"
+The formula for the 1st moment is: 
+(1 - p + p * exp(t))^(n - 1) * (n * (p * exp(t)))
+The value of the 1st moment is: 
+[1] 4
+The formula of the 1st centralized moment is: 
+(1 - p + p * exp(t))^(n - 1) * (n * (p * exp(t)))/(1 - p + p * 
+    exp(t))^n
+The 1st centralized moment's value is: 
+[1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# t=0, ordre 2}
+\KeywordTok{MGF_evaluator}\NormalTok{(}\StringTok{"Binomial"}\NormalTok{,}\DataTypeTok{t=}\DecValTok{0}\NormalTok{, }\DataTypeTok{order_of_moment=}\DecValTok{2}\NormalTok{, }\DataTypeTok{n=}\DecValTok{10}\NormalTok{, }\DataTypeTok{p=}\FloatTok{0.4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The Moment Generating Function for the  Binomial distribution is: 
+[1] "(1-p+p*exp(t))^n"
+The formula for the 2nd moment is: 
+(1 - p + p * exp(t))^((n - 1) - 1) * ((n - 1) * (p * exp(t))) * 
+    (n * (p * exp(t))) + (1 - p + p * exp(t))^(n - 1) * (n * 
+    (p * exp(t)))
+The value of the 2nd moment is: 
+[1] 18.4
+The formula of the 2nd centralized moment is: 
+((1 - p + p * exp(t))^((n - 1) - 1) * ((n - 1) * (p * exp(t))) * 
+    (n * (p * exp(t))) + (1 - p + p * exp(t))^(n - 1) * (n * 
+    (p * exp(t))))/(1 - p + p * exp(t))^n - (1 - p + p * exp(t))^(n - 
+    1) * (n * (p * exp(t))) * ((1 - p + p * exp(t))^(n - 1) * 
+    (n * (p * exp(t))))/((1 - p + p * exp(t))^n)^2
+The 2nd centralized moment's value is: 
+[1] 2.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# fonction génératrice de la loi normale}
+\KeywordTok{mgf}\NormalTok{(}\StringTok{"Normal"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "exp(mu*t + 0.5*sigma^2*t^2)"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# t=0, ordre 1}
+\KeywordTok{MGF_evaluator}\NormalTok{(}\StringTok{"Normal"}\NormalTok{,}\DataTypeTok{t=}\DecValTok{0}\NormalTok{, }\DataTypeTok{order_of_moment=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The Moment Generating Function for the  Normal distribution is: 
+[1] "exp(mu*t + 0.5*sigma^2*t^2)"
+The formula for the 1st moment is: 
+exp(mu * t + 0.5 * sigma^2 * t^2) * (mu + 0.5 * sigma^2 * (2 * 
+    t))
+The value of the 1st moment is: 
+[1] 0
+The formula of the 1st centralized moment is: 
+mu + 0.5 * sigma^2 * (2 * t)
+The 1st centralized moment's value is: 
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# t=0, ordre 2}
+\KeywordTok{MGF_evaluator}\NormalTok{(}\StringTok{"Normal"}\NormalTok{,}\DataTypeTok{t=}\DecValTok{0}\NormalTok{, }\DataTypeTok{order_of_moment=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The Moment Generating Function for the  Normal distribution is: 
+[1] "exp(mu*t + 0.5*sigma^2*t^2)"
+The formula for the 2nd moment is: 
+exp(mu * t + 0.5 * sigma^2 * t^2) * (mu + 0.5 * sigma^2 * (2 * 
+    t)) * (mu + 0.5 * sigma^2 * (2 * t)) + exp(mu * t + 0.5 * 
+    sigma^2 * t^2) * (0.5 * sigma^2 * 2)
+The value of the 2nd moment is: 
+[1] 1
+The formula of the 2nd centralized moment is: 
+0.5 * sigma^2 * 2
+The 2nd centralized moment's value is: 
+[1] 1
+\end{verbatim}
 
 \hypertarget{fonctions-caractuxe9ristiques}{%
 \section{Fonctions caractéristiques}\label{fonctions-caractuxe9ristiques}}
@@ -1338,7 +1460,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 2 2 2 1
+[1] 1 2 1 2 2 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -1349,7 +1471,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.19
+[1] 0.15
 \end{verbatim}
 
 \begin{Shaded}
@@ -1389,6 +1511,9 @@ Foata, Dominique, and Aimé Fuchs. 2002. \emph{Processus Stochastiques}. 2ième 
 
 \leavevmode\hypertarget{ref-sabin}{}%
 Lessard, Sabin. 2014. \emph{Processus Stochastiques: Cours et Exercices Corrigés}. ellipses.
+
+\leavevmode\hypertarget{ref-R-MGF}{}%
+Nel, Alexander. 2021. \emph{MGF: Moment and Cumulant Generating Functions and Their Derivatives.}
 
 \leavevmode\hypertarget{ref-bremaud}{}%
 Pierre, Brémaud. 2009. \emph{Initiation Aux Probabilités et Aux Chaînes de Markov}. 2e édition entièrement révisée. Berlin Heidelberg: Springer.

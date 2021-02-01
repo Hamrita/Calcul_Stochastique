@@ -324,13 +324,33 @@ Si $Y \sim N(m,\sigma^2)$, alors
 $$
 \phi_Y(t)=\mathbb{E}\left[e^{t(\sigma X+m)} \right]=\exp\left[\dfrac{\sigma^2t^2}{2}+m \right]
 $$
-Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l'extension `MGF` qui est téléchargeable depuis l'adresse suivante: <https://github.com/alexandernel14/MGF>.
+Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l'extension __`MGF`__ qui est téléchargeable depuis l'adresse suivante: <https://github.com/alexandernel14/MGF>.
 
-Une description de l'installation et l'utilisation de cette extension est donnée dans cette capsule video:
+Une description de l'installation et l'utilisation de cette extension est donnée comme suit:
 
-<iframe src="https://www.youtube.com/watch?v=2CaRpHh__6I"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+```{r,MGF, comment="", warning=FALSE, message=FALSE}
+# installer 'devtools': install.packages("devtools")
+# installer 'MGF' depuis github
+#devtools::install_github("alexandernel14/MGF",force = T)
+# charger l'extension 'MGF'
+library(MGF)
+# fonction génératrice de la loi binomiale
+mgf("Binomial")
 
-<https://www.youtube.com/watch?v=2CaRpHh__6I>
+# t=0, ordre 1
+MGF_evaluator("Binomial",t=0, order_of_moment=1, n=10, p=0.4)
+# t=0, ordre 2
+MGF_evaluator("Binomial",t=0, order_of_moment=2, n=10, p=0.4)
+
+# fonction génératrice de la loi normale
+mgf("Normal")
+
+# t=0, ordre 1
+MGF_evaluator("Normal",t=0, order_of_moment=1)
+# t=0, ordre 2
+MGF_evaluator("Normal",t=0, order_of_moment=2)
+
+```
 
 ## Fonctions caractéristiques
 
