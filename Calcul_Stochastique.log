@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.1.31)  1 FEB 2021 11:09
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.1.31)  1 FEB 2021 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1089,13 +1089,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapitre 1.
-[5] [6] [7] [8] [9] [10
+[5] [6] [7] [8] [9] [10]
+Chapitre 2.
+[11
 
 ]
-Chapitre 2.
-[11]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 528.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 560.
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-22-1.pdf Graphic fil
@@ -1121,11 +1121,11 @@ e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-28-1.pdf>
 [16]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 724.
+(Font)              scaled to size 14.4pt on input line 756.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 724.
+(Font)              scaled to size 14.4013pt on input line 756.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 724.
+(Font)              scaled to size 14.39845pt on input line 756.
 Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
 [17] [18] [19] [20]
 File: images/graph2.png Graphic file (type bmp)
@@ -1148,7 +1148,7 @@ Chapitre 5.
 [29] [30
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 1382--1384
+Underfull \hbox (badness 2103) in paragraph at lines 1414--1416
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. []$[][][][][] [] [] [] [][][][][] [] [][][][]
 [][] [] [][] [] [][][][][] [] [][] []
@@ -1158,7 +1158,7 @@ tic Models\TU/lmr/m/n/10 . Wiley. []$[][][][][] [] [] [] [][][][][] [] [][][][]
 Here is how much of TeX's memory you used:
  20893 strings out of 479207
  367924 string characters out of 5872785
- 978063 words of memory out of 5000000
+ 979111 words of memory out of 5000000
  40098 multiletter control sequences out of 15000+600000
  410906 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191

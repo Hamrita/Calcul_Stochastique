@@ -276,27 +276,61 @@ Par conséquent $\phi'(0)= \mathbb{E}(X)$.
 
 D'une manière plus générale, $\phi^n(0)=\mathbb{E}\left( {X}^n\right),\; n \geq 1$.
 
-Une propriété importante des fonctions génératrices des moments est que la fonction génératrice des moments de la somme des variables aléatoires indépendantes est simplement le produit des fonctions génératrices des moments individuelles. Pour voir cela, supposons que $X$ et $Y$ sont indépendants et ont respectivement des fonctions génératrices des moments $\phi_X(t)$ et $\phi_Y(t)$. Alors la fonction génératrice des moments de $X+Y$ est donnée par:
+Une propriété importante des fonctions génératrices des moments est que la fonction génératrice des moments de la somme des variables aléatoires indépendantes est simplement le produit des fonctions génératrices des moments individuelles. Pour voir cela, supposons que $X$ et $Y$ sont indépendantes et ont respectivement des fonctions génératrices des moments $\phi_X(t)$ et $\phi_Y(t)$. Alors la fonction génératrice des moments de $X+Y$ est donnée par:
 \begin{align*}
 \phi_{X+Y}(t)&=\mathbb{E}\left(e^{t(X+Y)} \right)=\mathbb{E}\left(e^{tX}e^{tY)} \right)\\
 &=\mathbb{E}\left(e^{tX}\right) \mathbb{E}\left(e^{tY}\right)=\phi_X(t)\phi_Y(t)
 \end{align*}
 
 ```{example, name="Loi Binomiale de paramètres n et p"}
-```
 \begin{align*}
 \phi(t)&=\mathbb{E}\left[e^{tX} \right]=\sum_{k=0}^ne^{tk}C^n_kp^k{(1-p)}^{n-k}\\
 &=\sum_{k=0}^nC^n_k{\left(pe^t\right)}^k{(1-p)}^{n-k}
 \end{align*}
+
+```
 Or, d'après la formule de Binôme, on a
 $$
 {(a+b)}^n=\sum_{k=0}^nC_n^ka^kb^{n-k}
 $$
-d'où \(\phi(t)={\left( pe^t+(1-p)\right)}^n\).
+d'où \(\phi(t)={\left( pe^t+(1-p)\right)}^n\) et par conséquent
+$$
+\phi'(t)=n{\left(pe^t+1-p \right)}^{n-1}pe^t
+$$
+D'où $\mathbb{E}(X)=\phi'(0)=np$.
 
+Dérivons une deuxième fois la fonction $\phi(t)$, on obtient
+
+$$
+\phi''(t)=n(n-1){\left(pe^t+1-p \right)}^{n-2}{\left(pe^t\right)}^2+n{\left(pe^t+1-p \right)}^{n-1}pe^t
+$$
+En déduit, alors
+$$
+\mathbb{E}(X^2)=\phi''(0)=n(n-1)p^2+np
+$$
+Donc, on peut déduire la variance de $X$.
+$$
+\mathbb{V}(X)=\mathbb{E}(X^2)-\mathbb{E}{(X)}^2=\phi''(0)-{\left( \phi'(0)\right)}^2=np(1-p)
+$$
 ```{example, name="Loi Normale standard"}
 ```
+\begin{align*}
+\mathbb{E}\left(e^{tX} \right)&=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{tx-x^2/2}dx\\
+&=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-(x^2-2tx)/2}dx\\
+&=e^{t^2/2}\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-(x-t)^2/2}dx\\
+&= e^{t^2/2}
+\end{align*}
+Si $Y \sim N(m,\sigma^2)$, alors
+$$
+\phi_Y(t)=\mathbb{E}\left[e^{t(\sigma X+m)} \right]=\exp\left[\dfrac{\sigma^2t^2}{2}+m \right]
+$$
+Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l'extension `MGF` qui est téléchargeable depuis l'adresse suivante: <https://github.com/alexandernel14/MGF>.
 
+Une description de l'installation et l'utilisation de cette extension est donnée dans cette capsule video:
+
+<iframe src="https://www.youtube.com/watch?v=2CaRpHh__6I"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<https://www.youtube.com/watch?v=2CaRpHh__6I>
 
 ## Fonctions caractéristiques
 

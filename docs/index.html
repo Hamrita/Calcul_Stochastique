@@ -418,30 +418,60 @@ Donc <span class="math inline">\(\mathbb{V}(X)=np(1-p)\)</span>.</p>
 \end{align*}\]</span></p>
 <p>Par conséquent <span class="math inline">\(\phi&#39;(0)= \mathbb{E}(X)\)</span>.</p>
 <p>D’une manière plus générale, <span class="math inline">\(\phi^n(0)=\mathbb{E}\left( {X}^n\right),\; n \geq 1\)</span>.</p>
-<p>Une propriété importante des fonctions génératrices des moments est que la fonction génératrice des moments de la somme des variables aléatoires indépendantes est simplement le produit des fonctions génératrices des moments individuelles. Pour voir cela, supposons que <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont indépendants et ont respectivement des fonctions génératrices des moments <span class="math inline">\(\phi_X(t)\)</span> et <span class="math inline">\(\phi_Y(t)\)</span>. Alors la fonction génératrice des moments de <span class="math inline">\(X+Y\)</span> est donnée par:
+<p>Une propriété importante des fonctions génératrices des moments est que la fonction génératrice des moments de la somme des variables aléatoires indépendantes est simplement le produit des fonctions génératrices des moments individuelles. Pour voir cela, supposons que <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont indépendantes et ont respectivement des fonctions génératrices des moments <span class="math inline">\(\phi_X(t)\)</span> et <span class="math inline">\(\phi_Y(t)\)</span>. Alors la fonction génératrice des moments de <span class="math inline">\(X+Y\)</span> est donnée par:
 <span class="math display">\[\begin{align*}
 \phi_{X+Y}(t)&amp;=\mathbb{E}\left(e^{t(X+Y)} \right)=\mathbb{E}\left(e^{tX}e^{tY)} \right)\\
 &amp;=\mathbb{E}\left(e^{tX}\right) \mathbb{E}\left(e^{tY}\right)=\phi_X(t)\phi_Y(t)
 \end{align*}\]</span></p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-14" class="example"><strong>Exemple 1.6  (Loi Binomiale de paramètres n et p)  </strong></span>
-</div>
-
-<p><span class="math display">\[\begin{align*}
+<p><span id="exm:unnamed-chunk-14" class="example"><strong>Exemple 1.6  (Loi Binomiale de paramètres n et p)  </strong></span><span class="math display">\[\begin{align*}
 \phi(t)&amp;=\mathbb{E}\left[e^{tX} \right]=\sum_{k=0}^ne^{tk}C^n_kp^k{(1-p)}^{n-k}\\
 &amp;=\sum_{k=0}^nC^n_k{\left(pe^t\right)}^k{(1-p)}^{n-k}
-\end{align*}\]</span>
-Or, d’après la formule de Binôme, on a
+\end{align*}\]</span></p>
+</div>
+
+<p>Or, d’après la formule de Binôme, on a
 <span class="math display">\[
 {(a+b)}^n=\sum_{k=0}^nC_n^ka^kb^{n-k}
 \]</span>
-d’où <span class="math inline">\(\phi(t)={\left( pe^t+(1-p)\right)}^n\)</span>.</p>
+d’où <span class="math inline">\(\phi(t)={\left( pe^t+(1-p)\right)}^n\)</span> et par conséquent
+<span class="math display">\[
+\phi&#39;(t)=n{\left(pe^t+1-p \right)}^{n-1}pe^t
+\]</span>
+D’où <span class="math inline">\(\mathbb{E}(X)=\phi&#39;(0)=np\)</span>.</p>
+<p>Dérivons une deuxième fois la fonction <span class="math inline">\(\phi(t)\)</span>, on obtient</p>
+<span class="math display">\[
+\phi&#39;&#39;(t)=n(n-1){\left(pe^t+1-p \right)}^{n-2}{\left(pe^t\right)}^2+n{\left(pe^t+1-p \right)}^{n-1}pe^t
+\]</span>
+En déduit, alors
+<span class="math display">\[
+\mathbb{E}(X^2)=\phi&#39;&#39;(0)=n(n-1)p^2+np
+\]</span>
+Donc, on peut déduire la variance de <span class="math inline">\(X\)</span>.
+<span class="math display">\[
+\mathbb{V}(X)=\mathbb{E}(X^2)-\mathbb{E}{(X)}^2=\phi&#39;&#39;(0)-{\left( \phi&#39;(0)\right)}^2=np(1-p)
+\]</span>
 
 <div class="example">
 <span id="exm:unnamed-chunk-15" class="example"><strong>Exemple 1.7  (Loi Normale standard)  </strong></span>
 </div>
 
+<p><span class="math display">\[\begin{align*}
+\mathbb{E}\left(e^{tX} \right)&amp;=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{tx-x^2/2}dx\\
+&amp;=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-(x^2-2tx)/2}dx\\
+&amp;=e^{t^2/2}\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-(x-t)^2/2}dx\\
+&amp;= e^{t^2/2}
+\end{align*}\]</span>
+Si <span class="math inline">\(Y \sim N(m,\sigma^2)\)</span>, alors
+<span class="math display">\[
+\phi_Y(t)=\mathbb{E}\left[e^{t(\sigma X+m)} \right]=\exp\left[\dfrac{\sigma^2t^2}{2}+m \right]
+\]</span>
+Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l’extension <code>MGF</code> qui est téléchargeable depuis l’adresse suivante: <a href="https://github.com/alexandernel14/MGF" class="uri">https://github.com/alexandernel14/MGF</a>.</p>
+<p>Une description de l’installation et l’utilisation de cette extension est donnée dans cette capsule video:</p>
+<iframe src="https://www.youtube.com/watch?v=2CaRpHh__6I" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+<p><a href="https://www.youtube.com/watch?v=2CaRpHh__6I" class="uri">https://www.youtube.com/watch?v=2CaRpHh__6I</a></p>
 </div>
 <div id="fonctions-caractéristiques" class="section level2">
 <h2><span class="header-section-number">1.5</span> Fonctions caractéristiques</h2>
