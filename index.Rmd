@@ -392,7 +392,7 @@ $X$ est $n$ fois dérivable et :
 ```
 
 ```{example, name="Loi normal standard"}
-La fonction caractéristique de la loi normale standard est: $\psi(t)={e}^{-t^2/2}$.
+La fonction caractéristique de la loi normale standard est: $$\psi(t)={e}^{-t^2/2}$$
 ```
 
 ```{example, name="Loi exponentielle"}
