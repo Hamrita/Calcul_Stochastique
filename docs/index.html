@@ -142,7 +142,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fonctions-génératrices-des-moments"><i class="fa fa-check"></i><b>1.4</b> Fonctions génératrices des moments</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#fonctions-caractéristiques"><i class="fa fa-check"></i><b>1.5</b> Fonctions caractéristiques</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#densité-conditionnelle"><i class="fa fa-check"></i><b>1.6.1</b> Densité conditionnelle</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
 <li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
@@ -589,7 +591,50 @@ Alors les propriétés suivantes sont toujours vraies :</p>
 </div>
 <div id="espérance-conditionnelle" class="section level2">
 <h2><span class="header-section-number">1.6</span> Espérance conditionnelle</h2>
+<p>L’un des concepts les plus utiles de la théorie des probabilités est celui de la probabilité conditionnelle et de l’espérance conditionnelle. La raison est double. Premièrement, dans la pratique, nous nous intéressons souvent au calcul des probabilités et des espérances lorsqu’une information partielle est
+disponible; par conséquent, les probabilités et les espérances souhaitées sont conditionnelles. Deuxièmement, pour calculer une probabilité , il est souvent extrêmement utile d’abord <em>conditionner</em> une variable aléatoire appropriée.</p>
+<div id="densité-conditionnelle" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Densité conditionnelle</h3>
+<p>Soient <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> deux variables aléatoires de densité jointe <span class="math inline">\(f(x,y)\)</span>.</p>
 
+<div class="definition">
+<span id="def:unnamed-chunk-21" class="definition"><strong>Définition 1.8  </strong></span>On définit la densité <strong>conditionnelle</strong> de <span class="math inline">\(X\)</span> sachant <span class="math inline">\(Y=y\)</span> par:
+<span class="math display">\[
+  f_{X|Y}(x,y)=\begin{cases}
+\dfrac{P(X=x,Y=y)}{P_Y(Y=y)} \text{ si } X \text{ et } Y \text{ sont discrètes}\\
+\dfrac{f(x,y)}{f_Y(y)}\text{ si } X \text{ et } Y \text{ sont continues}
+\end{cases}
+\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-22" class="example"><strong>Exemple 1.10  </strong></span>Soit un couple aléatoire discrète <span class="math inline">\((X,Y)\)</span> définie par la densité jointe suivante:
+<span class="math display">\[
+  P(X=1,Y=1)=0.5;\,P(X=1,Y=2)=0.1;\,P(X=2,Y=1)=0.1;\,P(X=2,Y=2)=0.3
+  \]</span>
+Déterminer la loi conditionnelle <span class="math inline">\(f_{X|Y=1}(x,y)\)</span>.
+</div>
+
+La densité conditionnelle est par définition
+<span class="math display">\[
+{f}_{X|Y=1}(x,y)=\dfrac{P(X=x,Y=1)}{{P}_Y(Y=1)}
+\]</span>
+Or, <span class="math inline">\(P_y(Y=1)=\displaystyle \sum_x P(X=x,Y=1)=p(1,1)+p(2,1)=0.6\)</span>.
+D’où
+<span class="math display">\[
+{f}_{X|Y=1}(1,1)=\dfrac{P(X=1,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(1,1)}{{P}_Y(1)}=\dfrac{5}{6}
+\]</span>
+<span class="math display">\[
+{f}_{X|Y=1}(2,1)=\dfrac{P(X=2,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(2,1)}{{P}_Y(1)}=\dfrac{1}{6}
+\]</span>
+
+<div class="example">
+<span id="exm:unnamed-chunk-23" class="example"><strong>Exemple 1.11  </strong></span>
+</div>
+
+
+</div>
 </div>
 </div>
             </section>

@@ -403,3 +403,46 @@ La fonction caractéristique de la loi exponentielle de paramètre $\lambda$ est
 ```
 
 ## Espérance conditionnelle
+
+L'un des concepts les plus utiles de la théorie des probabilités est celui de la probabilité conditionnelle et de l'espérance conditionnelle. La raison est double. Premièrement, dans la pratique, nous nous intéressons souvent au calcul des probabilités et des espérances lorsqu'une information partielle est
+disponible; par conséquent, les probabilités et les espérances souhaitées sont conditionnelles. Deuxièmement, pour calculer une probabilité , il est souvent extrêmement utile d'abord *conditionner* une variable aléatoire appropriée.
+
+### Densité conditionnelle
+
+Soient $X$ et $Y$ deux variables aléatoires de densité jointe $f(x,y)$.
+
+```{definition}
+On définit la densité __conditionnelle__ de $X$ sachant $Y=y$ par:
+$$
+  f_{X|Y}(x,y)=\begin{cases}
+\dfrac{P(X=x,Y=y)}{P_Y(Y=y)} \text{ si } X \text{ et } Y \text{ sont discrètes}\\
+\dfrac{f(x,y)}{f_Y(y)}\text{ si } X \text{ et } Y \text{ sont continues}
+\end{cases}
+$$
+  
+```
+
+```{example}
+Soit un couple aléatoire discrète $(X,Y)$ définie par la densité jointe suivante:
+  $$
+  P(X=1,Y=1)=0.5;\,P(X=1,Y=2)=0.1;\,P(X=2,Y=1)=0.1;\,P(X=2,Y=2)=0.3
+  $$
+Déterminer la loi conditionnelle $f_{X|Y=1}(x,y)$.
+```
+
+La densité conditionnelle est par définition
+$$
+{f}_{X|Y=1}(x,y)=\dfrac{P(X=x,Y=1)}{{P}_Y(Y=1)}
+$$
+Or, $P_y(Y=1)=\displaystyle \sum_x P(X=x,Y=1)=p(1,1)+p(2,1)=0.6$.
+D'où
+$$
+{f}_{X|Y=1}(1,1)=\dfrac{P(X=1,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(1,1)}{{P}_Y(1)}=\dfrac{5}{6}
+$$
+$$
+{f}_{X|Y=1}(2,1)=\dfrac{P(X=2,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(2,1)}{{P}_Y(1)}=\dfrac{1}{6}
+$$
+```{example}
+
+```
+
