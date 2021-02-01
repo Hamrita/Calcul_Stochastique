@@ -354,4 +354,17 @@ MGF_evaluator("Normal",t=0, order_of_moment=2)
 
 ## Fonctions caractéristiques
 
+```{definition}
+La __fonction caractéristique__ d'une variable aléatoire $X$ est la fonction à valeurs complexes définie sur $\mathbb {R}$ par
+
+\begin{align*}\psi_{X}(t)&=\mathbb{E} \left[{e} ^{\mathrm{i} tX}\right]\\
+&=\begin{cases}
+\displaystyle \sum_{i=1}^n {e} ^{\mathrm{i} tX }P(X=x_i) \text{ si } X \text{ est discrète}\\
+\displaystyle \int_{\mathbb{R} }e^{\mathrm{i} tx} f(x)\,\mathrm{d} x \text{ si } X \text{ est continue}
+\end{cases}
+\end{align*}
+où $\mathrm{i}=\sqrt{-1}$. 
+
+```
+
 ## Espérance conditionnelle
