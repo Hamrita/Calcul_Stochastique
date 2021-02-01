@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#espérance-mathématique"><i class="fa fa-check"></i><b>1.3</b> Espérance mathématique</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#propriétés-de-la-covariance"><i class="fa fa-check"></i>Propriétés de la covariance</a></li>
 </ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fonctions-génératrices-des-moments"><i class="fa fa-check"></i><b>1.4</b> Fonctions génératrices des moments</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#fonctions-caractéristiques"><i class="fa fa-check"></i><b>1.5</b> Fonctions caractéristiques</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
 <li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
@@ -371,16 +374,81 @@ Une expression utile pour la variance de la somme des variables aléatoires peut
 
 <div class="example">
 <p><span id="exm:unnamed-chunk-12" class="example"><strong>Exemple 1.5  </strong></span>Calculer la variance d’une variable aléatoire <span class="math inline">\(X\)</span> suivant une loi binomiale de paramètres <span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>.</p>
-<p>Puisqu’une telle variable aléatoire représente le nombre de succès dans <span class="math inline">\(n\)</span> essais indépendants lorsque chaque essai a une probabilité commune p d’être un succès,
+Puisqu’une telle variable aléatoire représente le nombre de succès dans <span class="math inline">\(n\)</span> essais indépendants lorsque chaque essai a une probabilité commune p d’être un succès,
 nous pouvons écrire
 <span class="math display">\[
 X=X_1+X_2+\ldots+X_n
 \]</span>
-où <span class="math inline">\(X_i \stackrel{iid}{\sim}B(p)\)</span> telle que</p>
+où <span class="math inline">\(X_i \stackrel{iid}{\sim}B(p)\)</span> telle que
 </div>
 
+<p><span class="math display">\[
+X_i=\begin{cases}
+1 \text{ si le ième issue est un succés}\\
+0 \text{ sinon}
+\end{cases}
+\]</span>
+Par conséquent, on aura <span class="math inline">\(\mathbb{V}(X)=\displaystyle \sum_{i=1}^n\mathbb{V}(X_i)\)</span>, Or
+<span class="math display">\[\begin{align*}
+\mathbb{V}(X_i)&amp;=\mathbb{E}(X_i^2)-{\mathbb{E}(X_i)}^2\\
+&amp;=\mathbb{E}(X_i)-{\mathbb{E}(X_i)}^2 \text{ car } X_i^2=X_i\\
+&amp;= p-p^2= p(1-p)
+\end{align*}\]</span>
+Donc <span class="math inline">\(\mathbb{V}(X)=np(1-p)\)</span>.</p>
+</div>
+</div>
+<div id="fonctions-génératrices-des-moments" class="section level2">
+<h2><span class="header-section-number">1.4</span> Fonctions génératrices des moments</h2>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-13" class="definition"><strong>Définition 1.6  </strong></span>La fonction génératrice des moments <span class="math inline">\(\phi(t)\)</span> de la variable aléatoire <span class="math inline">\(X\)</span> est définie pour tout <span class="math inline">\(t \in \mathbb{R}\)</span> par
+<span class="math display">\[\begin{align*}
+\phi(t)&amp;=\mathbb{E}\left[e^{tX} \right]\\
+&amp;= \begin{cases}
+\displaystyle \sum_x e^{tx}P(X=x)\text{ si } X \text{ est discrète}\\
+\displaystyle \int_{\mathbb{R}}e^{tx} f(x)dx \text{ si } X \text{ est continue}
+\end{cases}
+\end{align*}\]</span></p>
+</div>
+
+<p><span class="math inline">\(\phi(t)\)</span> est appelée fonction génératrice des moments car tous les moments de <span class="math inline">\(X\)</span> peuvent être obtenues par les dérivées successives de <span class="math inline">\(\phi(t)\)</span>. Par exemple</p>
+<p><span class="math display">\[\begin{align*}
+\phi&#39;(t)&amp;=\dfrac{d}{dt}\mathbb{E}\left[e^{tX} \right] \\
+&amp;=\mathbb{E}\left[\dfrac{d}{dt}(e^{tX}) \right]=\mathbb{E}\left[Xe^{tX} \right]
+\end{align*}\]</span></p>
+<p>Par conséquent <span class="math inline">\(\phi&#39;(0)= \mathbb{E}(X)\)</span>.</p>
+<p>D’une manière plus générale, <span class="math inline">\(\phi^n(0)=\mathbb{E}\left( {X}^n\right),\; n \geq 1\)</span>.</p>
+<p>Une propriété importante des fonctions génératrices des moments est que la fonction génératrice des moments de la somme des variables aléatoires indépendantes est simplement le produit des fonctions génératrices des moments individuelles. Pour voir cela, supposons que <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont indépendants et ont respectivement des fonctions génératrices des moments <span class="math inline">\(\phi_X(t)\)</span> et <span class="math inline">\(\phi_Y(t)\)</span>. Alors la fonction génératrice des moments de <span class="math inline">\(X+Y\)</span> est donnée par:
+<span class="math display">\[\begin{align*}
+\phi_{X+Y}(t)&amp;=\mathbb{E}\left(e^{t(X+Y)} \right)=\mathbb{E}\left(e^{tX}e^{tY)} \right)\\
+&amp;=\mathbb{E}\left(e^{tX}\right) \mathbb{E}\left(e^{tY}\right)=\phi_X(t)\phi_Y(t)
+\end{align*}\]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-14" class="example"><strong>Exemple 1.6  (Loi Binomiale de paramètres n et p)  </strong></span>
+</div>
+
+<p><span class="math display">\[\begin{align*}
+\phi(t)&amp;=\mathbb{E}\left[e^{tX} \right]=\sum_{k=0}^ne^{tk}C^n_kp^k{(1-p)}^{n-k}\\
+&amp;=\sum_{k=0}^nC^n_k{\left(pe^t\right)}^k{(1-p)}^{n-k}
+\end{align*}\]</span>
+Or, d’après la formule de Binôme, on a
+<span class="math display">\[
+{(a+b)}^n=\sum_{k=0}^nC_n^ka^kb^{n-k}
+\]</span>
+d’où <span class="math inline">\(\phi(t)={\left( pe^t+(1-p)\right)}^n\)</span>.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-15" class="example"><strong>Exemple 1.7  (Loi Normale standard)  </strong></span>
+</div>
 
 </div>
+<div id="fonctions-caractéristiques" class="section level2">
+<h2><span class="header-section-number">1.5</span> Fonctions caractéristiques</h2>
+</div>
+<div id="espérance-conditionnelle" class="section level2">
+<h2><span class="header-section-number">1.6</span> Espérance conditionnelle</h2>
+
 </div>
 </div>
             </section>
