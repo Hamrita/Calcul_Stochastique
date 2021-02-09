@@ -1,12 +1,12 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.1.31)  1 FEB 2021 18:05
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.9)  10 FEB 2021 00:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Calcul_Stochastique.tex
 (./Calcul_Stochastique.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-01-09> xparse <2020-03-03> (c:/Users/User/AppData/Ro
-aming/TinyTeX/texmf-dist/tex/latex/base/book.cls
+L3 programming layer <2021-02-06> (c:/Users/User/AppData/Roaming/TinyTeX/texmf-
+dist/tex/latex/base/book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
@@ -141,11 +141,11 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicod
 e-math.sty (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel
 /expl3.sty
-Package: expl3 2021-01-09 L3 programming layer (loader) 
+Package: expl3 2021-02-06 L3 programming layer (loader) 
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend
 -xetex.def
-File: l3backend-xetex.def 2020-01-29 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-02-06 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count194
 \l__color_backend_stack_int=\count195
@@ -165,13 +165,13 @@ TeX
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/x
 parse.sty
-Package: xparse 2020-10-27 L3 Experimental document command parser
-
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/x
-parse-generic.tex))
+parse-2020-10-01.sty
+(c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/x
+parse-generic.tex)))
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e
 /l3keys2e.sty
-Package: l3keys2e 2020-10-27 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2021-02-02 LaTeX2e option processing using LaTeX3 keys
 )
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.s
 ty
@@ -273,7 +273,7 @@ Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.s
 ty
-Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+Package: hyperref 2021-02-07 v7.00h Hypertext links for LaTeX
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.s
 ty
@@ -323,7 +323,12 @@ Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 \Hy@pagecounter=\count284
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2021-02-07 v7.00h Hyperref: PDFDocEncoding definition (HO)
+)
+(c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref-l
+angpatches.def
+File: hyperref-langpatches.def 2021-02-07 v7.00h Hyperref: patches for babel la
+nguages
 )
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.s
 ty
@@ -334,23 +339,23 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count285
-Package hyperref Info: Option `unicode' set `true' on input line 4338.
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2021-02-07 v7.00h Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4464.
-Package hyperref Info: Link nesting OFF on input line 4469.
-Package hyperref Info: Hyper index ON on input line 4472.
-Package hyperref Info: Plain pages OFF on input line 4479.
-Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Option `unicode' set `true' on input line 4059.
+Package hyperref Info: Hyper figures OFF on input line 4178.
+Package hyperref Info: Link nesting OFF on input line 4183.
+Package hyperref Info: Hyper index ON on input line 4186.
+Package hyperref Info: Plain pages OFF on input line 4193.
+Package hyperref Info: Backreferencing OFF on input line 4198.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4717.
+Package hyperref Info: Bookmarks ON on input line 4431.
 \c@Hy@tempcnt=\count286
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5076.
+LaTeX Info: Redefining \url on input line 4790.
 \XeTeXLinkMargin=\dimen153
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
@@ -364,15 +369,15 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 \Fld@menulength=\count287
 \Field@Width=\dimen154
 \Fld@charsize=\dimen155
-Package hyperref Info: Hyper figures OFF on input line 6347.
-Package hyperref Info: Link nesting OFF on input line 6352.
-Package hyperref Info: Hyper index ON on input line 6355.
-Package hyperref Info: backreferencing OFF on input line 6362.
-Package hyperref Info: Link coloring OFF on input line 6367.
-Package hyperref Info: Link coloring with OCG OFF on input line 6372.
-Package hyperref Info: PDF/A mode OFF on input line 6377.
-LaTeX Info: Redefining \ref on input line 6417.
-LaTeX Info: Redefining \pageref on input line 6421.
+Package hyperref Info: Hyper figures OFF on input line 6061.
+Package hyperref Info: Link nesting OFF on input line 6066.
+Package hyperref Info: Hyper index ON on input line 6069.
+Package hyperref Info: backreferencing OFF on input line 6076.
+Package hyperref Info: Link coloring OFF on input line 6081.
+Package hyperref Info: Link coloring with OCG OFF on input line 6086.
+Package hyperref Info: PDF/A mode OFF on input line 6091.
+LaTeX Info: Redefining \ref on input line 6131.
+LaTeX Info: Redefining \pageref on input line 6135.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.s
 ty
@@ -387,7 +392,7 @@ with kernel methods
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2020-05-15 v7.00e Hyperref driver for XeTeX
+File: hxetex.def 2021-02-07 v7.00h Hyperref driver for XeTeX
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringe
 nc.sty
@@ -606,8 +611,8 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 122.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.s
 ty
-Package: fancyhdr 2021/01/04 v4.0 Extensive control of page headers and footers
-
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
 \f@nch@headwidth=\skip58
 \f@nch@O@elh=\skip59
 \f@nch@O@erh=\skip60
@@ -961,7 +966,7 @@ Package hyperref Info: Link coloring ON on input line 181.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.st
 y
-Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.s
 ty
@@ -1094,41 +1099,41 @@ Chapitre 1.
 [5] [6] [7] [8] [9]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 507.
-[10] [11] [12] [13] [14
+[10] [11] [12] [13] [14]
+Chapitre 2.
+[15
 
 ]
-Chapitre 2.
-[15]
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-30-1.pdf Graphic fil
-e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-30-1.pdf>
-[16]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-32-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-32-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[17]
+[16]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-34-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-34-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[18] [19]
+[17]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[18] [19]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-38-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-38-1.pdf>
 [20]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 966.
+(Font)              scaled to size 14.4pt on input line 1015.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 966.
+(Font)              scaled to size 14.4013pt on input line 1015.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 966.
+(Font)              scaled to size 14.39845pt on input line 1015.
 Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
 [21] [22] [23] [24]
 File: images/graph2.png Graphic file (type bmp)
@@ -1151,7 +1156,7 @@ Chapitre 5.
 [33] [34
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 1627--1629
+Underfull \hbox (badness 2103) in paragraph at lines 1679--1681
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
@@ -1159,10 +1164,10 @@ tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 
 [35] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20906 strings out of 479207
- 368246 string characters out of 5872785
- 979485 words of memory out of 5000000
- 40109 multiletter control sequences out of 15000+600000
+ 20429 strings out of 479205
+ 363529 string characters out of 5872771
+ 975754 words of memory out of 5000000
+ 39628 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,16n,122p,954b,533s stack positions out of 5000i,500n,10000p,200000b,80000s

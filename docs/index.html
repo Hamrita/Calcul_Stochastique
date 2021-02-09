@@ -142,8 +142,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fonctions-génératrices-des-moments"><i class="fa fa-check"></i><b>1.4</b> Fonctions génératrices des moments</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#fonctions-caractéristiques"><i class="fa fa-check"></i><b>1.5</b> Fonctions caractéristiques</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle</a><ul>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle---variance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle - Variance conditionnelle</a><ul>
 <li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#densité-conditionnelle"><i class="fa fa-check"></i><b>1.6.1</b> Densité conditionnelle</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6.2</b> Espérance conditionnelle</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
@@ -589,8 +590,8 @@ Alors les propriétés suivantes sont toujours vraies :</p>
 </div>
 
 </div>
-<div id="espérance-conditionnelle" class="section level2">
-<h2><span class="header-section-number">1.6</span> Espérance conditionnelle</h2>
+<div id="espérance-conditionnelle---variance-conditionnelle" class="section level2">
+<h2><span class="header-section-number">1.6</span> Espérance conditionnelle - Variance conditionnelle</h2>
 <p>L’un des concepts les plus utiles de la théorie des probabilités est celui de la probabilité conditionnelle et de l’espérance conditionnelle. La raison est double. Premièrement, dans la pratique, nous nous intéressons souvent au calcul des probabilités et des espérances lorsqu’une information partielle est
 disponible; par conséquent, les probabilités et les espérances souhaitées sont conditionnelles. Deuxièmement, pour calculer une probabilité , il est souvent extrêmement utile d’abord <em>conditionner</em> une variable aléatoire appropriée.</p>
 <div id="densité-conditionnelle" class="section level3">
@@ -616,7 +617,7 @@ disponible; par conséquent, les probabilités et les espérances souhaitées so
 Déterminer la loi conditionnelle <span class="math inline">\(f_{X|Y=1}(x,y)\)</span>.
 </div>
 
-La densité conditionnelle est par définition
+<p>La densité conditionnelle est par définition
 <span class="math display">\[
 {f}_{X|Y=1}(x,y)=\dfrac{P(X=x,Y=1)}{{P}_Y(Y=1)}
 \]</span>
@@ -627,12 +628,52 @@ D’où
 \]</span>
 <span class="math display">\[
 {f}_{X|Y=1}(2,1)=\dfrac{P(X=2,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(2,1)}{{P}_Y(1)}=\dfrac{1}{6}
-\]</span>
+\]</span></p>
+</div>
+<div id="espérance-conditionnelle" class="section level3">
+<h3><span class="header-section-number">1.6.2</span> Espérance conditionnelle</h3>
+<p>Une espérance conditionnelle est une expression calculée depuis une distribution conditionnelle. On écrit <span class="math inline">\(\mathbb{E}\left(Y|X=x \right)\)</span> pour l’espérance de <span class="math inline">\(Y\)</span> sachant <span class="math inline">\(X=x\)</span>.</p>
 
-<div class="example">
-<span id="exm:unnamed-chunk-23" class="example"><strong>Exemple 1.11  </strong></span>
+<div class="definition">
+<span id="def:unnamed-chunk-23" class="definition"><strong>Définition 1.9  </strong></span>L’espérance conditionnelle de <span class="math inline">\(Y\)</span> sachant <span class="math inline">\(X=x\)</span> est
+<span class="math display">\[
+\mathbb{E}\left(Y|X=x \right)=\left\{
+\begin{array}{ll}
+\displaystyle \sum_y y\mathbb{P}\left(Y=y|X=x \right) &amp; \text{ cas discret}\\
+\displaystyle \int_{\mathbb{R}}yf_{Y|X}(x,y)dy &amp; \text{ cas continu}
+\end{array}
+\right.
+\]</span>
 </div>
 
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-24" class="example"><strong>Exemple 1.11  </strong></span>On donne <span class="math inline">\(Y=\begin{cases}  1 \text{ avec une probabilité }\frac{1}{8}\\  2 \text{ avec une probabilité }\frac{7}{8}  \end{cases}\)</span></p>
+<p>et <span class="math inline">\(X|Y=\begin{cases}  2Y \text{ avec une probabilité }\frac{3}{4}\\  3Y \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
+Déterminer <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)\)</span>.
+</div>
+
+<p>Si <span class="math inline">\(Y=\)</span>, alors <span class="math inline">\(\left(X|Y= \right)= \begin{cases}  2 \text{ avec une probabilité }\frac{3}{4}\\  3 \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
+<p>D’où <span class="math inline">\(\mathbb{E}\left( X|Y=1\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=1\right)=2\times\frac{3}{4}+3\times \frac{1}{4}=\frac{9}{4}\)</span>.</p>
+<p>Si <span class="math inline">\(Y=2\)</span>, alors <span class="math inline">\(\left(X|Y=2 \right)= \begin{cases}  4 \text{ avec une probabilité }\frac{3}{4}\\  6 \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
+<p>D’où <span class="math inline">\(\mathbb{E}\left( X|Y=2\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=2\right)=4\times\frac{3}{4}+6\times \frac{1}{4}=\frac{18}{4}\)</span>.</p>
+<p>Donc <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)= \begin{cases}  \frac{9}{4} \text{ si }Y=1 \text{ avec une prob} =\frac{3}{4}\\  \frac{18}{4} \text{ si } Y=2 \text{ avec une prob }=\frac{1}{4}  \end{cases}\)</span>.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-25" class="example"><strong>Exemple 1.12  </strong></span>Soit la densité jointe d’un couple aléatoire définie par: <span class="math display">\[f(x,y)=\frac{2}{xy},\; \text{ pour }\;1&lt;y&lt;x&lt;e \]</span>
+Déterminer <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)\)</span>
+</div>
+
+<p>Par définition <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{X|Y}(x,y)dy\)</span>.</p>
+<p>Or <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\)</span> avec
+<span class="math display">\[\begin{align*}
+{f}_X(x)=&amp;\int_1^x\dfrac{2}{xy}dy=\dfrac{2}{x}\biggl[\ln(y) \biggr]_1^x\\
+=&amp;\dfrac{2\ln(x)}{x},\;\text{ pour }\; 1&lt;x&lt;e.
+\end{align*}\]</span>
+D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)}\)</span> pour <span class="math inline">\(1&lt;y&lt;x\)</span>, et par conséquent,
+<span class="math display">\[ 
+\mathbb{E}\left( Y|X=x\right)=\int_1^x \dfrac{y}{y\ln(x)}dy=\dfrac{1}{\ln(x)}\biggl[ y\biggr]_1^x=\dfrac{x-1}{\ln(x)}
+\]</span></p>
 
 </div>
 </div>

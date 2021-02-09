@@ -402,7 +402,7 @@ La fonction caractéristique de la loi exponentielle de paramètre $\lambda$ est
   $$
 ```
 
-## Espérance conditionnelle
+## Espérance conditionnelle - Variance conditionnelle
 
 L'un des concepts les plus utiles de la théorie des probabilités est celui de la probabilité conditionnelle et de l'espérance conditionnelle. La raison est double. Premièrement, dans la pratique, nous nous intéressons souvent au calcul des probabilités et des espérances lorsqu'une information partielle est
 disponible; par conséquent, les probabilités et les espérances souhaitées sont conditionnelles. Deuxièmement, pour calculer une probabilité , il est souvent extrêmement utile d'abord *conditionner* une variable aléatoire appropriée.
@@ -442,7 +442,75 @@ $$
 $$
 {f}_{X|Y=1}(2,1)=\dfrac{P(X=2,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(2,1)}{{P}_Y(1)}=\dfrac{1}{6}
 $$
-```{example}
 
+### Espérance conditionnelle
+
+Une espérance conditionnelle est une expression calculée depuis une distribution conditionnelle. On écrit \(\mathbb{E}\left(Y|X=x \right) \) pour l'espérance de \(Y\) sachant \(X=x\).
+
+```{definition}
+L'espérance conditionnelle de \(Y\) sachant \(X=x\) est
+\[
+\mathbb{E}\left(Y|X=x \right)=\left\{
+\begin{array}{ll}
+\displaystyle \sum_y y\mathbb{P}\left(Y=y|X=x \right) & \text{ cas discret}\\
+\displaystyle \int_{\mathbb{R}}yf_{Y|X}(x,y)dy & \text{ cas continu}
+\end{array}
+\right.
+\]
 ```
 
+```{example}
+On donne \(Y=\begin{cases}
+           1 \text{ avec une probabilité }\frac{1}{8}\\
+           2 \text{ avec une probabilité }\frac{7}{8}
+  \end{cases}
+           \)
+
+et \(X|Y=\begin{cases}
+           2Y \text{ avec une probabilité }\frac{3}{4}\\
+           3Y \text{ avec une probabilité }\frac{1}{4}
+  \end{cases}
+           \)
+
+Déterminer \(\mathbb{E}\left( X|Y=y\right)\).
+```
+
+Si \(Y= \), alors \(\left(X|Y= \right)= 
+\begin{cases}
+           2 \text{ avec une probabilité }\frac{3}{4}\\
+           3 \text{ avec une probabilité }\frac{1}{4}
+  \end{cases}
+\)
+
+D'où \( \mathbb{E}\left( X|Y=1\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=1\right)=2\times\frac{3}{4}+3\times \frac{1}{4}=\frac{9}{4} \).
+
+Si \(Y=2 \), alors \(\left(X|Y=2 \right)= 
+\begin{cases}
+           4 \text{ avec une probabilité }\frac{3}{4}\\
+           6 \text{ avec une probabilité }\frac{1}{4}
+  \end{cases}
+\)
+
+D'où \( \mathbb{E}\left( X|Y=2\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=2\right)=4\times\frac{3}{4}+6\times \frac{1}{4}=\frac{18}{4} \).
+
+Donc \(\mathbb{E}\left( X|Y=y\right)= \begin{cases}
+           \frac{9}{4} \text{ si }Y=1 \text{ avec une prob} =\frac{3}{4}\\
+           \frac{18}{4} \text{ si } Y=2 \text{ avec une prob }=\frac{1}{4}
+  \end{cases}\).
+
+```{example}
+Soit la densité jointe d'un couple aléatoire définie par: \[f(x,y)=\frac{2}{xy},\; \text{ pour }\;1<y<x<e \]
+Déterminer \(\mathbb{E}\left( Y|X=x\right)\)
+```
+
+Par définition \(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{X|Y}(x,y)dy \).
+
+Or \( {f}_{X|Y}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\) avec
+\begin{align*}
+{f}_X(x)=&\int_1^x\dfrac{2}{xy}dy=\dfrac{2}{x}\biggl[\ln(y) \biggr]_1^x\\
+=&\dfrac{2\ln(x)}{x},\;\text{ pour }\; 1<x<e.
+\end{align*}
+D'où \({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)} \) pour \(1<y<x \), et par conséquent,
+\[ 
+\mathbb{E}\left( Y|X=x\right)=\int_1^x \dfrac{y}{y\ln(x)}dy=\dfrac{1}{\ln(x)}\biggl[ y\biggr]_1^x=\dfrac{x-1}{\ln(x)}
+\]
