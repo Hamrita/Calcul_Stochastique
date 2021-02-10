@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.9)  10 FEB 2021 00:00
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.9)  10 FEB 2021 02:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1099,77 +1099,81 @@ Chapitre 1.
 [5] [6] [7] [8] [9]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 507.
-[10] [11] [12] [13] [14]
-Chapitre 2.
-[15
+[10] [11] [12] [13]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-29-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-29-1.pdf>
+[14] [15] [16
 
 ]
+Chapitre 2.
+[17]
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-32-1.pdf Graphic fil
-e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-32-1.pdf>
-[16]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-34-1.pdf Graphic fil
-e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-34-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[17]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[18] [19]
+[18]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-38-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-38-1.pdf>
-[20]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[19]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-40-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-40-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[20] [21]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf>
+[22]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1015.
+(Font)              scaled to size 14.4pt on input line 1089.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 1015.
+(Font)              scaled to size 14.4013pt on input line 1089.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1015.
+(Font)              scaled to size 14.39845pt on input line 1089.
 Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
-[21] [22] [23] [24]
+[23] [24] [25] [26]
 File: images/graph2.png Graphic file (type bmp)
 <images/graph2.png>
-[25]
+[27]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[26] [27] [28]
+[28] [29] [30]
 Chapitre 3.
-[29
+[31
 
-] [30
+] [32
 
 ]
 Chapitre 4.
-[31] [32
-
-]
-Chapitre 5.
 [33] [34
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 1679--1681
+Chapitre 5.
+[35] [36
+
+]
+Underfull \hbox (badness 2103) in paragraph at lines 1762--1764
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
  []
 
-[35] (./Calcul_Stochastique.aux) ) 
+[37] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20429 strings out of 479205
- 363529 string characters out of 5872771
- 975754 words of memory out of 5000000
- 39628 multiletter control sequences out of 15000+600000
+ 20439 strings out of 479205
+ 364026 string characters out of 5872771
+ 975996 words of memory out of 5000000
+ 39637 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,16n,122p,954b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,16n,122p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Calcul_Stochastique.pdf (35 pages).
+Output written on Calcul_Stochastique.pdf (37 pages).

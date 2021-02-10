@@ -13,7 +13,7 @@ language:
     cnj: 'Conjecture '
     def: 'Définition '
     exm: 'Exemple '
-    exr: 'Exercise '
+    exr: 'Exercice '
     proof: 'Preuve '
     remark: 'Remarque '
     solution: 'Solution '

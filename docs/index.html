@@ -648,7 +648,7 @@ D’où
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-24" class="example"><strong>Exemple 1.11  </strong></span>On donne <span class="math inline">\(Y=\begin{cases}  1 \text{ avec une probabilité }\frac{1}{8}\\  2 \text{ avec une probabilité }\frac{7}{8}  \end{cases}\)</span></p>
+<p><span id="exm:exple11" class="example"><strong>Exemple 1.11  </strong></span>On donne <span class="math inline">\(Y=\begin{cases}  1 \text{ avec une probabilité }\frac{1}{8}\\  2 \text{ avec une probabilité }\frac{7}{8}  \end{cases}\)</span></p>
 <p>et <span class="math inline">\(X|Y=\begin{cases}  2Y \text{ avec une probabilité }\frac{3}{4}\\  3Y \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
 Déterminer <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)\)</span>.
 </div>
@@ -657,10 +657,10 @@ Déterminer <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)\)</span>.
 <p>D’où <span class="math inline">\(\mathbb{E}\left( X|Y=1\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=1\right)=2\times\frac{3}{4}+3\times \frac{1}{4}=\frac{9}{4}\)</span>.</p>
 <p>Si <span class="math inline">\(Y=2\)</span>, alors <span class="math inline">\(\left(X|Y=2 \right)= \begin{cases}  4 \text{ avec une probabilité }\frac{3}{4}\\  6 \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
 <p>D’où <span class="math inline">\(\mathbb{E}\left( X|Y=2\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=2\right)=4\times\frac{3}{4}+6\times \frac{1}{4}=\frac{18}{4}\)</span>.</p>
-<p>Donc <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)= \begin{cases}  \frac{9}{4} \text{ si }Y=1 \text{ avec une prob} =\frac{3}{4}\\  \frac{18}{4} \text{ si } Y=2 \text{ avec une prob }=\frac{1}{4}  \end{cases}\)</span>.</p>
+<p>Donc <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)= \begin{cases}  \frac{9}{4} \text{ si }Y=1 \text{ avec une prob} =\frac{1}{8}\\  \frac{18}{4} \text{ si } Y=2 \text{ avec une prob }=\frac{7}{8}  \end{cases}\)</span>.</p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-25" class="example"><strong>Exemple 1.12  </strong></span>Soit la densité jointe d’un couple aléatoire définie par: <span class="math display">\[f(x,y)=\frac{2}{xy},\; \text{ pour }\;1&lt;y&lt;x&lt;e \]</span>
+<span id="exm:unnamed-chunk-24" class="example"><strong>Exemple 1.12  </strong></span>Soit la densité jointe d’un couple aléatoire définie par: <span class="math display">\[f(x,y)=\frac{2}{xy},\; \text{ pour }\;1&lt;y&lt;x&lt;e \]</span>
 Déterminer <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)\)</span>
 </div>
 
@@ -674,7 +674,51 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 <span class="math display">\[ 
 \mathbb{E}\left( Y|X=x\right)=\int_1^x \dfrac{y}{y\ln(x)}dy=\dfrac{1}{\ln(x)}\biggl[ y\biggr]_1^x=\dfrac{x-1}{\ln(x)}
 \]</span></p>
+<div id="propriétés-de-lespérance-conditionnelle" class="section level4 unnumbered">
+<h4>Propriétés de l’espérance conditionnelle</h4>
+<p><strong>1. Linéarité:</strong> Pour toutes constantes <span class="math inline">\(a,b\)</span> et <span class="math inline">\(X,Y\)</span> et <span class="math inline">\(Z\)</span> des variables aléatoires,
+<span class="math display">\[\mathbb{E}\left(aY+bZ|X=x\right)=a \mathbb{E}\left(Y|X=x\right)+b\mathbb{E}\left(Z|X=x\right)\]</span>
+<strong>2. Indépendance:</strong> Si <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont deux variables aléatoires indépendantes, alors <span class="math inline">\(\mathbb{E}\left(Y|X=x\right)=\mathbb{E}\left(Y\right)\)</span></p>
+<p><strong>3.</strong> <span class="math inline">\(\mathbb{E}\left(g(X)|X=x\right)=\mathbb{E}\left(X\right)\)</span> où <span class="math inline">\(g\)</span> est une transformation.</p>
+<p><strong>4. Espérance totale:</strong> <span class="math inline">\(\mathbb{E}\left(Y\right)=\mathbb{E}\bigl(\mathbb{E}\left(Y|X=x\right)\bigr)\)</span>: La moyenne totale est la moyenne des moyennes.</p>
 
+<div class="example">
+<p><span id="exm:unnamed-chunk-25" class="example"><strong>Exemple 1.13  </strong></span>Reprenons l’exemple <a href="index.html#exm:exple11">1.11</a>.</p>
+<p><span class="math inline">\(\mathbb{E}\left( X|Y=y\right)= \begin{cases}  \frac{9}{4} \text{  avec une prob } =\frac{1}{8}\\  \frac{18}{4} \text{ avec une prob  }=\frac{7}{8}  \end{cases}\)</span>.</p>
+<p>Donc, l’espérance totale est:</p>
+<p><span class="math inline">\(\mathbb{E}\left(X\right)= \frac{9}{4} \times \frac{1}{8} + \frac{18}{4} \times \frac{7}{8} = \frac{135}{32}\)</span></p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-26" class="exercise"><strong>Exercice 1.1  </strong></span>On jette une pièce de monnaie équilibrée. Soit <span class="math inline">\(Y\)</span> la variable aléatoire désignant le nombre des lancers avant d’obtenir Face pour la première fois.</p>
+<ol style="list-style-type: decimal">
+<li>Déterminer la loi de <span class="math inline">\(Y\)</span> ainsi que son espérance et sa variance.</li>
+<li>Simuler 10 000 réalisations de <span class="math inline">\(Y\)</span>.</li>
+<li>Soit <span class="math inline">\(\left(X|Y=y\right)\sim \mathcal{P}(\lambda Y)\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Calculer <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span>.</li>
+<li>En prenant <span class="math inline">\(\lambda=2\)</span> et à l’aide des simulations, donner la valeur de
+<span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span>.</li>
+</ol></li>
+</ol>
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solution </em></span> 
+</div>
+
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2">y=<span class="kw">rgeom</span>(<span class="dv">10000</span>, <span class="dt">prob=</span><span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2">x=<span class="kw">rpois</span>(<span class="dv">10000</span>,<span class="dt">lambda =</span> <span class="dv">2</span><span class="op">*</span>y)</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="kw">mean</span>(x)</a></code></pre></div>
+<pre><code>## [1] 2.0029</code></pre>
+<p>La figure suivante donne l’évolution de <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span> en fonction du nombre des simulations.
+<img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-29-1.png" width="480" style="display: block; margin: auto;" /></p>
+
+</div>
 </div>
 </div>
 </div>
