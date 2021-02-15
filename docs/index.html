@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle---variance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle - Variance conditionnelle</a><ul>
 <li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#densité-conditionnelle"><i class="fa fa-check"></i><b>1.6.1</b> Densité conditionnelle</a></li>
 <li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6.2</b> Espérance conditionnelle</a></li>
+<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#variance-conditionnelle"><i class="fa fa-check"></i><b>1.6.3</b> Variance conditionnelle</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
@@ -544,6 +545,7 @@ The 2nd centralized moment&#39;s value is:
 </div>
 <div id="fonctions-caractéristiques" class="section level2">
 <h2><span class="header-section-number">1.5</span> Fonctions caractéristiques</h2>
+Il existe des variables aléatoires pour lesquelles la fonction génératrice des moments n’existe pas. Dans ce cas, on peut faire recours à la fonction caractéristique définie ci-dessous.
 
 <div class="definition">
 <p><span id="def:unnamed-chunk-16" class="definition"><strong>Définition 1.7  </strong></span>La <strong>fonction caractéristique</strong> d’une variable aléatoire <span class="math inline">\(X\)</span> est la fonction à valeurs complexes définie sur <span class="math inline">\(\mathbb {R}\)</span> par</p>
@@ -585,10 +587,14 @@ Alors les propriétés suivantes sont toujours vraies :</p>
 <div class="example">
 <span id="exm:unnamed-chunk-20" class="example"><strong>Exemple 1.9  (Loi exponentielle)  </strong></span>La fonction caractéristique de la loi exponentielle de paramètre <span class="math inline">\(\lambda\)</span> est:
 <span class="math display">\[
-  \psi(t)=\dfrac{\lambda}{\lambda-\mathrm{i}t}
+  \psi(t)=\dfrac{\lambda}{\mathrm{i}t-\lambda}
   \]</span>
 </div>
 
+<p>Si <span class="math inline">\(X_1,X_2,\ldots , X_n\)</span> sont des variables indépendantes, alors
+<span class="math display">\[
+\psi_{\sum_iX_i}(t)=\prod_i\psi_{X_i}(t)
+\]</span></p>
 </div>
 <div id="espérance-conditionnelle---variance-conditionnelle" class="section level2">
 <h2><span class="header-section-number">1.6</span> Espérance conditionnelle - Variance conditionnelle</h2>
@@ -697,7 +703,7 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 <li>Simuler 10 000 réalisations de <span class="math inline">\(Y\)</span>.</li>
 <li>Soit <span class="math inline">\(\left(X|Y=y\right)\sim \mathcal{P}(\lambda Y)\)</span>.
 <ol style="list-style-type: lower-alpha">
-<li>Calculer <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span>.</li>
+<li>Calculer <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span> et <span class="math inline">\(\mathbb{E}\left(X\right)\)</span>.</li>
 <li>En prenant <span class="math inline">\(\lambda=2\)</span> et à l’aide des simulations, donner la valeur de
 <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span>.</li>
 </ol></li>
@@ -706,7 +712,18 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 
 
 <div class="solution">
- <span class="solution"><em>Solution </em></span> 
+<p> <span class="solution"><em>Solution </em></span> 1. Soit <span class="math inline">\(P(F)=p\)</span> et <span class="math inline">\(P(P)=1-p\)</span>. On a <span class="math inline">\((n-1)\)</span> premières épreuves donnant <span class="math inline">\(P\)</span> et la nième épreuve donne <span class="math inline">\(F\)</span>, et puisque les épreuves sont indépendantes, alors
+<span class="math display">\[
+\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n-1}p\;,\;\; n=1,2,\ldots  
+  \]</span>
+Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Soit <span class="math inline">\(Z=(X|Y=y)\sim \mathcal{P}(\lambda Y)\)</span>, <span class="math inline">\(\mathbb{E}\left(Z\right)=\mathbb{E}\left(X|Y=y\right)= \lambda Y\)</span>.</li>
+</ol>
+<span class="math display">\[\begin{align*}
+\mathbb{E}\left(X\right)&amp;=\mathbb{E}\bigl(\mathbb{E}\left(X|Y=y\right)\bigr)=\mathbb{E}(\lambda Y)\\
+&amp;= \lambda \mathbb{E}(Y)=\lambda \dfrac{1-p}{p}
+\end{align*}\]</span>
 </div>
 
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
@@ -717,6 +734,53 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 <pre><code>## [1] 2.0029</code></pre>
 <p>La figure suivante donne l’évolution de <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span> en fonction du nombre des simulations.
 <img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-29-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="variance-conditionnelle" class="section level3">
+<h3><span class="header-section-number">1.6.3</span> Variance conditionnelle</h3>
+<p>Similairement à l’espérance conditionnelle, la variance conditionnelle est une variance prise par rapport à une distribution conditionnelle. Étant donné les variables aléatoires <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>, soit <span class="math inline">\(m_X=\mathbb{E}\left(Y|X=x \right)\)</span>. La variance conditionnelle <span class="math inline">\(\mathbb{V}(Y | X = x)\)</span>est définie comme suit:</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-30" class="definition"><strong>Définition 1.10  </strong></span>La variance conditionnelle de <span class="math inline">\(Y\)</span> sachant <span class="math inline">\(X=x\)</span> est
+<span class="math display">\[
+\mathbb{V}\left(Y|X=x \right)=\left\{
+\begin{array}{ll}
+\displaystyle \sum_y (y-m_X)\mathbb{P}\left(Y=y|X=x \right) &amp; \text{ cas discret}\\
+\displaystyle \int_{\mathbb{R}}(y-m_X)^2f_{Y|X}(x,y)dy &amp; \text{ cas continu}
+\end{array}
+\right.
+\]</span>
+</div>
+
+<p>La variance conditinnelle possède les propriétés suivantes:</p>
+<div id="propriétes-de-la-variance-conditionnelle" class="section level4 unnumbered">
+<h4>Propriétes de la variance conditionnelle</h4>
+<p><strong>1.</strong> <span class="math inline">\(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2=\)</span>.</p>
+<p><strong>2.</strong> <span class="math inline">\(\mathbb{V}(aY + b|X = x) = a^2\mathbb{V}(Y|X = x)\)</span>.</p>
+<p><strong>3. Variance totale:</strong> <span class="math inline">\(\mathbb{V}(Y) = \mathbb{E}\bigl(\mathbb{V}(Y|X)\bigr) + \mathbb{V}\bigl(\mathbb{E}(Y|X)\bigr)\)</span>.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-31" class="example"><strong>Exemple 1.14  </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire uniforme sur <span class="math inline">\(]0,1[\)</span>. Si <span class="math inline">\(X=x\)</span>, alors <span class="math inline">\(Y\)</span> suit une loi uniforme sur <span class="math inline">\(]0,x[\)</span>. Déterminer la variance de <span class="math inline">\(Y\)</span>.
+</div>
+
+<p>La distribution conditionnelle de <span class="math inline">\(Y|X=x\)</span> est uniforme sur <span class="math inline">\(]0,x[\)</span>. On déduit alors,
+<span class="math display">\[\mathbb{E}(Y|X = x) = \dfrac{x}{2} \; \text{ et }\; \mathbb{V}(Y|X = x) = \dfrac{x^2}{12}\]</span>
+La propriété de la variance totale donne,
+<span class="math display">\[\begin{align*}\mathbb{V}(Y) &amp;= \mathbb{E}(\mathbb{V}(Y|X)) + \mathbb{V}(\mathbb{E}(Y|X)) = \mathbb{E}
+\left(\frac{X^2}{12}\right)
++ \mathbb{V}\left(\frac{X}{2}
+\right)\qquad \qquad \\
+&amp;=\frac{1}{12}\mathbb{E}
+\left(X^2\right)+\frac{1}{4}\mathbb{V}\left(X\right)=\frac{1}{12}\times \frac{1}{3}+\frac{1}{4}\times \frac{1}{12}=\frac{7}{144}=0.04861.
+\end{align*}\]</span></p>
+<p>Sous R, on peut procéder comme suit:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2">x=<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>)  <span class="co"># réalisations uniformes sur ]0,1[</span></a>
+<a class="sourceLine" id="cb16-3" title="3">y=<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,x)  <span class="co"># réalisations uniformes sur ]0,x[</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">var</span>(y)  </a></code></pre></div>
+<pre><code>[1] 0.04906725</code></pre>
+<p>L’évolution de la variance conditionnelle suivant le nombre des simulations est donnée par le graphique suivant:
+<img src="Calcul_Stochastique_files/figure-html/varCfig-1.png" width="480" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

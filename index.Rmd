@@ -353,7 +353,7 @@ MGF_evaluator("Normal",t=0, order_of_moment=2)
 ```
 
 ## Fonctions caractéristiques
-
+Il existe des variables aléatoires pour lesquelles la fonction génératrice des moments n'existe pas. Dans ce cas, on peut faire recours à la fonction caractéristique définie ci-dessous.
 ```{definition}
 La __fonction caractéristique__ d'une variable aléatoire $X$ est la fonction à valeurs complexes définie sur $\mathbb {R}$ par
 
@@ -398,9 +398,14 @@ La fonction caractéristique de la loi normale standard est: $$\psi(t)={e}^{-t^2
 ```{example, name="Loi exponentielle"}
 La fonction caractéristique de la loi exponentielle de paramètre $\lambda$ est:
   $$
-  \psi(t)=\dfrac{\lambda}{\lambda-\mathrm{i}t}
+  \psi(t)=\dfrac{\lambda}{\mathrm{i}t-\lambda}
   $$
 ```
+
+Si \(X_1,X_2,\ldots , X_n\) sont des variables indépendantes, alors 
+\[
+\psi_{\sum_iX_i}(t)=\prod_i\psi_{X_i}(t)
+\]
 
 ## Espérance conditionnelle - Variance conditionnelle
 
@@ -545,14 +550,25 @@ On jette une pièce de monnaie équilibrée. Soit \(Y\) la variable aléatoire d
    1. Déterminer la loi de \(Y\) ainsi que son espérance et sa variance.
    2. Simuler 10 000 réalisations de \(Y\).
    3. Soit \(\left(X|Y=y\right)\sim \mathcal{P}(\lambda Y)\).
-      a) Calculer \(\mathbb{E}\left(X|Y=y\right) \).
+      a) Calculer \(\mathbb{E}\left(X|Y=y\right) \) et \(\mathbb{E}\left(X\right) \).
       b) En prenant \(\lambda=2\) et à l'aide des simulations, donner la valeur de
 \(\mathbb{E}\left(X|Y=y\right) \).
 
 ```
 
 ```{solution}
+1. Soit \( P(F)=p\) et \(P(P)=1-p\). On a \((n-1)\) premières épreuves donnant $P$ et la nième épreuve donne $F$, et puisque les épreuves sont indépendantes, alors
+\[
+\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n-1}p\;,\;\; n=1,2,\ldots  
+  \]
+Donc \( Y\sim G(p)\).
 
+2. Soit \(Z=(X|Y=y)\sim \mathcal{P}(\lambda Y) \), \(\mathbb{E}\left(Z\right)=\mathbb{E}\left(X|Y=y\right)= \lambda Y\).
+
+\begin{align*}
+\mathbb{E}\left(X\right)&=\mathbb{E}\bigl(\mathbb{E}\left(X|Y=y\right)\bigr)=\mathbb{E}(\lambda Y)\\
+&= \lambda \mathbb{E}(Y)=\lambda \dfrac{1-p}{p}
+\end{align*}
 ```
 
 ```{r, geom}
@@ -570,5 +586,62 @@ La figure suivante donne l'évolution de \(\mathbb{E}\left(X|Y=y\right) \) en fo
 library(ggfortify)
 mx=cumsum(x[-(1:10)])/(11:10000)
 autoplot(as.ts(mx), size=0.6)+geom_hline(yintercept = 2, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(E), "(",expression(X),"|", expression(Y=y),")"))
+```
+
+### Variance conditionnelle
+
+Similairement à l'espérance conditionnelle, la variance conditionnelle est une variance prise par rapport à une distribution conditionnelle. Étant donné les variables aléatoires \(X\) et \(Y\), soit \(m_X=\mathbb{E}\left(Y|X=x \right)\). La variance conditionnelle \(\mathbb{V}(Y | X = x) \)est définie comme suit:
+
+
+```{definition}
+La variance conditionnelle de \(Y\) sachant \(X=x\) est
+\[
+\mathbb{V}\left(Y|X=x \right)=\left\{
+\begin{array}{ll}
+\displaystyle \sum_y (y-m_X)\mathbb{P}\left(Y=y|X=x \right) & \text{ cas discret}\\
+\displaystyle \int_{\mathbb{R}}(y-m_X)^2f_{Y|X}(x,y)dy & \text{ cas continu}
+\end{array}
+\right.
+\]
+```
+
+La variance conditinnelle possède les propriétés suivantes:
+
+#### Propriétes de la variance conditionnelle {-}
+
+__1.__ \(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2= \).
+
+__2.__ \(\mathbb{V}(aY + b|X = x) = a^2\mathbb{V}(Y|X = x)\).
+
+__3. Variance totale:__ \(\mathbb{V}(Y) = \mathbb{E}\bigl(\mathbb{V}(Y|X)\bigr) + \mathbb{V}\bigl(\mathbb{E}(Y|X)\bigr)\).
+
+```{example}
+Soit \(X\) une variable aléatoire uniforme sur \(]0,1[\). Si \(X=x\), alors \(Y\) suit une loi uniforme sur \(]0,x[\). Déterminer la variance de $Y$.
+```
+La distribution conditionnelle de \(Y|X=x\) est uniforme sur \(]0,x[\). On déduit alors,
+\[\mathbb{E}(Y|X = x) = \dfrac{x}{2} \; \text{ et }\; \mathbb{V}(Y|X = x) = \dfrac{x^2}{12}\]
+La propriété de la variance totale donne, 
+\begin{align*}\mathbb{V}(Y) &= \mathbb{E}(\mathbb{V}(Y|X)) + \mathbb{V}(\mathbb{E}(Y|X)) = \mathbb{E}
+\left(\frac{X^2}{12}\right)
++ \mathbb{V}\left(\frac{X}{2}
+\right)\qquad \qquad \\
+&=\frac{1}{12}\mathbb{E}
+\left(X^2\right)+\frac{1}{4}\mathbb{V}\left(X\right)=\frac{1}{12}\times \frac{1}{3}+\frac{1}{4}\times \frac{1}{12}=\frac{7}{144}=0.04861.
+\end{align*}
+
+Sous R, on peut procéder comme suit:
+```{r, varCond, comment=""}
+set.seed(1)
+x=runif(10000,0,1)  # réalisations uniformes sur ]0,1[
+y=runif(10000,0,x)  # réalisations uniformes sur ]0,x[
+var(y)  
+```
+L'évolution de la variance conditionnelle suivant le nombre des simulations est donnée par le graphique suivant:
+```{r,varCfig,echo=FALSE,fig.align='center', fig.width=5, fig.height=4, warning=FALSE, message=FALSE}
+vCond=NULL
+for(i in 11:10000){
+  vCond[i]=var(y[1:i])
+}
+autoplot(as.ts(vCond[-(1:10)]), size=0.6)+geom_hline(yintercept = 0.048611, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(V), "(",expression(X),"|", expression(Y=y),")"))
 ```
 
