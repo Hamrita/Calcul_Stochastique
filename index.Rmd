@@ -585,7 +585,7 @@ La figure suivante donne l'évolution de \(\mathbb{E}\left(X|Y=y\right) \) en fo
 ```{r,echo=F, fig.align='center', fig.width=5, fig.height=4, warning=FALSE, message=FALSE}
 library(ggfortify)
 mx=cumsum(x[-(1:10)])/(11:10000)
-autoplot(as.ts(mx), size=0.6)+geom_hline(yintercept = 2, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(E), "(",expression(X),"|", expression(Y=y),")"))
+autoplot(as.ts(mx), size=0.6)+geom_hline(yintercept = 2, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(E), "(",expression(X),"|", expression(Y),")"))
 ```
 
 ### Variance conditionnelle
@@ -609,7 +609,7 @@ La variance conditinnelle possède les propriétés suivantes:
 
 #### Propriétes de la variance conditionnelle {-}
 
-__1.__ \(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2= \).
+__1.__ \(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2 \).
 
 __2.__ \(\mathbb{V}(aY + b|X = x) = a^2\mathbb{V}(Y|X = x)\).
 
@@ -642,6 +642,89 @@ vCond=NULL
 for(i in 11:10000){
   vCond[i]=var(y[1:i])
 }
-autoplot(as.ts(vCond[-(1:10)]), size=0.6)+geom_hline(yintercept = 0.048611, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(V), "(",expression(X),"|", expression(Y=y),")"))
+autoplot(as.ts(vCond[-(1:10)]), size=0.6)+geom_hline(yintercept = 0.048611, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(V), "(",expression(X),"|", expression(Y),")"))
 ```
+
+### Théorèmes limites
+
+```{theorem, name="Loi forte des grands nombres"}
+Si \(X_1,X_2,\ldots, X_n \) sont des variables aléatoires \(iid\) de moyenne \(m\), alors
+\[
+\mathbb{P}\left[\lim_{n \rightarrow \infty}\overline{X}_n=m \right]=1
+\]
+```
+La moyenne des $n$ premiers termes d'une suite de variables aléatoires $iid$ converge presque sûrement vers l'espérance mathématique $\mathbb{E}(X_i)=m$, lorsque $n$ tend vers l'infini.
+
+Vérifions ce théorème à l'aide des simulations. On considère l'expérience suivante: On lance une pièce de monnaie équilibrée $n$ fois. Soit $X_i=1$ si Face et $X_i=0$ si Pile. D'après la loi des grands nombres, \(\overline{X}_n \) converge vers \(\mathbb{E}(X_i)=p=0.5 \).
+
+```{r, grandNombres, fig.align='center', fig.height=5,fig.width=6}
+set.seed(1)
+s=sample(c(0,1),10000, replace = T)
+x_bar=cumsum(s)/(1:10000)
+plot(x_bar, type="l",col="blue", xlab="Nombre de simulations", 
+     ylab="")
+abline(h=0.5, col="red", lwd=2)
+legend("bottomright", legend=c(expression(bar(X)),expression(p==0.5)),
+       lty=1,col=c("blue","red"),bty="n")
+```
+
+
+```{theorem, name="Loi faible des grands nombres"}
+Si \(X_1,X_2,\ldots, X_n \) sont des variables aléatoires \(iid\) de moyenne \(m\), alors
+\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[|\overline{X}_n-m| < \epsilon \right]=1, \;\; \forall \, \epsilon > 0
+\]
+```
+
+```{theorem, name="Théorème central limite"}
+Si \(X_1,X_2,\ldots, X_n \) sont des variables aléatoires \(iid(m,\sigma^2)\), alors
+\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[\frac{\overline{X}_n-m}{\sigma/\sqrt{n}} < t \right]=\mathbb{P}(Z <), \;\; \text{ avec } \; Z \sim N(0,1)
+\]
+```
+
+__Illustration sous R__
+
+Soit \(X_1, X_2,\ldots, X_{100} \) une suite de variables aléatoires telle que \(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)} \). On sait que \(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4 \).
+
+1. Simuler \(100\) réalisations du Poisson de paramètre \(\lambda=4 \) puis déduire la variable de $z$
+\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \].
+
+2. Répéter \(100000 \) les instructions précédentes et stocker le résultat dans un objet que l'on appelle `mu`.
+
+3. Représenter l'histogramme de `mu`. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.
+
+```{r, tcl, fig.align='center', fig.height=5, fig.width=6}
+# 1
+set.seed(1)
+simPois=rpois(n=100, lambda=4)
+z=(mean(simPois)-4)/(2/sqrt(100))
+# 2
+Z=function(){
+ simPois=rpois(n=100, lambda=4)
+(mean(simPois)-4)/(2/sqrt(100)) 
+}
+set.seed(1)
+mu=replicate(100000, Z())
+# 3
+hist(mu,freq = F)
+curve(dnorm,-4,4,add=T,col=4,lwd=2)
+```
+
+
+## Processus stochastique
+
+
+
+## Exercices {-}
+
+### Exercice 1 {-}
+
+Les citoyens de Sousse retirent de l'argent d'un distributeur de billets selon la fonction de probabilité suivante:
+
+|                      |        |       |       |
+|----------------------|:------:|:-----:|:-----:|
+|  $x_i$ en DT         |  100   |   200 |  500  |
+|  $\mathbb{P}(X=x_i)$ | 0.25   | 0.55  | 0.2   |
+
 

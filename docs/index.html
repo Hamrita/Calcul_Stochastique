@@ -146,6 +146,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#densité-conditionnelle"><i class="fa fa-check"></i><b>1.6.1</b> Densité conditionnelle</a></li>
 <li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6.2</b> Espérance conditionnelle</a></li>
 <li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#variance-conditionnelle"><i class="fa fa-check"></i><b>1.6.3</b> Variance conditionnelle</a></li>
+<li class="chapter" data-level="1.6.4" data-path="index.html"><a href="index.html#théorèmes-limites"><i class="fa fa-check"></i><b>1.6.4</b> Théorèmes limites</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#processus-stochastique"><i class="fa fa-check"></i><b>1.7</b> Processus stochastique</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-1"><i class="fa fa-check"></i>Exercice 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
@@ -755,7 +760,7 @@ Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
 <p>La variance conditinnelle possède les propriétés suivantes:</p>
 <div id="propriétes-de-la-variance-conditionnelle" class="section level4 unnumbered">
 <h4>Propriétes de la variance conditionnelle</h4>
-<p><strong>1.</strong> <span class="math inline">\(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2=\)</span>.</p>
+<p><strong>1.</strong> <span class="math inline">\(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2\)</span>.</p>
 <p><strong>2.</strong> <span class="math inline">\(\mathbb{V}(aY + b|X = x) = a^2\mathbb{V}(Y|X = x)\)</span>.</p>
 <p><strong>3. Variance totale:</strong> <span class="math inline">\(\mathbb{V}(Y) = \mathbb{E}\bigl(\mathbb{V}(Y|X)\bigr) + \mathbb{V}\bigl(\mathbb{E}(Y|X)\bigr)\)</span>.</p>
 
@@ -781,8 +786,95 @@ La propriété de la variance totale donne,
 <pre><code>[1] 0.04906725</code></pre>
 <p>L’évolution de la variance conditionnelle suivant le nombre des simulations est donnée par le graphique suivant:
 <img src="Calcul_Stochastique_files/figure-html/varCfig-1.png" width="480" style="display: block; margin: auto;" /></p>
-
 </div>
+</div>
+<div id="théorèmes-limites" class="section level3">
+<h3><span class="header-section-number">1.6.4</span> Théorèmes limites</h3>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-32" class="theorem"><strong>Théoreme 1.1  (Loi forte des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
+<span class="math display">\[
+\mathbb{P}\left[\lim_{n \rightarrow \infty}\overline{X}_n=m \right]=1
+\]</span>
+</div>
+
+<p>La moyenne des <span class="math inline">\(n\)</span> premiers termes d’une suite de variables aléatoires <span class="math inline">\(iid\)</span> converge presque sûrement vers l’espérance mathématique <span class="math inline">\(\mathbb{E}(X_i)=m\)</span>, lorsque <span class="math inline">\(n\)</span> tend vers l’infini.</p>
+<p>Vérifions ce théorème à l’aide des simulations. On considère l’expérience suivante: On lance une pièce de monnaie équilibrée <span class="math inline">\(n\)</span> fois. Soit <span class="math inline">\(X_i=1\)</span> si Face et <span class="math inline">\(X_i=0\)</span> si Pile. D’après la loi des grands nombres, <span class="math inline">\(\overline{X}_n\)</span> converge vers <span class="math inline">\(\mathbb{E}(X_i)=p=0.5\)</span>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb18-2" title="2">s=<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">10000</span>, <span class="dt">replace =</span> T)</a>
+<a class="sourceLine" id="cb18-3" title="3">x_bar=<span class="kw">cumsum</span>(s)<span class="op">/</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="kw">plot</span>(x_bar, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Nombre de simulations&quot;</span>, </a>
+<a class="sourceLine" id="cb18-5" title="5">     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="kw">abline</span>(<span class="dt">h=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">expression</span>(<span class="kw">bar</span>(X)),<span class="kw">expression</span>(p<span class="op">==</span><span class="fl">0.5</span>)),</a>
+<a class="sourceLine" id="cb18-8" title="8">       <span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>),<span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<p><img src="Calcul_Stochastique_files/figure-html/grandNombres-1.png" width="576" style="display: block; margin: auto;" /></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-33" class="theorem"><strong>Théoreme 1.2  (Loi faible des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
+<span class="math display">\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[|\overline{X}_n-m| &lt; \epsilon \right]=1, \;\; \forall \, \epsilon &gt; 0
+\]</span>
+</div>
+
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-34" class="theorem"><strong>Théoreme 1.3  (Théorème central limite)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid(m,\sigma^2)\)</span>, alors
+<span class="math display">\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[\frac{\overline{X}_n-m}{\sigma/\sqrt{n}} &lt; t \right]=\mathbb{P}(Z &lt;), \;\; \text{ avec } \; Z \sim N(0,1)
+\]</span>
+</div>
+
+<p><strong>Illustration sous R</strong></p>
+<p>Soit <span class="math inline">\(X_1, X_2,\ldots, X_{100}\)</span> une suite de variables aléatoires telle que <span class="math inline">\(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)}\)</span>. On sait que <span class="math inline">\(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Simuler <span class="math inline">\(100\)</span> réalisations du Poisson de paramètre <span class="math inline">\(\lambda=4\)</span> puis déduire la variable de <span class="math inline">\(z\)</span>
+<span class="math display">\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]</span>.</p></li>
+<li><p>Répéter <span class="math inline">\(100000\)</span> les instructions précédentes et stocker le résultat dans un objet que l’on appelle <code>mu</code>.</p></li>
+<li><p>Représenter l’histogramme de <code>mu</code>. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.</p></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># 1</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb19-3" title="3">simPois=<span class="kw">rpois</span>(<span class="dt">n=</span><span class="dv">100</span>, <span class="dt">lambda=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4">z=(<span class="kw">mean</span>(simPois)<span class="op">-</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="co"># 2</span></a>
+<a class="sourceLine" id="cb19-6" title="6">Z=<span class="cf">function</span>(){</a>
+<a class="sourceLine" id="cb19-7" title="7"> simPois=<span class="kw">rpois</span>(<span class="dt">n=</span><span class="dv">100</span>, <span class="dt">lambda=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb19-8" title="8">(<span class="kw">mean</span>(simPois)<span class="op">-</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)) </a>
+<a class="sourceLine" id="cb19-9" title="9">}</a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb19-11" title="11">mu=<span class="kw">replicate</span>(<span class="dv">100000</span>, <span class="kw">Z</span>())</a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="co"># 3</span></a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="kw">hist</span>(mu,<span class="dt">freq =</span> F)</a>
+<a class="sourceLine" id="cb19-14" title="14"><span class="kw">curve</span>(dnorm,<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">add=</span>T,<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="Calcul_Stochastique_files/figure-html/tcl-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="processus-stochastique" class="section level2">
+<h2><span class="header-section-number">1.7</span> Processus stochastique</h2>
+</div>
+<div id="exercices" class="section level2 unnumbered">
+<h2>Exercices</h2>
+<div id="exercice-1" class="section level3 unnumbered">
+<h3>Exercice 1</h3>
+<p>Les citoyens de Sousse retirent de l’argent d’un distributeur de billets selon la fonction de probabilité suivante:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_i\)</span> en DT</td>
+<td align="center">100</td>
+<td align="center">200</td>
+<td align="center">500</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbb{P}(X=x_i)\)</span></td>
+<td align="center">0.25</td>
+<td align="center">0.55</td>
+<td align="center">0.2</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>

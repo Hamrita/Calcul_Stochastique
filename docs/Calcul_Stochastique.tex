@@ -888,7 +888,7 @@ La variance conditinnelle possède les propriétés suivantes:
 \subsubsection*{Propriétes de la variance conditionnelle}\label{propriuxe9tes-de-la-variance-conditionnelle}}
 \addcontentsline{toc}{subsubsection}{Propriétes de la variance conditionnelle}
 
-\textbf{1.} \(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2=\).
+\textbf{1.} \(\mathbb{V}\left(Y|X=x \right)=\mathbb{E}\left(Y^2|X=x \right)-\mathbb{E}\left(Y|X=x \right)^2\).
 
 \textbf{2.} \(\mathbb{V}(aY + b|X = x) = a^2\mathbb{V}(Y|X = x)\).
 
@@ -927,6 +927,105 @@ L'évolution de la variance conditionnelle suivant le nombre des simulations est
 
 \begin{center}\includegraphics{Calcul_Stochastique_files/figure-latex/varCfig-1} \end{center}
 
+\hypertarget{thuxe9oruxe8mes-limites}{%
+\subsection{Théorèmes limites}\label{thuxe9oruxe8mes-limites}}
+
+\begin{theorem}[Loi forte des grands nombres]
+\protect\hypertarget{thm:unnamed-chunk-32}{}{\label{thm:unnamed-chunk-32} \iffalse (Loi forte des grands nombres) \fi{} }Si \(X_1,X_2,\ldots, X_n\) sont des variables aléatoires \(iid\) de moyenne \(m\), alors
+\[
+\mathbb{P}\left[\lim_{n \rightarrow \infty}\overline{X}_n=m \right]=1
+\]
+\end{theorem}
+La moyenne des \(n\) premiers termes d'une suite de variables aléatoires \(iid\) converge presque sûrement vers l'espérance mathématique \(\mathbb{E}(X_i)=m\), lorsque \(n\) tend vers l'infini.
+
+Vérifions ce théorème à l'aide des simulations. On considère l'expérience suivante: On lance une pièce de monnaie équilibrée \(n\) fois. Soit \(X_i=1\) si Face et \(X_i=0\) si Pile. D'après la loi des grands nombres, \(\overline{X}_n\) converge vers \(\mathbb{E}(X_i)=p=0.5\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{s=}\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}\DecValTok{10000}\NormalTok{, }\DataTypeTok{replace =}\NormalTok{ T)}
+\NormalTok{x_bar=}\KeywordTok{cumsum}\NormalTok{(s)}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10000}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(x_bar, }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{,}\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Nombre de simulations"}\NormalTok{, }
+     \DataTypeTok{ylab=}\StringTok{""}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\FloatTok{0.5}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\KeywordTok{expression}\NormalTok{(}\KeywordTok{bar}\NormalTok{(X)),}\KeywordTok{expression}\NormalTok{(p}\OperatorTok{==}\FloatTok{0.5}\NormalTok{)),}
+       \DataTypeTok{lty=}\DecValTok{1}\NormalTok{,}\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{Calcul_Stochastique_files/figure-latex/grandNombres-1} \end{center}
+
+\begin{theorem}[Loi faible des grands nombres]
+\protect\hypertarget{thm:unnamed-chunk-33}{}{\label{thm:unnamed-chunk-33} \iffalse (Loi faible des grands nombres) \fi{} }Si \(X_1,X_2,\ldots, X_n\) sont des variables aléatoires \(iid\) de moyenne \(m\), alors
+\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[|\overline{X}_n-m| < \epsilon \right]=1, \;\; \forall \, \epsilon > 0
+\]
+\end{theorem}
+
+\begin{theorem}[Théorème central limite]
+\protect\hypertarget{thm:unnamed-chunk-34}{}{\label{thm:unnamed-chunk-34} \iffalse (Théorème central limite) \fi{} }Si \(X_1,X_2,\ldots, X_n\) sont des variables aléatoires \(iid(m,\sigma^2)\), alors
+\[
+\lim_{n \rightarrow \infty}\mathbb{P}\left[\frac{\overline{X}_n-m}{\sigma/\sqrt{n}} < t \right]=\mathbb{P}(Z <), \;\; \text{ avec } \; Z \sim N(0,1)
+\]
+\end{theorem}
+
+\textbf{Illustration sous R}
+
+Soit \(X_1, X_2,\ldots, X_{100}\) une suite de variables aléatoires telle que \(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)}\). On sait que \(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Simuler \(100\) réalisations du Poisson de paramètre \(\lambda=4\) puis déduire la variable de \(z\)
+  \[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \].
+\item
+  Répéter \(100000\) les instructions précédentes et stocker le résultat dans un objet que l'on appelle \texttt{mu}.
+\item
+  Représenter l'histogramme de \texttt{mu}. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 1}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{simPois=}\KeywordTok{rpois}\NormalTok{(}\DataTypeTok{n=}\DecValTok{100}\NormalTok{, }\DataTypeTok{lambda=}\DecValTok{4}\NormalTok{)}
+\NormalTok{z=(}\KeywordTok{mean}\NormalTok{(simPois)}\OperatorTok{-}\DecValTok{4}\NormalTok{)}\OperatorTok{/}\NormalTok{(}\DecValTok{2}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{))}
+\CommentTok{# 2}
+\NormalTok{Z=}\ControlFlowTok{function}\NormalTok{()\{}
+\NormalTok{ simPois=}\KeywordTok{rpois}\NormalTok{(}\DataTypeTok{n=}\DecValTok{100}\NormalTok{, }\DataTypeTok{lambda=}\DecValTok{4}\NormalTok{)}
+\NormalTok{(}\KeywordTok{mean}\NormalTok{(simPois)}\OperatorTok{-}\DecValTok{4}\NormalTok{)}\OperatorTok{/}\NormalTok{(}\DecValTok{2}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{)) }
+\NormalTok{\}}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{mu=}\KeywordTok{replicate}\NormalTok{(}\DecValTok{100000}\NormalTok{, }\KeywordTok{Z}\NormalTok{())}
+\CommentTok{# 3}
+\KeywordTok{hist}\NormalTok{(mu,}\DataTypeTok{freq =}\NormalTok{ F)}
+\KeywordTok{curve}\NormalTok{(dnorm,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DataTypeTok{add=}\NormalTok{T,}\DataTypeTok{col=}\DecValTok{4}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{Calcul_Stochastique_files/figure-latex/tcl-1} \end{center}
+
+\hypertarget{processus-stochastique}{%
+\section{Processus stochastique}\label{processus-stochastique}}
+
+\hypertarget{exercices}{%
+\section*{Exercices}\label{exercices}}
+\addcontentsline{toc}{section}{Exercices}
+
+\hypertarget{exercice-1}{%
+\subsection*{Exercice 1}\label{exercice-1}}
+\addcontentsline{toc}{subsection}{Exercice 1}
+
+Les citoyens de Sousse retirent de l'argent d'un distributeur de billets selon la fonction de probabilité suivante:
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+\endhead
+\(x_i\) en DT & 100 & 200 & 500\tabularnewline
+\(\mathbb{P}(X=x_i)\) & 0.25 & 0.55 & 0.2\tabularnewline
+\bottomrule
+\end{longtable}
+
 \hypertarget{chauxeenes-de-markov}{%
 \chapter{Chaînes de Markov}\label{chauxeenes-de-markov}}
 
@@ -942,22 +1041,22 @@ Les chaînes de Markov sont largement utilisées dans de nombreux domaines tels 
 Soit \(X_0, X_1,\ldots, X_n, \ldots\) une suite de variables aléatoires sur un espace de probabilité \((\Omega,\mathcal{A}, \mathbb{P})\) à valeurs dans \(E\) (fini ou infini dénombrable).
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-32}{}{\label{def:unnamed-chunk-32} }La suite \((X_n)_{n \in \mathbb{N}}\) est une chaîne de Markov si pour tout \(n \in \mathbb{N}\) et pour tout \((x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}\) tel que \(\mathbb{P}(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) >0\), \(\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)\) ne dépend que des valeurs \(n\), \(x_n\) et \(x_{n+1}\).
+\protect\hypertarget{def:unnamed-chunk-35}{}{\label{def:unnamed-chunk-35} }La suite \((X_n)_{n \in \mathbb{N}}\) est une chaîne de Markov si pour tout \(n \in \mathbb{N}\) et pour tout \((x_0,x_1, \ldots,x_{n+1}) \in E^{n+2}\) tel que \(\mathbb{P}(X_n=x_n, X_{n-1}=x_{n-1},\ldots, X_0=x_0) >0\), \(\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)\) ne dépend que des valeurs \(n\), \(x_n\) et \(x_{n+1}\).
 \end{definition}
 L'ensemble \(E\) est appelé l'\(\color{blue}{\mathbf{\text{espace des états}}}\) de la chîne de Markov et les \(x_i\) sont appelés \(\color{blue}{\mathbf{\text{états}}}\).
 \begin{proposition}
-\protect\hypertarget{prp:unnamed-chunk-33}{}{\label{prp:unnamed-chunk-33} }Soit \((X_n)_{n \in \mathbb{N}}\) une chaine de Markov d'espace d'états \(E\). Pour tout \(n \in \mathbb{N}\) et pour tout \((x_0,x_1x\ldots,x_{n+1})\in E^{n+2}\), on a
+\protect\hypertarget{prp:unnamed-chunk-36}{}{\label{prp:unnamed-chunk-36} }Soit \((X_n)_{n \in \mathbb{N}}\) une chaine de Markov d'espace d'états \(E\). Pour tout \(n \in \mathbb{N}\) et pour tout \((x_0,x_1x\ldots,x_{n+1})\in E^{n+2}\), on a
 \[\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1},\ldots, X_0=x_0)=\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)\]
 \end{proposition}
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-34}{}{\label{def:unnamed-chunk-34} }Une chaîne de Markov \((X_n)_{n \in \mathbb{N}}\) est dite homogène (dans le temps) si \(\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)\) ne dépend pas de \(n\).
+\protect\hypertarget{def:unnamed-chunk-37}{}{\label{def:unnamed-chunk-37} }Une chaîne de Markov \((X_n)_{n \in \mathbb{N}}\) est dite homogène (dans le temps) si \(\mathbb{P}(X_{n+1}=x_{n+1}|X_n=x_n)\) ne dépend pas de \(n\).
 \end{definition}
 
 La dynamique du processus est alors entièrement caractérisé par les \(p_{ij}=\mathbb{P}(X_{n+1}=j|X_n=i)\), appelés \(\color{blue}{\mathbf{\text{probabilités de transitions}}}\) de l'état \(i\) à l'état \(j\) si la chaîne est homogène, ou plus généralement
 \[ p_{ij}^{(n)}=\mathbb{P}(X_{n+1}=j|X_n=i)\]
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-35}{}{\label{def:unnamed-chunk-35} }Une matrice \(P=(P_{ij},i,j \in E)\) est une matrice \(\color{blue}{\mathbf{\text{stochastique}}}\), ou matrice \(\color{blue}{\mathbf{\text{de transition}}}\) si chaque ligne \(P_i=(P_{ij}, j \in E)\) est une distribution de probabilité.
+\protect\hypertarget{def:unnamed-chunk-38}{}{\label{def:unnamed-chunk-38} }Une matrice \(P=(P_{ij},i,j \in E)\) est une matrice \(\color{blue}{\mathbf{\text{stochastique}}}\), ou matrice \(\color{blue}{\mathbf{\text{de transition}}}\) si chaque ligne \(P_i=(P_{ij}, j \in E)\) est une distribution de probabilité.
 \end{definition}
 
 Pour tout \(i,j \in E\), \(p_{ij}\) peut alors s'interpréter comme la probabilité d'aller à l'état \(j\) sachant qu'on se trouve à l'état \(i\) à l'instant précédent.
@@ -1027,10 +1126,10 @@ Le graphe de la chaîne associé à la matrice de transition définie ci-dessus 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-41-1.pdf}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-39}{}{\label{exm:unnamed-chunk-39} }Lors d'une ronde, une méthode simple pour tromper l'ennemi et d'avance ou reculer d'une manière aléatoire, en tirant pile ou face. On désigne par \(X_n\) la position de garde à l'instant \(n\). L'évolution peut se modéliser à l'aide d'une matrice de transition
+\protect\hypertarget{exm:unnamed-chunk-42}{}{\label{exm:unnamed-chunk-42} }Lors d'une ronde, une méthode simple pour tromper l'ennemi et d'avance ou reculer d'une manière aléatoire, en tirant pile ou face. On désigne par \(X_n\) la position de garde à l'instant \(n\). L'évolution peut se modéliser à l'aide d'une matrice de transition
 \[
  P=\begin{array}{c c} &
 \begin{array}{c c c c} \color{blue}{N} & \color{blue}{E} & \color{blue}{S} & \color{blue}{O} \\
@@ -1070,11 +1169,11 @@ Le graphe orienté correspondant à cette matrice de transition est:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf}
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-41}{}{\label{exm:unnamed-chunk-41} }La tendance d'un marché boursier peut être haussière (H), ou baissière (B) ou en consolidation (marché en range) (C). Le graphe associé est donné comme suit:
+\protect\hypertarget{exm:unnamed-chunk-44}{}{\label{exm:unnamed-chunk-44} }La tendance d'un marché boursier peut être haussière (H), ou baissière (B) ou en consolidation (marché en range) (C). Le graphe associé est donné comme suit:
 \end{example}
-\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 On déduit la matrice de transition
 \[
@@ -1088,7 +1187,7 @@ P=\left(
 \]
 On note qu'un jour haussier est suivi par un autre jour haussier dans 85\% des temps, par un jour baissier dans 6\% des temps et par un jour de consolidation dans 9\% des temps.
 \begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-43}{}{\label{exr:unnamed-chunk-43} }Dans un certain pays, il ne fait jamais beau deux jours de suite. Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances. Si un jour il pleut ou il neige, il y a une chance sur deux qu'il ait changement de temps le lendemain, et s'il y a changement, il y a une chance sur deux que ce soit pour du beau temps.
+\protect\hypertarget{exr:unnamed-chunk-46}{}{\label{exr:unnamed-chunk-46} }Dans un certain pays, il ne fait jamais beau deux jours de suite. Si un jour il fait beau, le lendemain il peut neiger ou pleuvoir avec autant de chances. Si un jour il pleut ou il neige, il y a une chance sur deux qu'il ait changement de temps le lendemain, et s'il y a changement, il y a une chance sur deux que ce soit pour du beau temps.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1139,7 +1238,7 @@ et le graphe orienté associé est:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1196,7 +1295,7 @@ La distribution de \(X_2\) est:
 \end{align*}
 
 \begin{theorem}
-\protect\hypertarget{thm:unnamed-chunk-45}{}{\label{thm:unnamed-chunk-45} }Soit \(\{X_0, X_1, X_2, \ldots \}\) une CM et \(P\) sa matrice de transition carré d'ordre \(N\). Si la distribution initiale, \(\mu_0\) est donnée, alors la distribution de probabilité de \(X_n\) est donnée par \(\mu_0 P^n\).
+\protect\hypertarget{thm:unnamed-chunk-48}{}{\label{thm:unnamed-chunk-48} }Soit \(\{X_0, X_1, X_2, \ldots \}\) une CM et \(P\) sa matrice de transition carré d'ordre \(N\). Si la distribution initiale, \(\mu_0\) est donnée, alors la distribution de probabilité de \(X_n\) est donnée par \(\mu_0 P^n\).
 \[
 X_0 \sim \mu_0 \Longrightarrow X_n \sim \mu_0 P
 \]
@@ -1208,12 +1307,12 @@ Rappelons qu'une trajectoire est une séquence
 de valeurs pour \(X_0, X_1,\ldots, X_n\). La propriété de Markov nous permet de trouver la probabilité de n'importe quelle trajectoire en multipliant la probabilité de départ et toutes les probabilités à un pas ultérieures.
 
 \begin{proposition}
-\protect\hypertarget{prp:unnamed-chunk-46}{}{\label{prp:unnamed-chunk-46} }Pour toute suite \(\{x_0, x_1, \ldots , x_n\}\) dans \(E\), on a
+\protect\hypertarget{prp:unnamed-chunk-49}{}{\label{prp:unnamed-chunk-49} }Pour toute suite \(\{x_0, x_1, \ldots , x_n\}\) dans \(E\), on a
 \(P(X_0 = x_0, X_1 = x_1,X_2 = x_2, \ldots , X_n = x_n) =\mu_0(x_0)P(x_0, x_1)P(x_1, x_2)\ldots P(x_{n−1}, x_n)\).
 \end{proposition}
 
 \begin{theorem}[Equations de Chapman-Kolmogorov]
-\protect\hypertarget{thm:unnamed-chunk-47}{}{\label{thm:unnamed-chunk-47} \iffalse (Equations de Chapman-Kolmogorov) \fi{} }Pour tout \$(i, j) \in E\^{}2 et tout couple \((m, n)\) d'entiers positifs, on a l'identité :
+\protect\hypertarget{thm:unnamed-chunk-50}{}{\label{thm:unnamed-chunk-50} \iffalse (Equations de Chapman-Kolmogorov) \fi{} }Pour tout \$(i, j) \in E\^{}2 et tout couple \((m, n)\) d'entiers positifs, on a l'identité :
 \[
 \mathbb{P}(X_{m+n} = j|X_0 = i) = \sum_{k\in E}
 \mathbb{P}(X_m = k|X_0 = i)\mathbb{P}(X_n = j|X_0 = k)\]
@@ -1222,7 +1321,7 @@ p^{(m+n)}_{ij} = \sum_{k \in E} p^{(m)}_{ik} p^{(n)}_{kj} \text{ ou } (P^{m+n})_
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-48}{}{\label{exm:unnamed-chunk-48} }Soit une CM définie par la matrice de transition \[
+\protect\hypertarget{exm:unnamed-chunk-51}{}{\label{exm:unnamed-chunk-51} }Soit une CM définie par la matrice de transition \[
   P=\left( 
   \begin{array}{cccc}
   0.2 & 0.4 & 0.1 & 0.3\\
@@ -1347,7 +1446,7 @@ Pour le calcul de la probabilité d'une trajectoire donnée sous R, on peut util
 \end{verbatim}
 
 \begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-51}{}{\label{exr:unnamed-chunk-51} } On considère une CM à trois états dont la matrice de transition est la suivante :
+\protect\hypertarget{exr:unnamed-chunk-54}{}{\label{exr:unnamed-chunk-54} } On considère une CM à trois états dont la matrice de transition est la suivante :
 \[ P=\left( 
   \begin{array}{ccc}
 0.6 & 0.2 & 0.2 \\
@@ -1404,7 +1503,7 @@ Calculer \(\mathbb{P}(X_2=3|X_0=1)\).
 \end{verbatim}
 
 \begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-53}{}{\label{exr:unnamed-chunk-53} } On considère une chaîne de Markov à deux états dont la matrice de transition est la suivante :
+\protect\hypertarget{exr:unnamed-chunk-56}{}{\label{exr:unnamed-chunk-56} } On considère une chaîne de Markov à deux états dont la matrice de transition est la suivante :
 \[ P=\left( 
   \begin{array}{cc}
 0.4 & 0.6 \\
@@ -1506,7 +1605,7 @@ Ainsi \(\mathbb{P}(A_3)=\mu_0(1)\times \mathbb{P}_1(A_3)+\mu_0(2)\times \mathbb{
 L'espace des états d'une CM peut être partitionné en un ensemble de classes communicantes disjointes.
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-55}{}{\label{def:unnamed-chunk-55} }On dit que l'état \(j\) est \(\color{blue}{\mathbf{\text{accessible}}}\) à partir de l'état \(i\), s'il existe un entier \(n \geq 0\) tel que \(P^{(n)}_{ij} >0\). On note \(i \longrightarrow j\).
+\protect\hypertarget{def:unnamed-chunk-58}{}{\label{def:unnamed-chunk-58} }On dit que l'état \(j\) est \(\color{blue}{\mathbf{\text{accessible}}}\) à partir de l'état \(i\), s'il existe un entier \(n \geq 0\) tel que \(P^{(n)}_{ij} >0\). On note \(i \longrightarrow j\).
 
 Sur le graphe, si \(i \neq j\), \(i\longrightarrow j\) s'il existe un chemin (orienté) du sommet \(i\) vers le sommet \(j\).
 
@@ -1516,11 +1615,11 @@ Si \(j\) est accessible à partir de \(i\) et \(i\) est accessible depuis \(j\),
 On note que si \(i \longrightarrow k\) et \(k \longrightarrow j\), alors \(i \longrightarrow j\) (la relation d'accessibilité est transitive).
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-56}{}{\label{def:unnamed-chunk-56} }Les états \(i\) et \(j\) sont dans la même classe communicante si \(i \longleftrightarrow j\).
+\protect\hypertarget{def:unnamed-chunk-59}{}{\label{def:unnamed-chunk-59} }Les états \(i\) et \(j\) sont dans la même classe communicante si \(i \longleftrightarrow j\).
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-57}{}{\label{exm:unnamed-chunk-57} }Trouvez les classes communicantes associées au diagramme de transition suivant.
+\protect\hypertarget{exm:unnamed-chunk-60}{}{\label{exm:unnamed-chunk-60} }Trouvez les classes communicantes associées au diagramme de transition suivant.
 \end{example}
 
 \begin{center}\includegraphics[width=0.5\linewidth]{images/graph2} \end{center}
@@ -1528,7 +1627,7 @@ On note que si \(i \longrightarrow k\) et \(k \longrightarrow j\), alors \(i \lo
 D'après le diagramme, on remarque que \(1 \longleftrightarrow 2\), \(2 \longleftrightarrow 3\) et \(4 \longleftrightarrow 5\). Donc on a deux classes communicantes \(\{1,2,3\}\) et \(\{4,5 \}\).
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-59}{}{\label{def:unnamed-chunk-59} }Une classe d'états communicante est fermée s'il est impossible de quitter
+\protect\hypertarget{def:unnamed-chunk-62}{}{\label{def:unnamed-chunk-62} }Une classe d'états communicante est fermée s'il est impossible de quitter
 cette classe. Autrement dit, la classe \(C\) communicante est fermée si \(p_{ij} = 0\) pour tout \(i \in C\) et \(j \notin C\).
 \end{definition}
 
@@ -1543,14 +1642,14 @@ Dans l'exemple précédent:
 \end{itemize}
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-60}{}{\label{def:unnamed-chunk-60} }Si la chaîne de Markov ne possède qu'une unique classe, c'est à dire que tous
+\protect\hypertarget{def:unnamed-chunk-63}{}{\label{def:unnamed-chunk-63} }Si la chaîne de Markov ne possède qu'une unique classe, c'est à dire que tous
 ses éléments communiquent, la chaîne sera dite \(\color{blue}{\mathbf{\text{irréductible}}}\).
 
 Un état \(i\) est dite \(\color{blue}{\mathbf{\text{absorbant}}}\) si \(\{i\}\) est une classe fermée.
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-61}{}{\label{exm:unnamed-chunk-61} }On considère la CMD à tois états 1, 2, 3 et de matrice stochastique
+\protect\hypertarget{exm:unnamed-chunk-64}{}{\label{exm:unnamed-chunk-64} }On considère la CMD à tois états 1, 2, 3 et de matrice stochastique
 \[
   P=\left( 
     \begin{array}{ccc}
@@ -1581,7 +1680,7 @@ Pour étudier la classification d'une CMD sous R, on peut procéder comme suit:
 \end{verbatim}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-62}{}{\label{exm:unnamed-chunk-62} }Soit la CMD à quatre états définie par la matrice stochastique
+\protect\hypertarget{exm:unnamed-chunk-65}{}{\label{exm:unnamed-chunk-65} }Soit la CMD à quatre états définie par la matrice stochastique
 \[
   P=\left( 
     \begin{array}{cccc}
@@ -1635,7 +1734,7 @@ T_x = \min\{n \geq 0 : X_n = x\},
 premier moment où la chaîne atteint l'état \(x\).
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-63}{}{\label{def:unnamed-chunk-63} }Soit \(A\) un sous ensemble de l'espace d'états \(E\). Le \textbf{temps d'atteinte} de \(A\) est la variable aléatoire \(T_A\) définie par:
+\protect\hypertarget{def:unnamed-chunk-66}{}{\label{def:unnamed-chunk-66} }Soit \(A\) un sous ensemble de l'espace d'états \(E\). Le \textbf{temps d'atteinte} de \(A\) est la variable aléatoire \(T_A\) définie par:
 \[
 T_A = \min\{n \geq 0 : X_n \in A \},
 \]
@@ -1650,12 +1749,12 @@ Si la chaîne ne peut jamais atteindre \(A\), alors \(T_A= \infty\).
 Le temps d'atteinte est appelé aussi \textbf{temps d'arrêt}. Si \(A\) est une classe fermée, \(T_A\) sera appelé le \textbf{temps d'absorption} et \(h_{A|i}\) la \textbf{probabilité d'absorption}.
 
 \begin{definition}
-\protect\hypertarget{def:unnamed-chunk-64}{}{\label{def:unnamed-chunk-64} }Le \textbf{temps moyen d'atteinte} de \(A\), à partir de \(i\) est:
+\protect\hypertarget{def:unnamed-chunk-67}{}{\label{def:unnamed-chunk-67} }Le \textbf{temps moyen d'atteinte} de \(A\), à partir de \(i\) est:
 \[ m_{iA}=\mathbb{E}\left(T_A | X_0=i \right)\]
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-65}{}{\label{exm:unnamed-chunk-65} }On considère la chaîne suivante
+\protect\hypertarget{exm:unnamed-chunk-68}{}{\label{exm:unnamed-chunk-68} }On considère la chaîne suivante
 \end{example}
 
 \begin{center}\includegraphics[width=0.45\linewidth]{images/graphe3} \end{center}
@@ -1756,7 +1855,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 1 2 2 2 2 2
+[1] 1 2 1 2 2 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -1767,7 +1866,7 @@ Nous implémentons cet algorithm dans la fonction suivante:
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.24
+[1] 0.16
 \end{verbatim}
 
 \begin{Shaded}
