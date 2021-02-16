@@ -576,13 +576,13 @@ set.seed(1)
 y=rgeom(10000, prob=0.5)
 ```
 
-```{r}
+```{r, comment=""}
 set.seed(1)
 x=rpois(10000,lambda = 2*y)
 mean(x)
 ```
 La figure suivante donne l'évolution de \(\mathbb{E}\left(X|Y=y\right) \) en fonction du nombre des simulations.
-```{r,echo=F, fig.align='center', fig.width=5, fig.height=4, warning=FALSE, message=FALSE, comment=""}
+```{r,echo=F, fig.align='center', fig.width=5, fig.height=4, warning=FALSE, message=FALSE, comment=NA}
 library(ggfortify)
 mx=cumsum(x[-(1:10)])/(11:10000)
 autoplot(as.ts(mx), size=0.6)+geom_hline(yintercept = 2, colour="red",size=0.8 )+xlab("Nombre des simulations")+labs(y=paste(expression(E), "(",expression(X),"|", expression(Y),")"))
