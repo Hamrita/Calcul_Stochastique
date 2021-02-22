@@ -694,7 +694,7 @@ Soit \(X_1, X_2,\ldots, X_{100} \) une suite de variables aléatoires telle que 
 
 3. Représenter l'histogramme de `mu`. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.
 
-```{r, tcl, fig.align='center', fig.height=5, fig.width=6, comment=""}
+```{r, tcl, comment=""}
 # 1
 set.seed(1)
 simPois=rpois(n=100, lambda=4)
