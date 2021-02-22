@@ -559,7 +559,7 @@ On jette une pièce de monnaie équilibrée. Soit \(Y\) la variable aléatoire d
 ```{solution}
 1. Soit \( P(F)=p\) et \(P(P)=1-p\). On a \((n-1)\) premières épreuves donnant $P$ et la nième épreuve donne $F$, et puisque les épreuves sont indépendantes, alors
 \[
-\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n-1}p\;,\;\; n=1,2,\ldots  
+\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n}p\;,\;\; n=0,1,2,\ldots  
   \]
 Donc \( Y\sim G(p)\).
 
@@ -688,9 +688,9 @@ __Illustration sous R__
 Soit \(X_1, X_2,\ldots, X_{100} \) une suite de variables aléatoires telle que \(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)} \). On sait que \(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4 \).
 
 1. Simuler \(100\) réalisations du Poisson de paramètre \(\lambda=4 \) puis déduire la variable de $z$
-\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \].
+\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]
 
-2. Répéter \(100000 \) les instructions précédentes et stocker le résultat dans un objet que l'on appelle `mu`.
+2. Répéter \(100000 \) fois les instructions précédentes et stocker le résultat dans un objet que l'on appelle `mu`.
 
 3. Représenter l'histogramme de `mu`. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.
 
@@ -753,3 +753,38 @@ Soit \(S_N=X_1+X_2+\ldots +X_N \) le montant d'argent total retiré par jour, o�
 2. Déterminer \(\mathbb{E}(S_N) \) et \(\mathbb{V}(S_N) \).
 
 3. Reprendre les questions précédentes en utilisants des simulations sous R.
+
+### Exercice 4 {-}
+
+Soit \(X_1, X_2,\ldots, X_{100} \) une suite de variables aléatoires telle que \(X_i \stackrel{iid}{\sim}\mathcal{E(\lambda=4)} \). On sait que \(\mathbb{E}(X_i)=\frac{1}{\lambda}\) et \(\mathbb{V}(X_i)=\frac{1}{\lambda^2} \).
+
+1. Simuler \(100\) réalisations de la loi exponentielle de paramètre \(\lambda=4 \) (`rexp()`) puis déduire la variable de $z$
+\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]
+
+2. Répéter \(100000 \) fois les instructions précédentes et stocker le résultat dans un objet que l'on appelle `mu`.
+
+3. Représenter l'histogramme de `mu`. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.
+
+### Exercice 5 {-}
+
+On lance un dé équilibré, puis une pièce de monnaie équilibrée un nombre de fois égal au résultat
+du dé. Soit $X$ le résultat du dé et $Y$ le nombre de _Pile_ amenés par la pièce de monnaie.
+
+1. Déterminer la loi jointe du couple $(X, Y )$.
+
+2. Soit $n \in \{1, \ldots, 6\}$. Quelle est la loi de $Y$ sachant $X = n$ ?
+
+3. En déduire $\mathbb{E}\bigl[Y |X = n\bigr]$, puis $\mathbb{E}\bigl[Y |X\bigr]$.
+
+4. Calculer $E[Y]$.
+
+5. Reprendre les questions 2 à 4 à l'aide des simulations sous R.
+
+### Exercice 6 {-}
+
+Le temps que Sarra passe à parler au téléphone suit une distribution exponentielle de moyenne 7 minutes. Quelle est la durée moyenne de son appel téléphonique si elle parle pendant plus de 3 minutes?
+<!--
+Soit $X\sim \mathcal{E}(1/7)$.
+$\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 ^{+\infty}x \frac{1}{7}e^{-\frac{1}{7} x}dx$
+!-->
+

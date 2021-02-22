@@ -153,6 +153,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-1"><i class="fa fa-check"></i>Exercice 1</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-2"><i class="fa fa-check"></i>Exercice 2</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-3"><i class="fa fa-check"></i>Exercice 3</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-4"><i class="fa fa-check"></i>Exercice 4</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-5"><i class="fa fa-check"></i>Exercice 5</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-6"><i class="fa fa-check"></i>Exercice 6</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
@@ -721,7 +724,7 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 <div class="solution">
 <p> <span class="solution"><em>Solution </em></span> 1. Soit <span class="math inline">\(P(F)=p\)</span> et <span class="math inline">\(P(P)=1-p\)</span>. On a <span class="math inline">\((n-1)\)</span> premières épreuves donnant <span class="math inline">\(P\)</span> et la nième épreuve donne <span class="math inline">\(F\)</span>, et puisque les épreuves sont indépendantes, alors
 <span class="math display">\[
-\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n-1}p\;,\;\; n=1,2,\ldots  
+\mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n}p\;,\;\; n=0,1,2,\ldots  
   \]</span>
 Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
 <ol start="2" style="list-style-type: decimal">
@@ -831,8 +834,8 @@ La propriété de la variance totale donne,
 <p>Soit <span class="math inline">\(X_1, X_2,\ldots, X_{100}\)</span> une suite de variables aléatoires telle que <span class="math inline">\(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)}\)</span>. On sait que <span class="math inline">\(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Simuler <span class="math inline">\(100\)</span> réalisations du Poisson de paramètre <span class="math inline">\(\lambda=4\)</span> puis déduire la variable de <span class="math inline">\(z\)</span>
-<span class="math display">\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]</span>.</p></li>
-<li><p>Répéter <span class="math inline">\(100000\)</span> les instructions précédentes et stocker le résultat dans un objet que l’on appelle <code>mu</code>.</p></li>
+<span class="math display">\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]</span></p></li>
+<li><p>Répéter <span class="math inline">\(100000\)</span> fois les instructions précédentes et stocker le résultat dans un objet que l’on appelle <code>mu</code>.</p></li>
 <li><p>Représenter l’histogramme de <code>mu</code>. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.</p></li>
 </ol>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># 1</span></a>
@@ -901,6 +904,36 @@ La propriété de la variance totale donne,
 <li><p>Déterminer <span class="math inline">\(\mathbb{E}(S_N)\)</span> et <span class="math inline">\(\mathbb{V}(S_N)\)</span>.</p></li>
 <li><p>Reprendre les questions précédentes en utilisants des simulations sous R.</p></li>
 </ol>
+</div>
+<div id="exercice-4" class="section level3 unnumbered">
+<h3>Exercice 4</h3>
+<p>Soit <span class="math inline">\(X_1, X_2,\ldots, X_{100}\)</span> une suite de variables aléatoires telle que <span class="math inline">\(X_i \stackrel{iid}{\sim}\mathcal{E(\lambda=4)}\)</span>. On sait que <span class="math inline">\(\mathbb{E}(X_i)=\frac{1}{\lambda}\)</span> et <span class="math inline">\(\mathbb{V}(X_i)=\frac{1}{\lambda^2}\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Simuler <span class="math inline">\(100\)</span> réalisations de la loi exponentielle de paramètre <span class="math inline">\(\lambda=4\)</span> (<code>rexp()</code>) puis déduire la variable de <span class="math inline">\(z\)</span>
+<span class="math display">\[z=\dfrac{\overline{X}-m}{\sigma/\sqrt{n}} \]</span></p></li>
+<li><p>Répéter <span class="math inline">\(100000\)</span> fois les instructions précédentes et stocker le résultat dans un objet que l’on appelle <code>mu</code>.</p></li>
+<li><p>Représenter l’histogramme de <code>mu</code>. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.</p></li>
+</ol>
+</div>
+<div id="exercice-5" class="section level3 unnumbered">
+<h3>Exercice 5</h3>
+<p>On lance un dé équilibré, puis une pièce de monnaie équilibrée un nombre de fois égal au résultat
+du dé. Soit <span class="math inline">\(X\)</span> le résultat du dé et <span class="math inline">\(Y\)</span> le nombre de <em>Pile</em> amenés par la pièce de monnaie.</p>
+<ol style="list-style-type: decimal">
+<li><p>Déterminer la loi jointe du couple <span class="math inline">\((X, Y )\)</span>.</p></li>
+<li><p>Soit <span class="math inline">\(n \in \{1, \ldots, 6\}\)</span>. Quelle est la loi de <span class="math inline">\(Y\)</span> sachant <span class="math inline">\(X = n\)</span> ?</p></li>
+<li><p>En déduire <span class="math inline">\(\mathbb{E}\bigl[Y |X = n\bigr]\)</span>, puis <span class="math inline">\(\mathbb{E}\bigl[Y |X\bigr]\)</span>.</p></li>
+<li><p>Calculer <span class="math inline">\(E[Y]\)</span>.</p></li>
+<li><p>Reprendre les questions 2 à 4 à l’aide des simulations sous R.</p></li>
+</ol>
+</div>
+<div id="exercice-6" class="section level3 unnumbered">
+<h3>Exercice 6</h3>
+<p>Le temps que Sarra passe à parler au téléphone suit une distribution exponentielle de moyenne 7 minutes. Quelle est la durée moyenne de son appel téléphonique si elle parle pendant plus de 3 minutes?
+<!--
+Soit $X\sim \mathcal{E}(1/7)$.
+$\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 ^{+\infty}x \frac{1}{7}e^{-\frac{1}{7} x}dx$
+!--></p>
 
 </div>
 </div>
