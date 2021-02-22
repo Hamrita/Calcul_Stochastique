@@ -546,6 +546,19 @@ Le __temps moyen d'atteinte__ de $A$, à partir de $i$ est:
 $$ m_{iA}=\mathbb{E}\left(T_A | X_0=i \right)$$
 ```
 
+```{theorem}
+Le vecteur des probabilités d'atteindre $A$, $\mathbf{h}_A=(h_{iA}, i \in E)$ est la solution minimale non négative du système suivant:
+$$
+h_{iA}=\left\{
+\begin{array}{ll}
+1 & \text{ si } i \in A\\
+\displaystyle \sum_{j \in E}p_{ij}h_{iA} & \text{ si } i \notin A
+\end{array}
+\right.
+$$
+```
+
+
 ```{example}
 On considère la chaîne suivante
 ```

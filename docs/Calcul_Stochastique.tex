@@ -1844,8 +1844,20 @@ Le temps d'atteinte est appelé aussi \textbf{temps d'arrêt}. Si \(A\) est une 
 \[ m_{iA}=\mathbb{E}\left(T_A | X_0=i \right)\]
 \end{definition}
 
+\begin{theorem}
+\protect\hypertarget{thm:unnamed-chunk-68}{}{\label{thm:unnamed-chunk-68} }Le vecteur des probabilités d'atteindre \(A\), \(\mathbf{h}_A=(h_{iA}, i \in E)\) est la solution minimale non négative du système suivant:
+\[
+h_{iA}=\left\{
+\begin{array}{ll}
+1 & \text{ si } i \in A\\
+\displaystyle \sum_{j \in E}p_{ij}h_{iA} & \text{ si } i \notin A
+\end{array}
+\right.
+\]
+\end{theorem}
+
 \begin{example}
-\protect\hypertarget{exm:unnamed-chunk-68}{}{\label{exm:unnamed-chunk-68} }On considère la chaîne suivante
+\protect\hypertarget{exm:unnamed-chunk-69}{}{\label{exm:unnamed-chunk-69} }On considère la chaîne suivante
 \end{example}
 
 \begin{center}\includegraphics[width=0.45\linewidth]{images/graphe3} \end{center}
