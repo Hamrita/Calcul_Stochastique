@@ -710,7 +710,7 @@ mu=replicate(100000, Z())
 
 ```{r,histPois,fig.align='center', fig.height=5, fig.width=6, comment="", warning=FALSE, message=FALSE}
 # 3
-hist(mu,freq = F)
+hist(mu,freq = F, main="")
 curve(dnorm,-4,4,add=T,col=4,lwd=2)
 ```
 

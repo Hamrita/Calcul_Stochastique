@@ -850,7 +850,7 @@ La propriété de la variance totale donne,
 <a class="sourceLine" id="cb19-10" title="10"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb19-11" title="11">mu=<span class="kw">replicate</span>(<span class="dv">100000</span>, <span class="kw">Z</span>())</a></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># 3</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="kw">hist</span>(mu,<span class="dt">freq =</span> F)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">hist</span>(mu,<span class="dt">freq =</span> F, <span class="dt">main=</span><span class="st">&quot;&quot;</span>)</a>
 <a class="sourceLine" id="cb20-3" title="3"><span class="kw">curve</span>(dnorm,<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">add=</span>T,<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/histPois-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
