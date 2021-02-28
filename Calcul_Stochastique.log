@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.22)  22 FEB 2021 22:09
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.27)  28 FEB 2021 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -221,7 +221,7 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ))
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 .sty
-Package: microtype 2020/12/07 v2.8 Micro-typographical refinements (RS)
+Package: microtype 2021/02/25 v2.8b Micro-typographical refinements (RS)
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -236,14 +236,14 @@ LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 -xetex.def
-File: microtype-xetex.def 2020/12/07 v2.8 Definitions specific to xetex (RS)
+File: microtype-xetex.def 2021/02/25 v2.8b Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 254.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 .cfg
-File: microtype.cfg 2020/12/07 v2.8 microtype main configuration file (RS)
+File: microtype.cfg 2021/02/25 v2.8b microtype main configuration file (RS)
 )) (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.st
 y
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -521,9 +521,9 @@ y)
 Package grffile Info: This package is an empty stub for compatibility on input 
 line 40.
 ) (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2021/01/26 3.53 The Babel package
+Package: babel 2021/02/22 3.54 The Babel package
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2021/01/26 3.53 Babel common definitions
+File: babel.def 2021/02/22 3.54 Babel common definitions
 \babel@savecnt=\count311
 \U@D=\dimen177
 \l@babelnohyphens=\language6
@@ -959,7 +959,7 @@ Package microtype Info: No adjustment of kerning.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinM
 odernRoman.cfg
-File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring ON on input line 181.
@@ -1120,21 +1120,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [18] [19] [20]
 Chapitre 2.
+File: Markov.jpg Graphic file (type bmp)
+<Markov.jpg>
 [21
 
 ]
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
+[22]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-41-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-41-1.pdf>
-[22]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [23]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf Graphic fil
 e (type pdf)
@@ -1148,19 +1147,19 @@ e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf>
 [26]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1369.
+(Font)              scaled to size 14.4pt on input line 1371.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 1369.
+(Font)              scaled to size 14.4013pt on input line 1371.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1369.
+(Font)              scaled to size 14.39845pt on input line 1371.
 Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
 [27] [28] [29] [30]
 File: images/graph2.png Graphic file (type bmp)
 <images/graph2.png>
-[31]
+[31] [32]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[32] [33] [34]
+[33] [34]
 Chapitre 3.
 [35
 
@@ -1175,7 +1174,7 @@ Chapitre 5.
 [39] [40
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 2036--2038
+Underfull \hbox (badness 2103) in paragraph at lines 2045--2047
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
@@ -1183,10 +1182,10 @@ tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 
 [41] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20441 strings out of 478926
- 364670 string characters out of 5864916
- 990321 words of memory out of 5000000
- 39914 multiletter control sequences out of 15000+600000
+ 20440 strings out of 478926
+ 364454 string characters out of 5864916
+ 986991 words of memory out of 5000000
+ 39912 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,16n,122p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s

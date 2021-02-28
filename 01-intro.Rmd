@@ -1,6 +1,10 @@
 # Chaînes de Markov
 La notion de ce qu'on appelle aujourd'hui une chaîne de Markov a été conçue par le mathématicien russe A.A. Markov. 
 
+<center>
+![Andreï Andreïevitch Markov (1856-1922)](Markov.jpg){width=20% height=20%}
+</center>
+
 Une chaîne de Markov est un système mathématique qui subit des transitions d'un état à un autre selon un ensemble donné de règles probabilistes. Les chaînes de Markov sont des processus stochastiques, mais ils diffèrent en ce sens qu'ils doivent manquer de "mémoire". Autrement dit, la probabilité de l'état suivant du système ne dépend que __seulement__ de l'état actuel du système.
 
 Les chaînes de Markov sont largement utilisées dans de nombreux domaines tels que la finance, la théorie des jeux et la génétique.
@@ -552,12 +556,16 @@ $$
 h_{iA}=\left\{
 \begin{array}{ll}
 1 & \text{ si } i \in A\\
-\displaystyle \sum_{j \in E}p_{ij}h_{iA} & \text{ si } i \notin A
+\displaystyle \sum_{j \in E}p_{ij}h_{jA} & \text{ si } i \notin A
 \end{array}
 \right.
 $$
+Matriciellement, le vecteur $\mathbf{h}_A$ est solution du programme suivant:
+$$
+\mathbf{h}_A = P_A \mathbf{h}_A
+$$
+où $P_A$ est obtenue à partir de $P$ en éliminant la (ou les) ligne(s) $i \in A$.
 ```
-
 
 ```{example}
 On considère la chaîne suivante
@@ -568,9 +576,10 @@ knitr::include_graphics('images/graphe3.png')
 ```
   
   1) Déterminer le vecteur des probabilités d'ateinte de l'état 4.
-  2) Déterminer le temps moyen d'atteinte de $A=\{1,4\}$, à partie de 2.
+  2) Déterminer le temps moyen d'atteinte de $A=\{1,4\}$, à partir de 2.
 
-
+1) Soit \( h_{i4}=\mathbb{P}(X_{n}=4,X_0=i)\). D'aprés le graphe, on a: \(h_{14}=0 \) et \(h_{44}=1 \). Il reste à déterminer $h_{24}$ et $h_{34}$.
+\[ h_{24}=p_{23}h_{23}+p_{}\]
 
 ## Simulation d'une chaîne de Markov discrète
 
