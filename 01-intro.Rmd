@@ -644,6 +644,76 @@ Sous R, on peut retrouver le ésultat à l'aide de la fonction `meanAbsoptionTim
 meanAbsorptionTime(cm2)
 ```
 
+## Distribution limite 
+
+```{definition}
+Une distribution de probabilité \(\pi\) satisfaisant l'équation de balance globale \(\pi =\pi P  \) est appelée __distribution stationnaire__ de la matrice de transition \(P\), ou de la chaîne de Markov avec \(\pi_j \geq 0\) et \(\sum \pi_j=1\).
+
+La distribution \(\pi\) est appelée aussi distribution invariante ou aussi distribution d'équilibre.
+```
+
+```{example}
+Soit \(P=\left(\begin{array}{ccc}
+  0 & 1 & 0 \\ 0 & \frac{1}{2} & \frac{1}{2}\\ \frac{1}{2} & 0 & \frac{1}{2}
+                \end{array}\right)
+                \)
+
+Déterminer la distribution stationnaire de $P$.
+```
+
+La distribution stationnaire de $P$ est solution du système
+\[\left\{\begin{array}{l}
+\pi P =\pi\\
+\pi \mathbf{1}=1
+\end{array}
+\right. \; \Longleftrightarrow 
+\left\{\begin{array}{l}
+\pi_1 =\frac{1}{2}\pi_3\\
+\pi_2 =\pi_1+\frac{1}{2}\pi_2\\
+\pi_3 =\frac{1}{2}\pi_2+\frac{1}{2}\pi_3\\
+\pi_1+\pi_2+\pi_3=1
+\end{array}
+\right.\; \Longleftrightarrow \pi=\left(\frac{1}{5},\frac{2}{5},\frac{2}{5}\right)
+\]
+
+### Détermination de la distribution stationnaire
+
+On note que $\pi P=\pi$ est très similaire à $AV=\lambda V$ avec $\lambda=1$. Donc $V$ est le vecteur propre de $A$ correspondant à la valeur propre $\lambda=1$. En effet, $\left(\pi P\right)'=\pi' \Longleftrightarrow P'\pi'=\pi'$.
+
+En d'autres termes, la transposée de la matrice stochastique $P$ possède une valeur propre $\lambda=1$ et le vecteur propre correspondant à cette valeur est la distribution stationnaire de $P$.
+
+Reprenons l'exemple précédent. Tout d'abord, vérifions que $\lambda=1$ est une valeur propre de $P'$.
+
+\(\left|P'-I\right|=0 \Longleftrightarrow \left|
+\begin{array}{ccc}
+-1 & 0 & \frac{1}{2}\\
+1 & -\frac{1}{2} & 0\\
+0 & \frac{1}{2} & -\frac{1}{2}
+\end{array}
+\right|=0\)
+
+Déterminons le vecteur propre associé à $\lambda=1$. 
+
+\(P'V=V \Longleftrightarrow \left\{
+\begin{array}{l}
+\frac{1}{2}z=x\\
+x+\frac{1}{2}y=y\\
+\frac{1}{2}y + \frac{1}{2}z =z
+\end{array}
+\right. 
+\Longleftrightarrow \left\{
+\begin{array}{l}
+x=z\\
+y=z\\
+z \in \mathbb{R}
+\end{array}
+\right.
+\)
+
+\(V'=(x,y,z)=z(\frac{1}{2},1,1)\), donc \( V'=(\frac{1}{2},1,1)\) est un vecteur propre de $P'$ associé à la valeur propre \(\lambda=1\).
+
+Ainsi \(\pi=\dfrac{V'}{\frac{1}{2}+1+1}=\dfrac{2}{5}V'=\left(\dfrac{1}{5},\dfrac{2}{5},\dfrac{2}{5}\right) \).
+
 ## Simulation d'une chaîne de Markov discrète
 
 ### Exemple illustratif
