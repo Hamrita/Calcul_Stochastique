@@ -676,6 +676,48 @@ La distribution stationnaire de $P$ est solution du système
 \right.\; \Longleftrightarrow \pi=\left(\frac{1}{5},\frac{2}{5},\frac{2}{5}\right)
 \]
 
+Sous R, on peut déterminer le vecteur de probabilité stationnaire en résolvant un système linéaire d'équations
+
+\[ \left\{\begin{array}{l}
+\pi_1 =\frac{1}{2}\pi_3\\
+\pi_2 =\pi_1+\frac{1}{2}\pi_2\\
+\pi_3 =\frac{1}{2}\pi_2+\frac{1}{2}\pi_3\\
+\pi_1+\pi_2+\pi_3=1
+\end{array}
+\right. \Longleftrightarrow \left\{\begin{array}{l}
+\pi_1 -\frac{1}{2}\pi_3=0\\
+\pi_1-\frac{1}{2}\pi_2=0\\
+\pi_3 -\pi_2=0\\
+\pi_1+\pi_2+\pi_3=1
+\end{array}
+\right. \Longleftrightarrow 
+\left(
+\begin{array}{ccc}
+1 & 0 &-\frac{1}{2}\\
+1 & -\frac{1}{2} & 0\\
+0& -1 & 1\\
+1 & 1 & 1
+\end{array}\right)\left(
+\begin{array}{c}
+\pi_1\\
+ \pi_2\\
+\pi_3
+\end{array}\right)
+=
+\left(
+\begin{array}{c}
+0\\
+ 0\\
+0\\
+1 
+\end{array}\right)\]
+```{r, statPi, comment=""}
+P=matrix(c(0,0,1/2,1,1/2,0,0,1/2,1/2),3)
+A=matrix(c(1,1,0,1,0,-0.5,-1,1,-0.5,0,1,1),nc=3)
+b=c(0,0,0,1)
+MASS::fractions(t(solve(crossprod(A),crossprod(A,b))))
+```
+
 ### Détermination de la distribution stationnaire
 
 On note que $\pi P=\pi$ est très similaire à $AV=\lambda V$ avec $\lambda=1$. Donc $V$ est le vecteur propre de $A$ correspondant à la valeur propre $\lambda=1$. En effet, $\left(\pi P\right)'=\pi' \Longleftrightarrow P'\pi'=\pi'$.
@@ -713,6 +755,12 @@ z \in \mathbb{R}
 \(V'=(x,y,z)=z(\frac{1}{2},1,1)\), donc \( V'=(\frac{1}{2},1,1)\) est un vecteur propre de $P'$ associé à la valeur propre \(\lambda=1\).
 
 Ainsi \(\pi=\dfrac{V'}{\frac{1}{2}+1+1}=\dfrac{2}{5}V'=\left(\dfrac{1}{5},\dfrac{2}{5},\dfrac{2}{5}\right) \).
+
+```{r,stationPi2, comment=""}
+# vecteur propre correspondant à 1
+V=eigen(t(P))$vectors[,1]; V=Re(V)
+pi=V/sum(V); MASS::fractions(pi)
+```
 
 ## Simulation d'une chaîne de Markov discrète
 

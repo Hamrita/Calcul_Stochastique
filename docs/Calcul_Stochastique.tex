@@ -1984,6 +1984,56 @@ La distribution stationnaire de \(P\) est solution du système
 \right.\; \Longleftrightarrow \pi=\left(\frac{1}{5},\frac{2}{5},\frac{2}{5}\right)
 \]
 
+Sous R, on peut déterminer le vecteur de probabilité stationnaire en résolvant un système linéaire d'équations
+
+\[ \left\{\begin{array}{l}
+\pi_1 =\frac{1}{2}\pi_3\\
+\pi_2 =\pi_1+\frac{1}{2}\pi_2\\
+\pi_3 =\frac{1}{2}\pi_2+\frac{1}{2}\pi_3\\
+\pi_1+\pi_2+\pi_3=1
+\end{array}
+\right. \Longleftrightarrow \left\{\begin{array}{l}
+\pi_1 -\frac{1}{2}\pi_3=0\\
+\pi_1-\frac{1}{2}\pi_2=0\\
+\pi_3 -\pi_2=0\\
+\pi_1+\pi_2+\pi_3=1
+\end{array}
+\right. \Longleftrightarrow 
+\left(
+\begin{array}{ccc}
+1 & 0 &-\frac{1}{2}\\
+1 & -\frac{1}{2} & 0\\
+0& -1 & 1\\
+1 & 1 & 1
+\end{array}\right)\left(
+\begin{array}{c}
+\pi_1\\
+ \pi_2\\
+\pi_3
+\end{array}\right)
+=
+\left(
+\begin{array}{c}
+0\\
+ 0\\
+0\\
+1 
+\end{array}\right)\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{),}\DecValTok{3}\NormalTok{)}
+\NormalTok{A=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\OperatorTok{-}\FloatTok{0.5}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\OperatorTok{-}\FloatTok{0.5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}\DataTypeTok{nc=}\DecValTok{3}\NormalTok{)}
+\NormalTok{b=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{MASS}\OperatorTok{::}\KeywordTok{fractions}\NormalTok{(}\KeywordTok{t}\NormalTok{(}\KeywordTok{solve}\NormalTok{(}\KeywordTok{crossprod}\NormalTok{(A),}\KeywordTok{crossprod}\NormalTok{(A,b))))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,] 1/5  2/5  2/5 
+\end{verbatim}
+
 \hypertarget{duxe9termination-de-la-distribution-stationnaire}{%
 \subsection{Détermination de la distribution stationnaire}\label{duxe9termination-de-la-distribution-stationnaire}}
 
@@ -2002,6 +2052,18 @@ Déterminons le vecteur propre associé à \(\lambda=1\).
 \(V'=(x,y,z)=z(\frac{1}{2},1,1)\), donc \(V'=(\frac{1}{2},1,1)\) est un vecteur propre de \(P'\) associé à la valeur propre \(\lambda=1\).
 
 Ainsi \(\pi=\dfrac{V'}{\frac{1}{2}+1+1}=\dfrac{2}{5}V'=\left(\dfrac{1}{5},\dfrac{2}{5},\dfrac{2}{5}\right)\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# vecteur propre correspondant à 1}
+\NormalTok{V=}\KeywordTok{eigen}\NormalTok{(}\KeywordTok{t}\NormalTok{(P))}\OperatorTok{$}\NormalTok{vectors[,}\DecValTok{1}\NormalTok{]; V=}\KeywordTok{Re}\NormalTok{(V)}
+\NormalTok{pi=V}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(V); MASS}\OperatorTok{::}\KeywordTok{fractions}\NormalTok{(pi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1/5 2/5 2/5
+\end{verbatim}
 
 \hypertarget{simulation-dune-chauxeene-de-markov-discruxe8te}{%
 \section{Simulation d'une chaîne de Markov discrète}\label{simulation-dune-chauxeene-de-markov-discruxe8te}}
