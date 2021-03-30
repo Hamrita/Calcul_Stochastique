@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#distribution-limite"><i class="fa fa-check"></i><b>2.5</b> Distribution limite</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#détermination-de-la-distribution-stationnaire"><i class="fa fa-check"></i><b>2.5.1</b> Détermination de la distribution stationnaire</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#comportement-de-long-terme"><i class="fa fa-check"></i><b>2.5.2</b> Comportement de long terme</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#simulation-dune-chaîne-de-markov-discrète"><i class="fa fa-check"></i><b>2.6</b> Simulation d’une chaîne de Markov discrète</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#exemple-illustratif"><i class="fa fa-check"></i><b>2.6.1</b> Exemple illustratif</a></li>
@@ -855,13 +856,27 @@ Déterminer la distribution stationnaire de <span class="math inline">\(P\)</spa
 <p>Reprenons l’exemple précédent. Tout d’abord, vérifions que <span class="math inline">\(\lambda=1\)</span> est une valeur propre de <span class="math inline">\(P&#39;\)</span>.</p>
 <p><span class="math inline">\(\left|P&#39;-I\right|=0 \Longleftrightarrow \left| \begin{array}{ccc} -1 &amp; 0 &amp; \frac{1}{2}\\ 1 &amp; -\frac{1}{2} &amp; 0\\ 0 &amp; \frac{1}{2} &amp; -\frac{1}{2} \end{array} \right|=0\)</span></p>
 <p>Déterminons le vecteur propre associé à <span class="math inline">\(\lambda=1\)</span>.</p>
-<p><span class="math inline">\(P&#39;V=V \Longleftrightarrow \left\{ \begin{array}{l} \frac{1}{2}z=x\\ x+\frac{1}{2}y=y\\ \frac{1}{2}y + \frac{1}{2}z =z \end{array} \right. \Longleftrightarrow \left\{ \begin{array}{l} x=z\\ y=z\\ z \in \mathbb{R} \end{array} \right.\)</span></p>
+<p><span class="math inline">\(P&#39;V=V \Longleftrightarrow \left\{ \begin{array}{l} \frac{1}{2}z=x\\ x+\frac{1}{2}y=y\\ \frac{1}{2}y + \frac{1}{2}z =z \end{array} \right. \Longleftrightarrow \left\{ \begin{array}{l} x=\frac{1}{2}z\\ y=z\\ z \in \mathbb{R} \end{array} \right.\)</span></p>
 <p><span class="math inline">\(V&#39;=(x,y,z)=z(\frac{1}{2},1,1)\)</span>, donc <span class="math inline">\(V&#39;=(\frac{1}{2},1,1)\)</span> est un vecteur propre de <span class="math inline">\(P&#39;\)</span> associé à la valeur propre <span class="math inline">\(\lambda=1\)</span>.</p>
 <p>Ainsi <span class="math inline">\(\pi=\dfrac{V&#39;}{\frac{1}{2}+1+1}=\dfrac{2}{5}V&#39;=\left(\dfrac{1}{5},\dfrac{2}{5},\dfrac{2}{5}\right)\)</span>.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># vecteur propre correspondant à 1</span></a>
 <a class="sourceLine" id="cb64-2" title="2">V=<span class="kw">eigen</span>(<span class="kw">t</span>(P))<span class="op">$</span>vectors[,<span class="dv">1</span>]; V=<span class="kw">Re</span>(V)</a>
 <a class="sourceLine" id="cb64-3" title="3">pi=V<span class="op">/</span><span class="kw">sum</span>(V); MASS<span class="op">::</span><span class="kw">fractions</span>(pi)</a></code></pre></div>
 <pre><code>[1] 1/5 2/5 2/5</code></pre>
+</div>
+<div id="comportement-de-long-terme" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Comportement de long terme</h3>
+<p>Reprenons l’exemple précédent et déterminons <span class="math inline">\(P^{20}\)</span>, <span class="math inline">\(P^{100}\)</span> et <span class="math inline">\(\displaystyle{\lim_{n \rightarrow \infty}}P^n\)</span>.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">P<span class="op">%^%</span><span class="dv">20</span></a></code></pre></div>
+<pre><code>          [,1]      [,2]      [,3]
+[1,] 0.2000008 0.3999996 0.3999996
+[2,] 0.1999998 0.4000006 0.3999996
+[3,] 0.1999998 0.3999996 0.4000006</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">P<span class="op">%^%</span><span class="dv">100</span></a></code></pre></div>
+<pre><code>     [,1] [,2] [,3]
+[1,]  0.2  0.4  0.4
+[2,]  0.2  0.4  0.4
+[3,]  0.2  0.4  0.4</code></pre>
 </div>
 </div>
 <div id="simulation-dune-chaîne-de-markov-discrète" class="section level2">
@@ -889,34 +904,34 @@ Déterminer la distribution stationnaire de <span class="math inline">\(P\)</spa
 </ol></li>
 </ol>
 <p>Nous implémentons cet algorithm dans la fonction suivante:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># simuler des CMD selon la matrice de transition P</span></a>
-<a class="sourceLine" id="cb66-2" title="2">sim_CMD &lt;-<span class="st"> </span><span class="cf">function</span>( P, <span class="dt">N =</span> <span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span> ) {</a>
-<a class="sourceLine" id="cb66-3" title="3">  <span class="co"># nombre des états</span></a>
-<a class="sourceLine" id="cb66-4" title="4">  n_etats &lt;-<span class="st"> </span><span class="kw">nrow</span>(P)</a>
-<a class="sourceLine" id="cb66-5" title="5">  etats &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)</a>
-<a class="sourceLine" id="cb66-6" title="6">  <span class="co"># valeur de l&#39;état initial </span></a>
-<a class="sourceLine" id="cb66-7" title="7">  etats[<span class="dv">1</span>] &lt;-<span class="st"> </span>x0</a>
-<a class="sourceLine" id="cb66-8" title="8">  <span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>N) {</a>
-<a class="sourceLine" id="cb66-9" title="9">    <span class="co"># vecteur de prob pour simuller l&#39;état suivant X_{t+1}</span></a>
-<a class="sourceLine" id="cb66-10" title="10">    p &lt;-<span class="st"> </span>P[etats[t<span class="dv">-1</span>], ]</a>
-<a class="sourceLine" id="cb66-11" title="11">    <span class="co">## tirer depuis la distribution multinomiale et déterminer l&#39;état</span></a>
-<a class="sourceLine" id="cb66-12" title="12">    etats[t] &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rmultinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, p) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb66-13" title="13">  }</a>
-<a class="sourceLine" id="cb66-14" title="14">  <span class="kw">return</span>(etats)</a>
-<a class="sourceLine" id="cb66-15" title="15">}</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># simuler des CMD selon la matrice de transition P</span></a>
+<a class="sourceLine" id="cb70-2" title="2">sim_CMD &lt;-<span class="st"> </span><span class="cf">function</span>( P, <span class="dt">N =</span> <span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span> ) {</a>
+<a class="sourceLine" id="cb70-3" title="3">  <span class="co"># nombre des états</span></a>
+<a class="sourceLine" id="cb70-4" title="4">  n_etats &lt;-<span class="st"> </span><span class="kw">nrow</span>(P)</a>
+<a class="sourceLine" id="cb70-5" title="5">  etats &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)</a>
+<a class="sourceLine" id="cb70-6" title="6">  <span class="co"># valeur de l&#39;état initial </span></a>
+<a class="sourceLine" id="cb70-7" title="7">  etats[<span class="dv">1</span>] &lt;-<span class="st"> </span>x0</a>
+<a class="sourceLine" id="cb70-8" title="8">  <span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>N) {</a>
+<a class="sourceLine" id="cb70-9" title="9">    <span class="co"># vecteur de prob pour simuller l&#39;état suivant X_{t+1}</span></a>
+<a class="sourceLine" id="cb70-10" title="10">    p &lt;-<span class="st"> </span>P[etats[t<span class="dv">-1</span>], ]</a>
+<a class="sourceLine" id="cb70-11" title="11">    <span class="co">## tirer depuis la distribution multinomiale et déterminer l&#39;état</span></a>
+<a class="sourceLine" id="cb70-12" title="12">    etats[t] &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">rmultinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, p) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb70-13" title="13">  }</a>
+<a class="sourceLine" id="cb70-14" title="14">  <span class="kw">return</span>(etats)</a>
+<a class="sourceLine" id="cb70-15" title="15">}</a></code></pre></div>
 <div id="simulation-de-lexemple-illustratif" class="section level4">
 <h4><span class="header-section-number">2.6.1.1</span> Simulation de l’exemple illustratif</h4>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">(P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>), <span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">(P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.8</span>,<span class="fl">0.6</span>), <span class="dt">nc=</span><span class="dv">2</span>))</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]  0.2  0.8
 [2,]  0.4  0.6</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb69-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">sim1&lt;-<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">100</span>, <span class="dt">x0=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">head</span>(sim1)</a></code></pre></div>
 <pre><code>[1] 1 2 1 2 2 1</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb71-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">sim11&lt;-<span class="kw">replicate</span>(<span class="kw">sim_CMD</span>(P,<span class="dt">N=</span><span class="dv">50</span>, <span class="dt">x0=</span><span class="dv">1</span>),<span class="dt">n=</span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="kw">mean</span>(sim11[<span class="dv">2</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p11=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
 <pre><code>[1] 0.16</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">mean</span>(sim11[<span class="dv">1</span>,sim11[<span class="dv">1</span>,]<span class="op">==</span><span class="dv">1</span>]<span class="op">==</span><span class="dv">1</span>) <span class="co"># p12=p(X_1=1|X_0=1)=0.2</span></a></code></pre></div>
 <pre><code>[1] 1</code></pre>
 
 </div>

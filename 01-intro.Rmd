@@ -745,7 +745,7 @@ x+\frac{1}{2}y=y\\
 \right. 
 \Longleftrightarrow \left\{
 \begin{array}{l}
-x=z\\
+x=\frac{1}{2}z\\
 y=z\\
 z \in \mathbb{R}
 \end{array}
@@ -761,6 +761,16 @@ Ainsi \(\pi=\dfrac{V'}{\frac{1}{2}+1+1}=\dfrac{2}{5}V'=\left(\dfrac{1}{5},\dfrac
 V=eigen(t(P))$vectors[,1]; V=Re(V)
 pi=V/sum(V); MASS::fractions(pi)
 ```
+
+### Comportement de long terme
+
+Reprenons l'exemple précédent et déterminons $P^{20}$, $P^{100}$ et $\displaystyle{\lim_{n \rightarrow \infty}}P^n$.
+
+```{r, limPi, comment=""}
+P%^%20
+P%^%100
+```
+
 
 ## Simulation d'une chaîne de Markov discrète
 

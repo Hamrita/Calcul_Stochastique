@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.8)  29 MAR 2021 15:17
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.8)  30 MAR 2021 01:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1159,35 +1159,35 @@ File: images/graph2.png Graphic file (type bmp)
 [31] [32]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[33] [34] [35] [36]
-Chapitre 3.
-[37
-
-] [38
+[33] [34] [35] [36] [37] [38
 
 ]
-Chapitre 4.
+Chapitre 3.
 [39] [40
 
 ]
-Chapitre 5.
+Chapitre 4.
 [41] [42
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 2225--2227
+Chapitre 5.
+[43] [44
+
+]
+Underfull \hbox (badness 2103) in paragraph at lines 2256--2258
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
  []
 
-[43] (./Calcul_Stochastique.aux) ) 
+[45] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20444 strings out of 478926
- 364556 string characters out of 5864917
- 990151 words of memory out of 5000000
- 39916 multiletter control sequences out of 15000+600000
+ 20445 strings out of 478926
+ 364584 string characters out of 5864917
+ 990212 words of memory out of 5000000
+ 39917 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,16n,122p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Calcul_Stochastique.pdf (43 pages).
+Output written on Calcul_Stochastique.pdf (45 pages).

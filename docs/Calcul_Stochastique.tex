@@ -2047,7 +2047,7 @@ Reprenons l'exemple précédent. Tout d'abord, vérifions que \(\lambda=1\) est 
 
 Déterminons le vecteur propre associé à \(\lambda=1\).
 
-\(P'V=V \Longleftrightarrow \left\{ \begin{array}{l} \frac{1}{2}z=x\\ x+\frac{1}{2}y=y\\ \frac{1}{2}y + \frac{1}{2}z =z \end{array} \right. \Longleftrightarrow \left\{ \begin{array}{l} x=z\\ y=z\\ z \in \mathbb{R} \end{array} \right.\)
+\(P'V=V \Longleftrightarrow \left\{ \begin{array}{l} \frac{1}{2}z=x\\ x+\frac{1}{2}y=y\\ \frac{1}{2}y + \frac{1}{2}z =z \end{array} \right. \Longleftrightarrow \left\{ \begin{array}{l} x=\frac{1}{2}z\\ y=z\\ z \in \mathbb{R} \end{array} \right.\)
 
 \(V'=(x,y,z)=z(\frac{1}{2},1,1)\), donc \(V'=(\frac{1}{2},1,1)\) est un vecteur propre de \(P'\) associé à la valeur propre \(\lambda=1\).
 
@@ -2063,6 +2063,37 @@ Ainsi \(\pi=\dfrac{V'}{\frac{1}{2}+1+1}=\dfrac{2}{5}V'=\left(\dfrac{1}{5},\dfrac
 
 \begin{verbatim}
 [1] 1/5 2/5 2/5
+\end{verbatim}
+
+\hypertarget{comportement-de-long-terme}{%
+\subsection{Comportement de long terme}\label{comportement-de-long-terme}}
+
+Reprenons l'exemple précédent et déterminons \(P^{20}\), \(P^{100}\) et \(\displaystyle{\lim_{n \rightarrow \infty}}P^n\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P}\OperatorTok{%^%}\DecValTok{20}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          [,1]      [,2]      [,3]
+[1,] 0.2000008 0.3999996 0.3999996
+[2,] 0.1999998 0.4000006 0.3999996
+[3,] 0.1999998 0.3999996 0.4000006
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P}\OperatorTok{%^%}\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]  0.2  0.4  0.4
+[2,]  0.2  0.4  0.4
+[3,]  0.2  0.4  0.4
 \end{verbatim}
 
 \hypertarget{simulation-dune-chauxeene-de-markov-discruxe8te}{%
