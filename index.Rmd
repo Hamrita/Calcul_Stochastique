@@ -791,3 +791,52 @@ Soit $X\sim \mathcal{E}(1/7)$.
 $\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 ^{+\infty}x \frac{1}{7}e^{-\frac{1}{7} x}dx$
 !-->
 
+### Solution 3{-}
+
+   1. $\mathbb{E}(X)=\sum x_i\mathbb{P}(X=x_i)=100\times 0.25+200\times0.55+500\times0.2=235.$
+   
+   $\mathbb{V}(X)=\mathbb{E}(X^2)-\mathbb{E}(X)^2=\sum x_i^2\mathbb{P}(X=x_i)-\mathbb{E}(X)^2=74500-55225=19275.$
+   
+   2. $\mathbb{E}(S_N)=\mathbb{E}\Big(\mathbb{E}(S_N|N)\Big)$, avec $\mathbb{E}(S_N|N)=\mathbb{E}(X_1+X_2+\ldots+X_N|N)$.
+   
+   Or, $\mathbb{E}(X_1+X_2+\ldots+X_N|N)=\mathbb{E}(X_1)+\mathbb{E}(X_2)+\ldots+\mathbb{E}(X_N)=N\mathbb{E}(X)$ car $X_i$ et $N$ sont indépendantes.
+   
+   D'où $\mathbb{E}\Big(\mathbb{E}(S_N|N)\Big)=\mathbb{E}(235 N)=235 \mathbb{E}(N)=235 \lambda$.
+   
+   De même pour le calcul de la variance, $\mathbb{V}\Big(S_N\Big)=\mathbb{E}\Big(\mathbb{V}(S_N|N) \Big)+\mathbb{V}\Big(\mathbb{E}(S_N|N)\Big)$.
+   
+   $\mathbb{V}(S_N|N)=\mathbb{V}(X_1+X_2+\ldots+X_N|N)=\mathbb{V}(X_1)+\mathbb{V}(X_2)+\ldots+\mathbb{V}(X_N)$ car $X_i$ sont indépendantes entre eux et avec $N$. Donc $\mathbb{V}(S_N|N)=N\mathbb{V}(X)=19275 N$.
+   
+   D'où, $\mathbb{E}\Big(\mathbb{V}(S_N|N) \Big)=\mathbb{E}(19275 N)=19275 \mathbb{E}(N)=19275 \lambda$.
+   
+   Et $\mathbb{V}\Big(\mathbb{E}(S_N|N)\Big)=\mathbb{V}(235N)=235^2\mathbb{V}(N)=55225 \lambda$.
+   
+   Ainsi, $\mathbb{V}\Big(S_N\Big)=(19275+55225)\lambda=74500 \lambda$.
+   
+   3. Reprenons les questions avec des simulations sous R
+   
+```{r, comment=""}
+# Créeons une fonction pour simuler la variable S_N
+# pour N=n
+ sn.func <- function(n){
+sum(sample(c(100, 200, 500), n, replace=T,
+prob=c(0.25, 0.55, 0.2)))
+}
+# Générer 10,000 valeurs aléatoires de N, avec lambda=0.5:
+set.seed(12345)
+ N <- rpois(10000, lambda=0.5)
+ # Générer 10,000 valeurs aléatoires de S_N, conditionallement à N:
+ set.seed(12345)
+ SN <- sapply(N, sn.func)
+# Déterminons la moyenne de S_N, qui doit être proche de 235*0.5=117.5
+ mean(SN)
+ # Déterminons la variance de S_N,  qui doit être proche de 74500*0.5=37250
+var(SN)
+par(mfrow=c(1,2))
+plot(cumsum(SN[-(1:10)])/(11:10000), type="l", xlab="", ylab="", main="Moyenne")
+abline(h=117.5, lwd=2, col=2)
+vvS=NULL
+for(i in 100:10000) vvS[i]=var(SN[1:i])
+plot(vvS, type="l",xlab="", ylab="", main="Variance")
+abline(h=37250, lwd=2,col=2)
+```

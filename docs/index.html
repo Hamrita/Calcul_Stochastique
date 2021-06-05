@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-4"><i class="fa fa-check"></i>Exercice 4</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-5"><i class="fa fa-check"></i>Exercice 5</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-6"><i class="fa fa-check"></i>Exercice 6</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#solution-3"><i class="fa fa-check"></i>Solution 3</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
@@ -938,6 +939,52 @@ du dé. Soit <span class="math inline">\(X\)</span> le résultat du dé et <span
 Soit $X\sim \mathcal{E}(1/7)$.
 $\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 ^{+\infty}x \frac{1}{7}e^{-\frac{1}{7} x}dx$
 !--></p>
+</div>
+<div id="solution-3" class="section level3 unnumbered">
+<h3>Solution 3</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{E}(X)=\sum x_i\mathbb{P}(X=x_i)=100\times 0.25+200\times0.55+500\times0.2=235.\)</span></li>
+</ol>
+<p><span class="math inline">\(\mathbb{V}(X)=\mathbb{E}(X^2)-\mathbb{E}(X)^2=\sum x_i^2\mathbb{P}(X=x_i)-\mathbb{E}(X)^2=74500-55225=19275.\)</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{E}(S_N)=\mathbb{E}\Big(\mathbb{E}(S_N|N)\Big)\)</span>, avec <span class="math inline">\(\mathbb{E}(S_N|N)=\mathbb{E}(X_1+X_2+\ldots+X_N|N)\)</span>.</li>
+</ol>
+<p>Or, <span class="math inline">\(\mathbb{E}(X_1+X_2+\ldots+X_N|N)=\mathbb{E}(X_1)+\mathbb{E}(X_2)+\ldots+\mathbb{E}(X_N)=N\mathbb{E}(X)\)</span> car <span class="math inline">\(X_i\)</span> et <span class="math inline">\(N\)</span> sont indépendantes.</p>
+<p>D’où <span class="math inline">\(\mathbb{E}\Big(\mathbb{E}(S_N|N)\Big)=\mathbb{E}(235 N)=235 \mathbb{E}(N)=235 \lambda\)</span>.</p>
+<p>De même pour le calcul de la variance, <span class="math inline">\(\mathbb{V}\Big(S_N\Big)=\mathbb{E}\Big(\mathbb{V}(S_N|N) \Big)+\mathbb{V}\Big(\mathbb{E}(S_N|N)\Big)\)</span>.</p>
+<p><span class="math inline">\(\mathbb{V}(S_N|N)=\mathbb{V}(X_1+X_2+\ldots+X_N|N)=\mathbb{V}(X_1)+\mathbb{V}(X_2)+\ldots+\mathbb{V}(X_N)\)</span> car <span class="math inline">\(X_i\)</span> sont indépendantes entre eux et avec <span class="math inline">\(N\)</span>. Donc <span class="math inline">\(\mathbb{V}(S_N|N)=N\mathbb{V}(X)=19275 N\)</span>.</p>
+<p>D’où, <span class="math inline">\(\mathbb{E}\Big(\mathbb{V}(S_N|N) \Big)=\mathbb{E}(19275 N)=19275 \mathbb{E}(N)=19275 \lambda\)</span>.</p>
+<p>Et <span class="math inline">\(\mathbb{V}\Big(\mathbb{E}(S_N|N)\Big)=\mathbb{V}(235N)=235^2\mathbb{V}(N)=55225 \lambda\)</span>.</p>
+<p>Ainsi, <span class="math inline">\(\mathbb{V}\Big(S_N\Big)=(19275+55225)\lambda=74500 \lambda\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Reprenons les questions avec des simulations sous R</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Créeons une fonction pour simuler la variable S_N</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="co"># pour N=n</span></a>
+<a class="sourceLine" id="cb21-3" title="3"> sn.func &lt;-<span class="st"> </span><span class="cf">function</span>(n){</a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="kw">sum</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>), n, <span class="dt">replace=</span>T,</a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.55</span>, <span class="fl">0.2</span>)))</a>
+<a class="sourceLine" id="cb21-6" title="6">}</a>
+<a class="sourceLine" id="cb21-7" title="7"><span class="co"># Générer 10,000 valeurs aléatoires de N, avec lambda=0.5:</span></a>
+<a class="sourceLine" id="cb21-8" title="8"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb21-9" title="9"> N &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">10000</span>, <span class="dt">lambda=</span><span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb21-10" title="10"> <span class="co"># Générer 10,000 valeurs aléatoires de S_N, conditionallement à N:</span></a>
+<a class="sourceLine" id="cb21-11" title="11"> <span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb21-12" title="12"> SN &lt;-<span class="st"> </span><span class="kw">sapply</span>(N, sn.func)</a>
+<a class="sourceLine" id="cb21-13" title="13"><span class="co"># Déterminons la moyenne de S_N, qui doit être proche de 235*0.5=117.5</span></a>
+<a class="sourceLine" id="cb21-14" title="14"> <span class="kw">mean</span>(SN)</a></code></pre></div>
+<pre><code>[1] 116.74</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"> <span class="co"># Déterminons la variance de S_N,  qui doit être proche de 74500*0.5=37250</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">var</span>(SN)</a></code></pre></div>
+<pre><code>[1] 36465.42</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">plot</span>(<span class="kw">cumsum</span>(SN[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)])<span class="op">/</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">10000</span>), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Moyenne&quot;</span>)</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">abline</span>(<span class="dt">h=</span><span class="fl">117.5</span>, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb25-4" title="4">vvS=<span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">100</span><span class="op">:</span><span class="dv">10000</span>) vvS[i]=<span class="kw">var</span>(SN[<span class="dv">1</span><span class="op">:</span>i])</a>
+<a class="sourceLine" id="cb25-6" title="6"><span class="kw">plot</span>(vvS, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Variance&quot;</span>)</a>
+<a class="sourceLine" id="cb25-7" title="7"><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">37250</span>, <span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 
 </div>
 </div>

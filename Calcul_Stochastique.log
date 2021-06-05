@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.8)  30 MAR 2021 01:21
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.25)  5 JUN 2021 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Calcul_Stochastique.tex
 (./Calcul_Stochastique.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (c:/Users/User/AppData/Roaming/TinyTeX/texmf-
+L3 programming layer <2021-05-11> (c:/Users/User/AppData/Roaming/TinyTeX/texmf-
 dist/tex/latex/base/book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
@@ -24,7 +24,7 @@ File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 ) (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
-Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
@@ -141,11 +141,11 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicod
 e-math.sty (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel
 /expl3.sty
-Package: expl3 2021-02-18 L3 programming layer (loader) 
+Package: expl3 2021-05-11 L3 programming layer (loader) 
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend
 -xetex.def
-File: l3backend-xetex.def 2021-03-02 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-05-07 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count196
 \l__color_backend_stack_int=\count197
@@ -171,7 +171,7 @@ parse-2020-10-01.sty
 parse-generic.tex)))
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e
 /l3keys2e.sty
-Package: l3keys2e 2021-02-02 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2021-05-07 LaTeX2e option processing using LaTeX3 keys
 )
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.s
 ty
@@ -221,7 +221,7 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ))
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 .sty
-Package: microtype 2021/02/25 v2.8b Micro-typographical refinements (RS)
+Package: microtype 2021/03/14 v2.8c Micro-typographical refinements (RS)
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -229,21 +229,21 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 )
 \MT@toks=\toks22
 \MT@count=\count283
-LaTeX Info: Redefining \textls on input line 788.
+LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen151
-LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
+LaTeX Info: Redefining \textmicrotypecontext on input line 1374.
 \MT@listname@count=\count284
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 -xetex.def
-File: microtype-xetex.def 2021/02/25 v2.8b Definitions specific to xetex (RS)
+File: microtype-xetex.def 2021/03/14 v2.8c Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 254.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype
 .cfg
-File: microtype.cfg 2021/02/25 v2.8b microtype main configuration file (RS)
+File: microtype.cfg 2021/03/14 v2.8c microtype main configuration file (RS)
 )) (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.st
 y
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -256,7 +256,7 @@ Package xcolor Info: Driver file: xetex.def on input line 225.
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.
 def
-File: xetex.def 2020/08/26 v5.0i Graphics/color driver for xetex
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `RGB' extended on input line 1364.
@@ -521,12 +521,12 @@ y)
 Package grffile Info: This package is an empty stub for compatibility on input 
 line 40.
 ) (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2021/03/03 3.55 The Babel package
+Package: babel 2021/05/16 3.59 The Babel package
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2021/03/03 3.55 Babel common definitions
+File: babel.def 2021/05/16 3.59 Babel common definitions
 \babel@savecnt=\count311
 \U@D=\dimen177
-\l@babelnohyphens=\language6
+\l@unhyphenated=\language6
 
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/xebabel.def
 
@@ -548,10 +548,10 @@ Package francais.ldf Warning: Option `francais' for Babel is *deprecated*,
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-french/fren
 ch.ldf
 Language: french 2020/10/10 v3.5l French support from the babel system
-Package babel Info: \l@acadian = using hyphenrules for french
-(babel)             (\language5) on input line 91.
-Package babel Info: \l@canadien = using hyphenrules for french
-(babel)             (\language5) on input line 92.
+Package babel Info: Hyphen rules for 'acadian' set to \l@french
+(babel)             (\language5). Reported on input line 91.
+Package babel Info: Hyphen rules for 'canadien' set to \l@french
+(babel)             (\language5). Reported on input line 92.
 \FB@nonchar=\count313
 Package french.ldf Info: No need for active punctuation characters
 (french.ldf)             with this version of XeTeX!
@@ -1026,7 +1026,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
 83.
 (c:/Users/User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 12.0011pt on input line 183.
@@ -1118,76 +1118,81 @@ pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[18] [19] [20]
+[18] [19] [20] [21]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf>
+[22]
 Chapitre 2.
 File: Markov.jpg Graphic file (type bmp)
 <Markov.jpg>
-[21
+[23
 
 ]
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
-[22]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-41-1.pdf Graphic fil
+[24]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-41-1.pdf>
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf Graphic fil
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf>
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-44-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf>
-[23]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf Graphic fil
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-44-1.pdf>
+[25]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-46-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf>
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-46-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24] [25]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf Graphic fil
+[26] [27]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-48-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf>
-[26]
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-48-1.pdf>
+[28]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1371.
+(Font)              scaled to size 14.4pt on input line 1462.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 1371.
+(Font)              scaled to size 14.4013pt on input line 1462.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1371.
-Missing character: There is no ∈ in font [lmroman10-italic]:mapping=tex-text;!
-[27] [28] [29] [30]
+(Font)              scaled to size 14.39845pt on input line 1462.
+Missing character: There is no ∈ (U+2208) in font [lmroman10-italic]:mapping=te
+x-text;!
+[29] [30] [31] [32]
 File: images/graph2.png Graphic file (type bmp)
 <images/graph2.png>
-[31] [32]
+[33] [34]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[33] [34] [35] [36] [37] [38
+[35] [36] [37] [38] [39] [40
 
 ]
 Chapitre 3.
-[39] [40
-
-]
-Chapitre 4.
 [41] [42
 
 ]
-Chapitre 5.
+Chapitre 4.
 [43] [44
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 2256--2258
+Chapitre 5.
+[45] [46
+
+]
+Underfull \hbox (badness 2103) in paragraph at lines 2347--2349
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
  []
 
-[45] (./Calcul_Stochastique.aux) ) 
+[47] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20445 strings out of 478926
- 364584 string characters out of 5864917
- 990212 words of memory out of 5000000
- 39917 multiletter control sequences out of 15000+600000
+ 20636 strings out of 478721
+ 370589 string characters out of 5860529
+ 982429 words of memory out of 5000000
+ 40306 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,16n,122p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,16n,121p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Calcul_Stochastique.pdf (45 pages).
+Output written on Calcul_Stochastique.pdf (47 pages).
