@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.25)  7 JUN 2021 12:41
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.25)  7 JUN 2021 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1122,10 +1122,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf>
+[22]
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf>
-[22] [23] [24
+[23] [24
 
 ]
 Chapitre 2.
@@ -1154,11 +1155,11 @@ e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-49-1.pdf>
 [30]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1487.
+(Font)              scaled to size 14.4pt on input line 1492.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 1487.
+(Font)              scaled to size 14.4013pt on input line 1492.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1487.
+(Font)              scaled to size 14.39845pt on input line 1492.
 Missing character: There is no ∈ (U+2208) in font [lmroman10-italic]:mapping=te
 x-text;!
 [31] [32] [33] [34]
@@ -1182,7 +1183,7 @@ Chapitre 5.
 [47] [48
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 2372--2374
+Underfull \hbox (badness 2103) in paragraph at lines 2377--2379
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []

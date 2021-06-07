@@ -1231,8 +1231,13 @@ Ainsi, \(\mathbb{V}\Big(S_N\Big)=(19275+55225)\lambda=74500 \lambda\).
 \NormalTok{mu=}\KeywordTok{replicate}\NormalTok{(}\DecValTok{100000}\NormalTok{, }\KeywordTok{Z}\NormalTok{())}
 
 \CommentTok{# 3}
-\KeywordTok{hist}\NormalTok{(mu,}\DataTypeTok{freq =}\NormalTok{ F, }\DataTypeTok{main=}\StringTok{""}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{""}\NormalTok{)}
-\KeywordTok{curve}\NormalTok{(dnorm,}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DataTypeTok{add=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{col=}\DecValTok{2}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
+\CommentTok{#hist(mu,freq = F, main="", xlab="", ylab="")}
+\CommentTok{#curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)}
+\NormalTok{df=}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{mu=}\NormalTok{mu)}
+\NormalTok{gh=}\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{mu))}\OperatorTok{+}\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{..density..),}\DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DataTypeTok{len=}\DecValTok{20}\NormalTok{),}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{, }
+                   \DataTypeTok{fill =} \StringTok{"grey"}\NormalTok{)}\OperatorTok{+}
+\StringTok{   }\KeywordTok{stat_function}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ dnorm, }\DataTypeTok{args =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(df}\OperatorTok{$}\NormalTok{mu), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(df}\OperatorTok{$}\NormalTok{mu)),}\DataTypeTok{size=}\FloatTok{1.2}\NormalTok{,}\DataTypeTok{color=}\DecValTok{2}\NormalTok{)}\OperatorTok{+}\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\NormalTok{gh}
 \end{Highlighting}
 \end{Shaded}
 

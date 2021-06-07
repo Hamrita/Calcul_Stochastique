@@ -843,7 +843,7 @@ abline(h=37250, lwd=2,col=2)
 
 ### Solution 4{-}
 
-```{r, fig.align='center', comment=""}
+```{r, fig.align='center', comment="", fig.width=5,fig.height=5}
 set.seed(1)
 simExp=rexp(n=100, rate=4)
 z=(mean(simExp)-1/4)/(1/4/sqrt(100))
@@ -856,6 +856,12 @@ set.seed(1)
 mu=replicate(100000, Z())
 
 # 3
-hist(mu,freq = F, main="", xlab="", ylab="")
-curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)
+#hist(mu,freq = F, main="", xlab="", ylab="")
+#curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)
+df=data.frame(mu=mu)
+gh=ggplot(df, aes(x=mu))+geom_histogram(aes(y =..density..),breaks=seq(-5,5,len=20),colour = "black", 
+                   fill = "grey")+
+   stat_function(fun = dnorm, args = list(mean = mean(df$mu), sd = sd(df$mu)),size=1.2,color=2)+xlab("") +ylab("")
+gh
+
 ```
