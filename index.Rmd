@@ -840,3 +840,22 @@ for(i in 100:10000) vvS[i]=var(SN[1:i])
 plot(vvS, type="l",xlab="", ylab="", main="Variance")
 abline(h=37250, lwd=2,col=2)
 ```
+
+### Solution 4{-}
+
+```{r, fig.align='center', comment=""}
+set.seed(1)
+simExp=rexp(n=100, rate=4)
+z=(mean(simExp)-1/4)/(1/4/sqrt(100))
+# 2
+Z=function(){
+ simExp=rexp(n=100,4)
+(mean(simExp)-1/4)/(1/4/sqrt(100)) 
+}
+set.seed(1)
+mu=replicate(100000, Z())
+
+# 3
+hist(mu,freq = F, main="", xlab="", ylab="")
+curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)
+```

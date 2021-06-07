@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.25)  5 JUN 2021 23:01
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.5.25)  7 JUN 2021 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1122,77 +1122,80 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf Graphic fil
 e (type pdf)
 <use Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf>
-[22]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf Graphic fil
+e (type pdf)
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-36-1.pdf>
+[22] [23] [24
+
+]
 Chapitre 2.
 File: Markov.jpg Graphic file (type bmp)
 <Markov.jpg>
-[23
-
-]
+[25]
 File: images/graph1.png Graphic file (type bmp)
 <images/graph1.png>
-[24]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf Graphic fil
+[26]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-42-1.pdf>
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-44-1.pdf Graphic fil
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-43-1.pdf>
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-44-1.pdf>
-[25]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-46-1.pdf Graphic fil
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-45-1.pdf>
+[27]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-46-1.pdf>
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-47-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[26] [27]
-File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-48-1.pdf Graphic fil
+[28] [29]
+File: Calcul_Stochastique_files/figure-latex/unnamed-chunk-49-1.pdf Graphic fil
 e (type pdf)
-<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-48-1.pdf>
-[28]
+<use Calcul_Stochastique_files/figure-latex/unnamed-chunk-49-1.pdf>
+[30]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 1462.
+(Font)              scaled to size 14.4pt on input line 1487.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 1462.
+(Font)              scaled to size 14.4013pt on input line 1487.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1462.
+(Font)              scaled to size 14.39845pt on input line 1487.
 Missing character: There is no ∈ (U+2208) in font [lmroman10-italic]:mapping=te
 x-text;!
-[29] [30] [31] [32]
+[31] [32] [33] [34]
 File: images/graph2.png Graphic file (type bmp)
 <images/graph2.png>
-[33] [34]
+[35] [36]
 File: images/graphe3.png Graphic file (type bmp)
 <images/graphe3.png>
-[35] [36] [37] [38] [39] [40
+[37] [38] [39] [40] [41] [42
 
 ]
 Chapitre 3.
-[41] [42
-
-]
-Chapitre 4.
 [43] [44
 
 ]
-Chapitre 5.
+Chapitre 4.
 [45] [46
 
 ]
-Underfull \hbox (badness 2103) in paragraph at lines 2347--2349
+Chapitre 5.
+[47] [48
+
+]
+Underfull \hbox (badness 2103) in paragraph at lines 2372--2374
 [][]\TU/lmr/m/n/10 Tijms, H. C. 2003. \TU/lmr/m/it/10 A First Course in Stochas
 tic Models\TU/lmr/m/n/10 . Wiley. [][]$[][][][][] [] [] [] [][][][][] [] [][][]
 [][][] [] [][] [] [][][][][] [] [][] []
  []
 
-[47] (./Calcul_Stochastique.aux) ) 
+[49] (./Calcul_Stochastique.aux) ) 
 Here is how much of TeX's memory you used:
- 20636 strings out of 478721
- 370589 string characters out of 5860529
- 982429 words of memory out of 5000000
- 40306 multiletter control sequences out of 15000+600000
+ 20647 strings out of 478721
+ 371227 string characters out of 5860529
+ 982467 words of memory out of 5000000
+ 40316 multiletter control sequences out of 15000+600000
  410914 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  85i,16n,121p,954b,534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Calcul_Stochastique.pdf (47 pages).
+Output written on Calcul_Stochastique.pdf (49 pages).
