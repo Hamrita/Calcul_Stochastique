@@ -815,7 +815,7 @@ $\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 
    
    3. Reprenons les questions avec des simulations sous R
    
-```{r, comment=""}
+```{r, comment="", warning=FALSE, message=FALSE, fig.align='center'}
 # Créeons une fonction pour simuler la variable S_N
 # pour N=n
  sn.func <- function(n){
@@ -832,13 +832,20 @@ set.seed(12345)
  mean(SN)
  # Déterminons la variance de S_N,  qui doit être proche de 74500*0.5=37250
 var(SN)
-par(mfrow=c(1,2))
-plot(cumsum(SN[-(1:10)])/(11:10000), type="l", xlab="", ylab="", main="Moyenne")
-abline(h=117.5, lwd=2, col=2)
+#par(mfrow=c(1,2))
+#plot(cumsum(SN[-(1:10)])/(11:10000), type="l", xlab="", ylab="", main="Moyenne")
+#abline(h=117.5, lwd=2, col=2)
 vvS=NULL
-for(i in 100:10000) vvS[i]=var(SN[1:i])
-plot(vvS, type="l",xlab="", ylab="", main="Variance")
-abline(h=37250, lwd=2,col=2)
+for(i in 1:10000) vvS[i]=var(SN[1:i])
+vvS=vvS[-1]
+#plot(vvS, type="l",xlab="", ylab="", main="Variance")
+#abline(h=37250, lwd=2,col=2)
+df1=data.frame(SN=cumsum(SN)/(1:10000))
+df2=data.frame(V=vvS)
+# library(ggplot2)
+gg1=ggplot(df1,aes(x=1:10000))+geom_line(aes(y=SN),size=0.7)+ geom_hline(yintercept=117.5, size=0.9, col=2)+xlab("")+ylab("")
+gg2=ggplot(df2,aes(x=2:10000, y=V))+geom_line(size=0.7)+ geom_hline(yintercept=37250, size=0.9, col=2)+xlab("")+ylab("")
+ggpubr::ggarrange(gg1,gg2, ncol=2, nrow=1, labels=c("Moyenne","Variance"))
 ```
 
 ### Solution 4{-}

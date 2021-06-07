@@ -1201,17 +1201,24 @@ Ainsi, \(\mathbb{V}\Big(S_N\Big)=(19275+55225)\lambda=74500 \lambda\).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{cumsum}\NormalTok{(SN[}\OperatorTok{-}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)])}\OperatorTok{/}\NormalTok{(}\DecValTok{11}\OperatorTok{:}\DecValTok{10000}\NormalTok{), }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{""}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Moyenne"}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\FloatTok{117.5}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\DecValTok{2}\NormalTok{)}
+\CommentTok{#par(mfrow=c(1,2))}
+\CommentTok{#plot(cumsum(SN[-(1:10)])/(11:10000), type="l", xlab="", ylab="", main="Moyenne")}
+\CommentTok{#abline(h=117.5, lwd=2, col=2)}
 \NormalTok{vvS=}\OtherTok{NULL}
-\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{100}\OperatorTok{:}\DecValTok{10000}\NormalTok{) vvS[i]=}\KeywordTok{var}\NormalTok{(SN[}\DecValTok{1}\OperatorTok{:}\NormalTok{i])}
-\KeywordTok{plot}\NormalTok{(vvS, }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{""}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Variance"}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{37250}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{,}\DataTypeTok{col=}\DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{10000}\NormalTok{) vvS[i]=}\KeywordTok{var}\NormalTok{(SN[}\DecValTok{1}\OperatorTok{:}\NormalTok{i])}
+\NormalTok{vvS=vvS[}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\CommentTok{#plot(vvS, type="l",xlab="", ylab="", main="Variance")}
+\CommentTok{#abline(h=37250, lwd=2,col=2)}
+\NormalTok{df1=}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{SN=}\KeywordTok{cumsum}\NormalTok{(SN)}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10000}\NormalTok{))}
+\NormalTok{df2=}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{V=}\NormalTok{vvS)}
+\CommentTok{# library(ggplot2)}
+\NormalTok{gg1=}\KeywordTok{ggplot}\NormalTok{(df1,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\DecValTok{1}\OperatorTok{:}\DecValTok{10000}\NormalTok{))}\OperatorTok{+}\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{SN),}\DataTypeTok{size=}\FloatTok{0.7}\NormalTok{)}\OperatorTok{+}\StringTok{ }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept=}\FloatTok{117.5}\NormalTok{, }\DataTypeTok{size=}\FloatTok{0.9}\NormalTok{, }\DataTypeTok{col=}\DecValTok{2}\NormalTok{)}\OperatorTok{+}\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{)}\OperatorTok{+}\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\NormalTok{gg2=}\KeywordTok{ggplot}\NormalTok{(df2,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\DecValTok{2}\OperatorTok{:}\DecValTok{10000}\NormalTok{, }\DataTypeTok{y=}\NormalTok{V))}\OperatorTok{+}\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.7}\NormalTok{)}\OperatorTok{+}\StringTok{ }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept=}\DecValTok{37250}\NormalTok{, }\DataTypeTok{size=}\FloatTok{0.9}\NormalTok{, }\DataTypeTok{col=}\DecValTok{2}\NormalTok{)}\OperatorTok{+}\KeywordTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{)}\OperatorTok{+}\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{ggarrange}\NormalTok{(gg1,gg2, }\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{nrow=}\DecValTok{1}\NormalTok{, }\DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Moyenne"}\NormalTok{,}\StringTok{"Variance"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1.pdf}
+\begin{center}\includegraphics{Calcul_Stochastique_files/figure-latex/unnamed-chunk-35-1} \end{center}
 
 \hypertarget{solution-4}{%
 \subsection*{Solution 4}\label{solution-4}}
