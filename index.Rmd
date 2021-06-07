@@ -866,9 +866,10 @@ mu=replicate(100000, Z())
 #hist(mu,freq = F, main="", xlab="", ylab="")
 #curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)
 df=data.frame(mu=mu)
-gh=ggplot(df, aes(x=mu))+geom_histogram(aes(y =..density..),breaks=seq(-5,5,len=20),colour = "black", 
-                   fill = "grey")+
-   stat_function(fun = dnorm, args = list(mean = mean(df$mu), sd = sd(df$mu)),size=1.2,color=2)+xlab("") +ylab("")
+gh=ggplot(df, aes(x=mu))+geom_histogram(aes(y =..density..),bins=20,colour = "black",fill = "grey")+
+   stat_function(fun = dnorm, args = list(mean = mean(df$mu), 
+                        sd = sd(df$mu)),size=1.2,color=2)+
+   xlab("") +ylab("")
 gh
 
 ```
