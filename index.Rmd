@@ -508,14 +508,14 @@ Soit la densité jointe d'un couple aléatoire définie par: \[f(x,y)=\frac{2}{x
 Déterminer \(\mathbb{E}\left( Y|X=x\right)\)
 ```
 
-Par définition \(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{X|Y}(x,y)dy \).
+Par définition \(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{Y|X}(x,y)dy \).
 
-Or \( {f}_{X|Y}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\) avec
+Or \( {f}_{Y|X}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\) avec
 \begin{align*}
 {f}_X(x)=&\int_1^x\dfrac{2}{xy}dy=\dfrac{2}{x}\biggl[\ln(y) \biggr]_1^x\\
 =&\dfrac{2\ln(x)}{x},\;\text{ pour }\; 1<x<e.
 \end{align*}
-D'où \({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)} \) pour \(1<y<x \), et par conséquent,
+D'où \({f}_{Y|X}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)} \) pour \(1<y<x \), et par conséquent,
 \[ 
 \mathbb{E}\left( Y|X=x\right)=\int_1^x \dfrac{y}{y\ln(x)}dy=\dfrac{1}{\ln(x)}\biggl[ y\biggr]_1^x=\dfrac{x-1}{\ln(x)}
 \]
@@ -866,7 +866,8 @@ mu=replicate(100000, Z())
 #hist(mu,freq = F, main="", xlab="", ylab="")
 #curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)
 df=data.frame(mu=mu)
-gh=ggplot(df, aes(x=mu))+geom_histogram(aes(y =..density..),bins=20,colour = "black",fill = "grey")+
+gh=ggplot(df, aes(x=mu))+
+   geom_histogram(aes(y =..density..),bins=20,colour = "black",fill = "grey")+
    stat_function(fun = dnorm, args = list(mean = mean(df$mu), 
                         sd = sd(df$mu)),size=1.2,color=2)+
    xlab("") +ylab("")
