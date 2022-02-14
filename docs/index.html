@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Calcul stochastique</title>
   <meta name="description" content="Calcul stochastique" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Calcul stochastique" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,9 @@
   
 
 <link rel="next" href="chaînes-de-markov.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,29 +51,32 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -115,6 +120,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -131,25 +159,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Calcul stochastique</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#notion-de-probabilité"><i class="fa fa-check"></i><b>1.1</b> Notion de probabilité</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Rappel sur le calcul des probabilités</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#notion-de-probabilité"><i class="fa fa-check"></i><b>1.1</b> Notion de probabilité</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#probabilité-conditionnelle"><i class="fa fa-check"></i><b>1.1.1</b> Probabilité conditionnelle</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#indépendance"><i class="fa fa-check"></i><b>1.1.2</b> Indépendance</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.2</b> Variables aléatoires</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#espérance-mathématique"><i class="fa fa-check"></i><b>1.3</b> Espérance mathématique</a><ul>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#espérance-mathématique"><i class="fa fa-check"></i><b>1.3</b> Espérance mathématique</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#propriétés-de-la-covariance"><i class="fa fa-check"></i>Propriétés de la covariance</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#fonctions-génératrices-des-moments"><i class="fa fa-check"></i><b>1.4</b> Fonctions génératrices des moments</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#fonctions-caractéristiques"><i class="fa fa-check"></i><b>1.5</b> Fonctions caractéristiques</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle---variance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle - Variance conditionnelle</a><ul>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#espérance-conditionnelle---variance-conditionnelle"><i class="fa fa-check"></i><b>1.6</b> Espérance conditionnelle - Variance conditionnelle</a>
+<ul>
 <li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#densité-conditionnelle"><i class="fa fa-check"></i><b>1.6.1</b> Densité conditionnelle</a></li>
 <li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#espérance-conditionnelle"><i class="fa fa-check"></i><b>1.6.2</b> Espérance conditionnelle</a></li>
 <li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#variance-conditionnelle"><i class="fa fa-check"></i><b>1.6.3</b> Variance conditionnelle</a></li>
 <li class="chapter" data-level="1.6.4" data-path="index.html"><a href="index.html#théorèmes-limites"><i class="fa fa-check"></i><b>1.6.4</b> Théorèmes limites</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#processus-stochastique"><i class="fa fa-check"></i><b>1.7</b> Processus stochastique</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-1"><i class="fa fa-check"></i>Exercice 1</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-2"><i class="fa fa-check"></i>Exercice 2</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercice-3"><i class="fa fa-check"></i>Exercice 3</a></li>
@@ -160,24 +193,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#solution-4"><i class="fa fa-check"></i>Solution 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a><ul>
+<li class="chapter" data-level="2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html"><i class="fa fa-check"></i><b>2</b> Chaînes de Markov</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#définitions-et-exemples"><i class="fa fa-check"></i><b>2.1</b> Définitions et exemples</a></li>
 <li class="chapter" data-level="2.2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#loi-des-x_n"><i class="fa fa-check"></i><b>2.2</b> Loi des <span class="math inline">\(X_n\)</span></a></li>
 <li class="chapter" data-level="2.3" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#classification-des-états"><i class="fa fa-check"></i><b>2.3</b> Classification des états</a></li>
-<li class="chapter" data-level="2.4" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#temps-dabsorption"><i class="fa fa-check"></i><b>2.4</b> Temps d’absorption</a><ul>
+<li class="chapter" data-level="2.4" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#temps-dabsorption"><i class="fa fa-check"></i><b>2.4</b> Temps d’absorption</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#temps-darrêt"><i class="fa fa-check"></i><b>2.4.1</b> Temps d’arrêt</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#distribution-limite"><i class="fa fa-check"></i><b>2.5</b> Distribution limite</a><ul>
+<li class="chapter" data-level="2.5" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#distribution-limite"><i class="fa fa-check"></i><b>2.5</b> Distribution limite</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#détermination-de-la-distribution-stationnaire"><i class="fa fa-check"></i><b>2.5.1</b> Détermination de la distribution stationnaire</a></li>
 <li class="chapter" data-level="2.5.2" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#comportement-de-long-terme"><i class="fa fa-check"></i><b>2.5.2</b> Comportement de long terme</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#simulation-dune-chaîne-de-markov-discrète"><i class="fa fa-check"></i><b>2.6</b> Simulation d’une chaîne de Markov discrète</a><ul>
+<li class="chapter" data-level="2.6" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#simulation-dune-chaîne-de-markov-discrète"><i class="fa fa-check"></i><b>2.6</b> Simulation d’une chaîne de Markov discrète</a>
+<ul>
 <li class="chapter" data-level="2.6.1" data-path="chaînes-de-markov.html"><a href="chaînes-de-markov.html#exemple-illustratif"><i class="fa fa-check"></i><b>2.6.1</b> Exemple illustratif</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="processus-de-poisson.html"><a href="processus-de-poisson.html"><i class="fa fa-check"></i><b>3</b> Processus de poisson</a></li>
 <li class="chapter" data-level="4" data-path="processus-gaussien.html"><a href="processus-gaussien.html"><i class="fa fa-check"></i><b>4</b> Processus Gaussien</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
 </ul></li>
@@ -207,9 +245,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em><strong>Mohamed Essaied Hamrita</strong></em></p>
 <p class="date"><em><strong>2021</strong></em></p>
 </div>
-<div id="rappel-sur-le-calcul-des-probabilités" class="section level1">
+<div id="rappel-sur-le-calcul-des-probabilités" class="section level1" number="1">
 <h1><span class="header-section-number">Chapitre 1</span> Rappel sur le calcul des probabilités</h1>
-<div id="notion-de-probabilité" class="section level2">
+<div id="notion-de-probabilité" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Notion de probabilité</h2>
 <p>Une notion basique dans la théorie des probabilités est l’<strong>expérience aléatoire</strong> dont on ne connait pas son résultat en avance. L’ensemble de tous les résultats de l’expérience est l’<strong>ensemble des possibles</strong> ou encore l’<strong>univers</strong> et noté <span class="math inline">\(\Omega\)</span>.</p>
 <p>Un <strong>évènement</strong> est un sous ensemble de l’univers.</p>
@@ -237,15 +275,13 @@ P \left(\bigcup\limits_{i=1}^nE_i \right)=\sum_{i=1}^n P(E_i)
 <span id="exm:unnamed-chunk-3" class="example"><strong>Exemple 1.1  </strong></span>L’expérience consiste à lancer une pièce de monnaie équilibrée. Donc <span class="math inline">\(P(\{P\})= P(\{F\})=0.5\)</span>
 </div>
 
-
 <div class="example">
 <p><span id="exm:unnamed-chunk-4" class="example"><strong>Exemple 1.2  </strong></span>On lance un dé cubique équilibré dont ses faces sont numérotées de 1 à 6.</p>
 <p><span class="math inline">\(P(\{i \})= \dfrac{1}{6}, \; \forall\, i=1,2,\ldots,6\)</span>.</p>
 <p>La probabilité d’obtenir un nombre pair est</p>
 <span class="math inline">\(P(\{2,4,6\})= P(\{2 \})+P(\{4 \}) +P(\{6 \}) = \dfrac{1}{2}\)</span>.
 </div>
-
-<div id="probabilité-conditionnelle" class="section level3">
+<div id="probabilité-conditionnelle" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Probabilité conditionnelle</h3>
 
 <div class="definition">
@@ -255,7 +291,6 @@ P \left(\bigcup\limits_{i=1}^nE_i \right)=\sum_{i=1}^n P(E_i)
 \]</span>
 </div>
 
-
 <div class="example">
 <p><span id="exm:unnamed-chunk-6" class="example"><strong>Exemple 1.3  </strong></span>Une urne contient 10 boules numérotées de 1 à 10 indiscernables au toucher. On tire au hasard une boule. Sachant que le numéro de la boule tirée est au moins égale à 5, quelle est la probabilité qu’il soit égale à 10?</p>
 Soit <span class="math inline">\(A\)</span> l’évènement d’avoir une boule portant le numéro 10. Soit <span class="math inline">\(B\)</span> l’évènement d’avoir une boule portant un numéro supèrieur ou égale à 5. La probabilité demandée est <span class="math inline">\(P(A|B)\)</span>
@@ -263,15 +298,13 @@ Soit <span class="math inline">\(A\)</span> l’évènement d’avoir une boule 
 P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
 \]</span>
 </div>
-
 </div>
-<div id="indépendance" class="section level3">
+<div id="indépendance" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Indépendance</h3>
 
 <div class="definition">
 <span id="def:unnamed-chunk-7" class="definition"><strong>Définition 1.2  </strong></span>On dit que deux évènements, A et B, sont <strong>indépendants</strong> si <span class="math inline">\(P(A\cap B)=P(A)\times P(B)\)</span>
 </div>
-
 <p>Si <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> deux évènements indépendants, alors <span class="math inline">\(P(A|B)=P(A)\)</span> et <span class="math inline">\(P(B|A)=P(B)\)</span>.</p>
 
 <div class="example">
@@ -279,10 +312,9 @@ P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
 <p>Vérifier que les deux évènements <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> sont indépendants.</p>
 <span class="math inline">\(P(A\cap B)=p(\{4,2 \})=1/36\)</span> et <span class="math inline">\(P(A)=1/6\)</span>, <span class="math inline">\(P(B)=1/6\)</span>. Donc <span class="math inline">\(P(A)\times P(B)=1/6 \times 1/6 =1/36 =P(A\cap B)\)</span>. Ainsi, les évènements <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> sont indépendants.
 </div>
-
 </div>
 </div>
-<div id="variables-aléatoires" class="section level2">
+<div id="variables-aléatoires" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Variables aléatoires</h2>
 
 <div class="definition">
@@ -290,7 +322,6 @@ P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)}{P(B)}=\frac{1/10}{6/10}=1/6
 <p>Une variable aléatoire <span class="math inline">\(X\)</span> est une application de l’ensemble <span class="math inline">\(\Omega\)</span> vers un ensemble de réalisations.</p>
 Pour tout évènement <span class="math inline">\(A\)</span>, on <span class="math inline">\(P(X \in A)=P(X^{-1}(A))\)</span> où <span class="math inline">\(X^{-1}(A)\)</span> est l’évènement comprenant tous les éléments <span class="math inline">\(\omega \in \Omega\)</span> tels que <span class="math inline">\(X(\omega) \in A\)</span>.
 </div>
-
 <p>La <strong>fonction de répartition</strong> <span class="math inline">\(F\)</span> d’une variable aléatoire <span class="math inline">\(X\)</span> est définie par
 <span class="math display">\[
 F(x)=P(X \leq x)=P(X \in ]-\infty, x]), \; \forall \, x \in \mathbb{R}
@@ -333,7 +364,7 @@ et sont indépendantes si
 F(X_1, X_2, \ldots, X_n)=F_{X_1}(x_1)F_{X_2}(x_2)\ldots F_{X_n}(x_n)
 \]</span></p>
 </div>
-<div id="espérance-mathématique" class="section level2">
+<div id="espérance-mathématique" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Espérance mathématique</h2>
 
 <div class="definition">
@@ -346,7 +377,6 @@ F(X_1, X_2, \ldots, X_n)=F_{X_1}(x_1)F_{X_2}(x_2)\ldots F_{X_n}(x_n)
      \end{cases}
   \end{align*}\]</span></p>
 </div>
-
 <p>De même, on définit l’espérance d’une fonction de <span class="math inline">\(X\)</span>, <span class="math inline">\(g(X)\)</span>, par:
 <span class="math display">\[
 \mathbb{E}\left[ g(X)\right]=\int_{\mathbb{R}}x dF_g(x)=\int_{\mathbb{R}}g(x) dF(x)
@@ -391,7 +421,6 @@ Une expression utile pour la variance de la somme des variables aléatoires peut
 </ul>
 </div>
 
-
 <div class="example">
 <p><span id="exm:unnamed-chunk-12" class="example"><strong>Exemple 1.5  </strong></span>Calculer la variance d’une variable aléatoire <span class="math inline">\(X\)</span> suivant une loi binomiale de paramètres <span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>.</p>
 Puisqu’une telle variable aléatoire représente le nombre de succès dans <span class="math inline">\(n\)</span> essais indépendants lorsque chaque essai a une probabilité commune p d’être un succès,
@@ -401,7 +430,6 @@ X=X_1+X_2+\ldots+X_n
 \]</span>
 où <span class="math inline">\(X_i \stackrel{iid}{\sim}B(p)\)</span> telle que
 </div>
-
 <p><span class="math display">\[
 X_i=\begin{cases}
 1 \text{ si le ième issue est un succés}\\
@@ -417,7 +445,7 @@ Par conséquent, on aura <span class="math inline">\(\mathbb{V}(X)=\displaystyle
 Donc <span class="math inline">\(\mathbb{V}(X)=np(1-p)\)</span>.</p>
 </div>
 </div>
-<div id="fonctions-génératrices-des-moments" class="section level2">
+<div id="fonctions-génératrices-des-moments" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Fonctions génératrices des moments</h2>
 
 <div class="definition">
@@ -430,7 +458,6 @@ Donc <span class="math inline">\(\mathbb{V}(X)=np(1-p)\)</span>.</p>
 \end{cases}
 \end{align*}\]</span></p>
 </div>
-
 <p><span class="math inline">\(\phi(t)\)</span> est appelée fonction génératrice des moments car tous les moments de <span class="math inline">\(X\)</span> peuvent être obtenues par les dérivées successives de <span class="math inline">\(\phi(t)\)</span>. Par exemple</p>
 <p><span class="math display">\[\begin{align*}
 \phi&#39;(t)&amp;=\dfrac{d}{dt}\mathbb{E}\left[e^{tX} \right] \\
@@ -443,14 +470,13 @@ Donc <span class="math inline">\(\mathbb{V}(X)=np(1-p)\)</span>.</p>
 \phi_{X+Y}(t)&amp;=\mathbb{E}\left(e^{t(X+Y)} \right)=\mathbb{E}\left(e^{tX}e^{tY)} \right)\\
 &amp;=\mathbb{E}\left(e^{tX}\right) \mathbb{E}\left(e^{tY}\right)=\phi_X(t)\phi_Y(t)
 \end{align*}\]</span></p>
-
+ffalse{-91-76-111-105-32-66-105-110-111-109-105-97-108-101-32-100-101-32-112-97-114-97-109-232-116-114-101-115-32-110-32-101-116-32-112-93-}
 <div class="example">
-<p><span id="exm:unnamed-chunk-14" class="example"><strong>Exemple 1.6  (Loi Binomiale de paramètres n et p)  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unnamed-chunk-14" class="example"><strong>Exemple 1.6  \iffalse (Loi Binomiale de paramètres n et p)  </strong></span><span class="math display">\[\begin{align*}
 \phi(t)&amp;=\mathbb{E}\left[e^{tX} \right]=\sum_{k=0}^ne^{tk}C^n_kp^k{(1-p)}^{n-k}\\
 &amp;=\sum_{k=0}^nC^n_k{\left(pe^t\right)}^k{(1-p)}^{n-k}
 \end{align*}\]</span></p>
 </div>
-
 <p>Or, d’après la formule de Binôme, on a
 <span class="math display">\[
 {(a+b)}^n=\sum_{k=0}^nC_n^ka^kb^{n-k}
@@ -472,11 +498,10 @@ Donc, on peut déduire la variance de <span class="math inline">\(X\)</span>.
 <span class="math display">\[
 \mathbb{V}(X)=\mathbb{E}(X^2)-\mathbb{E}{(X)}^2=\phi&#39;&#39;(0)-{\left( \phi&#39;(0)\right)}^2=np(1-p)
 \]</span>
-
+ffalse{-91-76-111-105-32-78-111-114-109-97-108-101-32-115-116-97-110-100-97-114-100-93-}
 <div class="example">
-<span id="exm:unnamed-chunk-15" class="example"><strong>Exemple 1.7  (Loi Normale standard)  </strong></span>
+<span id="exm:unnamed-chunk-15" class="example"><strong>Exemple 1.7  \iffalse (Loi Normale standard)  </strong></span>
 </div>
-
 <p><span class="math display">\[\begin{align*}
 \mathbb{E}\left(e^{tX} \right)&amp;=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{tx-x^2/2}dx\\
 &amp;=\dfrac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-(x^2-2tx)/2}dx\\
@@ -489,16 +514,16 @@ Si <span class="math inline">\(Y \sim N(m,\sigma^2)\)</span>, alors
 \]</span>
 Sous R, on peut déterminer et évaluer les fonctions génératrices des moments en utilisant l’extension <strong><code>MGF</code></strong> qui est téléchargeable depuis l’adresse suivante: <a href="https://github.com/alexandernel14/MGF" class="uri">https://github.com/alexandernel14/MGF</a>.</p>
 <p>Une description de l’installation et l’utilisation de cette extension est donnée comme suit:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># installer &#39;devtools&#39;: install.packages(&quot;devtools&quot;)</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># installer &#39;MGF&#39; depuis github</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">#devtools::install_github(&quot;alexandernel14/MGF&quot;,force = T)</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># charger l&#39;extension &#39;MGF&#39;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(MGF)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co"># fonction génératrice de la loi binomiale</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="kw">mgf</span>(<span class="st">&quot;Binomial&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installer &#39;devtools&#39;: install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># installer &#39;MGF&#39; depuis github</span></span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github(&quot;alexandernel14/MGF&quot;,force = T)</span></span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># charger l&#39;extension &#39;MGF&#39;</span></span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MGF)</span>
+<span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fonction génératrice de la loi binomiale</span></span>
+<span id="cb1-7"><a href="index.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mgf</span>(<span class="st">&quot;Binomial&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;(1-p+p*exp(t))^n&quot;</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># t=0, ordre 1</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">1</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">p=</span><span class="fl">0.4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t=0, ordre 1</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="at">t=</span><span class="dv">0</span>, <span class="at">order_of_moment=</span><span class="dv">1</span>, <span class="at">n=</span><span class="dv">10</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div>
 <pre><code>The Moment Generating Function for the  Binomial distribution is: 
 [1] &quot;(1-p+p*exp(t))^n&quot;
 The formula for the 1st moment is: 
@@ -510,8 +535,8 @@ The formula of the 1st centralized moment is:
     exp(t))^n
 The 1st centralized moment&#39;s value is: 
 [1] 4</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># t=0, ordre 2</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">2</span>, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">p=</span><span class="fl">0.4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t=0, ordre 2</span></span>
+<span id="cb5-2"><a href="index.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MGF_evaluator</span>(<span class="st">&quot;Binomial&quot;</span>,<span class="at">t=</span><span class="dv">0</span>, <span class="at">order_of_moment=</span><span class="dv">2</span>, <span class="at">n=</span><span class="dv">10</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div>
 <pre><code>The Moment Generating Function for the  Binomial distribution is: 
 [1] &quot;(1-p+p*exp(t))^n&quot;
 The formula for the 2nd moment is: 
@@ -528,11 +553,11 @@ The formula of the 2nd centralized moment is:
     (n * (p * exp(t))))/((1 - p + p * exp(t))^n)^2
 The 2nd centralized moment&#39;s value is: 
 [1] 2.4</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># fonction génératrice de la loi normale</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">mgf</span>(<span class="st">&quot;Normal&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fonction génératrice de la loi normale</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mgf</span>(<span class="st">&quot;Normal&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># t=0, ordre 1</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t=0, ordre 1</span></span>
+<span id="cb9-2"><a href="index.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="at">t=</span><span class="dv">0</span>, <span class="at">order_of_moment=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>The Moment Generating Function for the  Normal distribution is: 
 [1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;
 The formula for the 1st moment is: 
@@ -544,8 +569,8 @@ The formula of the 1st centralized moment is:
 mu + 0.5 * sigma^2 * (2 * t)
 The 1st centralized moment&#39;s value is: 
 [1] 0</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># t=0, ordre 2</span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="kw">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="dt">t=</span><span class="dv">0</span>, <span class="dt">order_of_moment=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t=0, ordre 2</span></span>
+<span id="cb11-2"><a href="index.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MGF_evaluator</span>(<span class="st">&quot;Normal&quot;</span>,<span class="at">t=</span><span class="dv">0</span>, <span class="at">order_of_moment=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>The Moment Generating Function for the  Normal distribution is: 
 [1] &quot;exp(mu*t + 0.5*sigma^2*t^2)&quot;
 The formula for the 2nd moment is: 
@@ -559,7 +584,7 @@ The formula of the 2nd centralized moment is:
 The 2nd centralized moment&#39;s value is: 
 [1] 1</code></pre>
 </div>
-<div id="fonctions-caractéristiques" class="section level2">
+<div id="fonctions-caractéristiques" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Fonctions caractéristiques</h2>
 Il existe des variables aléatoires pour lesquelles la fonction génératrice des moments n’existe pas. Dans ce cas, on peut faire recours à la fonction caractéristique définie ci-dessous.
 
@@ -574,7 +599,6 @@ Il existe des variables aléatoires pour lesquelles la fonction génératrice de
 où <span class="math inline">\(\mathrm{i}=\sqrt{-1}\)</span>.</p>
 </div>
 
-
 <div class="proposition">
 <p><span id="prp:unnamed-chunk-17" class="proposition"><strong>Proposition 1.1  </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire, <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> deux réels.
 Alors les propriétés suivantes sont toujours vraies :</p>
@@ -585,7 +609,6 @@ Alors les propriétés suivantes sont toujours vraies :</p>
 <p><strong>5.</strong> <span class="math inline">\(\psi_X(t)\)</span> est continue sur <span class="math inline">\(\mathbb{R}\)</span>.</p>
 </div>
 
-
 <div class="proposition">
 <span id="prp:unnamed-chunk-18" class="proposition"><strong>Proposition 1.2  </strong></span>Si le moment d’ordre <span class="math inline">\(n\)</span> d’une variable aléatoire <span class="math inline">\(X\)</span> existe, alors la fonction caractéristique de
 <span class="math inline">\(X\)</span> est <span class="math inline">\(n\)</span> fois dérivable et :
@@ -593,30 +616,27 @@ Alors les propriétés suivantes sont toujours vraies :</p>
   \mathbb{E}\left({X}^n \right)=\dfrac{1}{{\mathrm{i}}^n}{\psi}^n(0)
   \]</span>
 </div>
-
-
+ffalse{-91-76-111-105-32-110-111-114-109-97-108-32-115-116-97-110-100-97-114-100-93-}
 <div class="example">
-<span id="exm:unnamed-chunk-19" class="example"><strong>Exemple 1.8  (Loi normal standard)  </strong></span>La fonction caractéristique de la loi normale standard est: <span class="math display">\[\psi(t)={e}^{-t^2/2}\]</span>
+<span id="exm:unnamed-chunk-19" class="example"><strong>Exemple 1.8  \iffalse (Loi normal standard)  </strong></span>La fonction caractéristique de la loi normale standard est: <span class="math display">\[\psi(t)={e}^{-t^2/2}\]</span>
 </div>
-
-
+ffalse{-91-76-111-105-32-101-120-112-111-110-101-110-116-105-101-108-108-101-93-}
 <div class="example">
-<span id="exm:unnamed-chunk-20" class="example"><strong>Exemple 1.9  (Loi exponentielle)  </strong></span>La fonction caractéristique de la loi exponentielle de paramètre <span class="math inline">\(\lambda\)</span> est:
+<span id="exm:unnamed-chunk-20" class="example"><strong>Exemple 1.9  \iffalse (Loi exponentielle)  </strong></span>La fonction caractéristique de la loi exponentielle de paramètre <span class="math inline">\(\lambda\)</span> est:
 <span class="math display">\[
   \psi(t)=\dfrac{\lambda}{\mathrm{i}t-\lambda}
   \]</span>
 </div>
-
 <p>Si <span class="math inline">\(X_1,X_2,\ldots , X_n\)</span> sont des variables indépendantes, alors
 <span class="math display">\[
 \psi_{\sum_iX_i}(t)=\prod_i\psi_{X_i}(t)
 \]</span></p>
 </div>
-<div id="espérance-conditionnelle---variance-conditionnelle" class="section level2">
+<div id="espérance-conditionnelle---variance-conditionnelle" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Espérance conditionnelle - Variance conditionnelle</h2>
 <p>L’un des concepts les plus utiles de la théorie des probabilités est celui de la probabilité conditionnelle et de l’espérance conditionnelle. La raison est double. Premièrement, dans la pratique, nous nous intéressons souvent au calcul des probabilités et des espérances lorsqu’une information partielle est
 disponible; par conséquent, les probabilités et les espérances souhaitées sont conditionnelles. Deuxièmement, pour calculer une probabilité , il est souvent extrêmement utile d’abord <em>conditionner</em> une variable aléatoire appropriée.</p>
-<div id="densité-conditionnelle" class="section level3">
+<div id="densité-conditionnelle" class="section level3" number="1.6.1">
 <h3><span class="header-section-number">1.6.1</span> Densité conditionnelle</h3>
 <p>Soient <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> deux variables aléatoires de densité jointe <span class="math inline">\(f(x,y)\)</span>.</p>
 
@@ -630,7 +650,6 @@ disponible; par conséquent, les probabilités et les espérances souhaitées so
 \]</span>
 </div>
 
-
 <div class="example">
 <span id="exm:unnamed-chunk-22" class="example"><strong>Exemple 1.10  </strong></span>Soit un couple aléatoire discrète <span class="math inline">\((X,Y)\)</span> définie par la densité jointe suivante:
 <span class="math display">\[
@@ -638,7 +657,6 @@ disponible; par conséquent, les probabilités et les espérances souhaitées so
   \]</span>
 Déterminer la loi conditionnelle <span class="math inline">\(f_{X|Y=1}(x,y)\)</span>.
 </div>
-
 <p>La densité conditionnelle est par définition
 <span class="math display">\[
 {f}_{X|Y=1}(x,y)=\dfrac{P(X=x,Y=1)}{{P}_Y(Y=1)}
@@ -652,7 +670,7 @@ D’où
 {f}_{X|Y=1}(2,1)=\dfrac{P(X=2,Y=1)}{{P}_Y(Y=1)}=\dfrac{p(2,1)}{{P}_Y(1)}=\dfrac{1}{6}
 \]</span></p>
 </div>
-<div id="espérance-conditionnelle" class="section level3">
+<div id="espérance-conditionnelle" class="section level3" number="1.6.2">
 <h3><span class="header-section-number">1.6.2</span> Espérance conditionnelle</h3>
 <p>Une espérance conditionnelle est une expression calculée depuis une distribution conditionnelle. On écrit <span class="math inline">\(\mathbb{E}\left(Y|X=x \right)\)</span> pour l’espérance de <span class="math inline">\(Y\)</span> sachant <span class="math inline">\(X=x\)</span>.</p>
 
@@ -668,13 +686,11 @@ D’où
 \]</span>
 </div>
 
-
 <div class="example">
 <p><span id="exm:exple11" class="example"><strong>Exemple 1.11  </strong></span>On donne <span class="math inline">\(Y=\begin{cases}  1 \text{ avec une probabilité }\frac{1}{8}\\  2 \text{ avec une probabilité }\frac{7}{8}  \end{cases}\)</span></p>
 <p>et <span class="math inline">\(X|Y=\begin{cases}  2Y \text{ avec une probabilité }\frac{3}{4}\\  3Y \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
 Déterminer <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)\)</span>.
 </div>
-
 <p>Si <span class="math inline">\(Y=\)</span>, alors <span class="math inline">\(\left(X|Y= \right)= \begin{cases}  2 \text{ avec une probabilité }\frac{3}{4}\\  3 \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
 <p>D’où <span class="math inline">\(\mathbb{E}\left( X|Y=1\right)=\displaystyle \sum_x x\mathbb{P}\left( X|Y=1\right)=2\times\frac{3}{4}+3\times \frac{1}{4}=\frac{9}{4}\)</span>.</p>
 <p>Si <span class="math inline">\(Y=2\)</span>, alors <span class="math inline">\(\left(X|Y=2 \right)= \begin{cases}  4 \text{ avec une probabilité }\frac{3}{4}\\  6 \text{ avec une probabilité }\frac{1}{4}  \end{cases}\)</span></p>
@@ -685,14 +701,13 @@ Déterminer <span class="math inline">\(\mathbb{E}\left( X|Y=y\right)\)</span>.
 <span id="exm:unnamed-chunk-24" class="example"><strong>Exemple 1.12  </strong></span>Soit la densité jointe d’un couple aléatoire définie par: <span class="math display">\[f(x,y)=\frac{2}{xy},\; \text{ pour }\;1&lt;y&lt;x&lt;e \]</span>
 Déterminer <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)\)</span>
 </div>
-
-<p>Par définition <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{X|Y}(x,y)dy\)</span>.</p>
-<p>Or <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\)</span> avec
+<p>Par définition <span class="math inline">\(\mathbb{E}\left( Y|X=x\right)=\displaystyle \int_{\mathbb{R}}y{f}_{Y|X}(x,y)dy\)</span>.</p>
+<p>Or <span class="math inline">\({f}_{Y|X}(x,y)=\dfrac{f(x,y)}{{f}_X(x)}\)</span> avec
 <span class="math display">\[\begin{align*}
 {f}_X(x)=&amp;\int_1^x\dfrac{2}{xy}dy=\dfrac{2}{x}\biggl[\ln(y) \biggr]_1^x\\
 =&amp;\dfrac{2\ln(x)}{x},\;\text{ pour }\; 1&lt;x&lt;e.
 \end{align*}\]</span>
-D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)}\)</span> pour <span class="math inline">\(1&lt;y&lt;x\)</span>, et par conséquent,
+D’où <span class="math inline">\({f}_{Y|X}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)}=\dfrac{1}{y\ln(x)}\)</span> pour <span class="math inline">\(1&lt;y&lt;x\)</span>, et par conséquent,
 <span class="math display">\[ 
 \mathbb{E}\left( Y|X=x\right)=\int_1^x \dfrac{y}{y\ln(x)}dy=\dfrac{1}{\ln(x)}\biggl[ y\biggr]_1^x=\dfrac{x-1}{\ln(x)}
 \]</span></p>
@@ -711,7 +726,6 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 <p><span class="math inline">\(\mathbb{E}\left(X\right)= \frac{9}{4} \times \frac{1}{8} + \frac{18}{4} \times \frac{7}{8} = \frac{135}{32}\)</span></p>
 </div>
 
-
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-26" class="exercise"><strong>Exercice 1.1  </strong></span>On jette une pièce de monnaie équilibrée. Soit <span class="math inline">\(Y\)</span> la variable aléatoire désignant le nombre des lancers avant d’obtenir Face pour la première fois.</p>
 <ol style="list-style-type: decimal">
@@ -726,9 +740,8 @@ D’où <span class="math inline">\({f}_{X|Y}(x,y)=\dfrac{2}{xy}\dfrac{x}{\ln(x)
 </ol>
 </div>
 
-
 <div class="solution">
-<p> <span class="solution"><em>Solution </em></span> 1. Soit <span class="math inline">\(P(F)=p\)</span> et <span class="math inline">\(P(P)=1-p\)</span>. On a <span class="math inline">\((n-1)\)</span> premières épreuves donnant <span class="math inline">\(P\)</span> et la nième épreuve donne <span class="math inline">\(F\)</span>, et puisque les épreuves sont indépendantes, alors
+<p>\iffalse{} <span class="solution"><em>Solution </em></span> 1. Soit <span class="math inline">\(P(F)=p\)</span> et <span class="math inline">\(P(P)=1-p\)</span>. On a <span class="math inline">\((n-1)\)</span> premières épreuves donnant <span class="math inline">\(P\)</span> et la nième épreuve donne <span class="math inline">\(F\)</span>, et puisque les épreuves sont indépendantes, alors
 <span class="math display">\[
 \mathbb{P}\bigl(Y=n \bigr)={(1-p)}^{n}p\;,\;\; n=0,1,2,\ldots  
   \]</span>
@@ -741,18 +754,17 @@ Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
 &amp;= \lambda \mathbb{E}(Y)=\lambda \dfrac{1-p}{p}
 \end{align*}\]</span>
 </div>
-
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb13-2" title="2">y=<span class="kw">rgeom</span>(<span class="dv">10000</span>, <span class="dt">prob=</span><span class="fl">0.5</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-2" title="2">x=<span class="kw">rpois</span>(<span class="dv">10000</span>,<span class="dt">lambda =</span> <span class="dv">2</span><span class="op">*</span>y)</a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="kw">mean</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="index.html#cb13-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">rgeom</span>(<span class="dv">10000</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="index.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rpois</span>(<span class="dv">10000</span>,<span class="at">lambda =</span> <span class="dv">2</span><span class="sc">*</span>y)</span>
+<span id="cb14-3"><a href="index.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
 <pre><code>[1] 2.0029</code></pre>
 <p>La figure suivante donne l’évolution de <span class="math inline">\(\mathbb{E}\left(X|Y=y\right)\)</span> en fonction du nombre des simulations.
 <img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-29-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="variance-conditionnelle" class="section level3">
+<div id="variance-conditionnelle" class="section level3" number="1.6.3">
 <h3><span class="header-section-number">1.6.3</span> Variance conditionnelle</h3>
 <p>Similairement à l’espérance conditionnelle, la variance conditionnelle est une variance prise par rapport à une distribution conditionnelle. Étant donné les variables aléatoires <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>, soit <span class="math inline">\(m_X=\mathbb{E}\left(Y|X=x \right)\)</span>. La variance conditionnelle <span class="math inline">\(\mathbb{V}(Y | X = x)\)</span>est définie comme suit:</p>
 
@@ -767,7 +779,6 @@ Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
 \right.
 \]</span>
 </div>
-
 <p>La variance conditinnelle possède les propriétés suivantes:</p>
 <div id="propriétes-de-la-variance-conditionnelle" class="section level4 unnumbered">
 <h4>Propriétes de la variance conditionnelle</h4>
@@ -778,7 +789,6 @@ Donc <span class="math inline">\(Y\sim G(p)\)</span>.</p>
 <div class="example">
 <span id="exm:unnamed-chunk-31" class="example"><strong>Exemple 1.14  </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire uniforme sur <span class="math inline">\(]0,1[\)</span>. Si <span class="math inline">\(X=x\)</span>, alors <span class="math inline">\(Y\)</span> suit une loi uniforme sur <span class="math inline">\(]0,x[\)</span>. Déterminer la variance de <span class="math inline">\(Y\)</span>.
 </div>
-
 <p>La distribution conditionnelle de <span class="math inline">\(Y|X=x\)</span> est uniforme sur <span class="math inline">\(]0,x[\)</span>. On déduit alors,
 <span class="math display">\[\mathbb{E}(Y|X = x) = \dfrac{x}{2} \; \text{ et }\; \mathbb{V}(Y|X = x) = \dfrac{x^2}{12}\]</span>
 La propriété de la variance totale donne,
@@ -790,52 +800,49 @@ La propriété de la variance totale donne,
 \left(X^2\right)+\frac{1}{4}\mathbb{V}\left(X\right)=\frac{1}{12}\times \frac{1}{3}+\frac{1}{4}\times \frac{1}{12}=\frac{7}{144}=0.04861.
 \end{align*}\]</span></p>
 <p>Sous R, on peut procéder comme suit:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb16-2" title="2">x=<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>)  <span class="co"># réalisations uniformes sur ]0,1[</span></a>
-<a class="sourceLine" id="cb16-3" title="3">y=<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,x)  <span class="co"># réalisations uniformes sur ]0,x[</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="kw">var</span>(y)  </a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="index.html#cb16-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>)  <span class="co"># réalisations uniformes sur ]0,1[</span></span>
+<span id="cb16-3"><a href="index.html#cb16-3" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">runif</span>(<span class="dv">10000</span>,<span class="dv">0</span>,x)  <span class="co"># réalisations uniformes sur ]0,x[</span></span>
+<span id="cb16-4"><a href="index.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(y)  </span></code></pre></div>
 <pre><code>[1] 0.04906725</code></pre>
 <p>L’évolution de la variance conditionnelle suivant le nombre des simulations est donnée par le graphique suivant:
 <img src="Calcul_Stochastique_files/figure-html/varCfig-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="théorèmes-limites" class="section level3">
+<div id="théorèmes-limites" class="section level3" number="1.6.4">
 <h3><span class="header-section-number">1.6.4</span> Théorèmes limites</h3>
-
+ffalse{-91-76-111-105-32-102-111-114-116-101-32-100-101-115-32-103-114-97-110-100-115-32-110-111-109-98-114-101-115-93-}
 <div class="theorem">
-<span id="thm:unnamed-chunk-32" class="theorem"><strong>Théoreme 1.1  (Loi forte des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
+<span id="thm:unnamed-chunk-32" class="theorem"><strong>Théoreme 1.1  \iffalse (Loi forte des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
 <span class="math display">\[
 \mathbb{P}\left[\lim_{n \rightarrow \infty}\overline{X}_n=m \right]=1
 \]</span>
 </div>
-
 <p>La moyenne des <span class="math inline">\(n\)</span> premiers termes d’une suite de variables aléatoires <span class="math inline">\(iid\)</span> converge presque sûrement vers l’espérance mathématique <span class="math inline">\(\mathbb{E}(X_i)=m\)</span>, lorsque <span class="math inline">\(n\)</span> tend vers l’infini.</p>
 <p>Vérifions ce théorème à l’aide des simulations. On considère l’expérience suivante: On lance une pièce de monnaie équilibrée <span class="math inline">\(n\)</span> fois. Soit <span class="math inline">\(X_i=1\)</span> si Face et <span class="math inline">\(X_i=0\)</span> si Pile. D’après la loi des grands nombres, <span class="math inline">\(\overline{X}_n\)</span> converge vers <span class="math inline">\(\mathbb{E}(X_i)=p=0.5\)</span>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb18-2" title="2">s=<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">10000</span>, <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb18-3" title="3">x_bar=<span class="kw">cumsum</span>(s)<span class="op">/</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="kw">plot</span>(x_bar, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Nombre de simulations&quot;</span>, </a>
-<a class="sourceLine" id="cb18-5" title="5">     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb18-6" title="6"><span class="kw">abline</span>(<span class="dt">h=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">expression</span>(<span class="kw">bar</span>(X)),<span class="kw">expression</span>(p<span class="op">==</span><span class="fl">0.5</span>)),</a>
-<a class="sourceLine" id="cb18-8" title="8">       <span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>),<span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="index.html#cb18-2" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">10000</span>, <span class="at">replace =</span> T)</span>
+<span id="cb18-3"><a href="index.html#cb18-3" aria-hidden="true" tabindex="-1"></a>x_bar<span class="ot">=</span><span class="fu">cumsum</span>(s)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)</span>
+<span id="cb18-4"><a href="index.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_bar, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Nombre de simulations&quot;</span>, </span>
+<span id="cb18-5"><a href="index.html#cb18-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb18-6"><a href="index.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb18-7"><a href="index.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="fu">expression</span>(<span class="fu">bar</span>(X)),<span class="fu">expression</span>(p<span class="sc">==</span><span class="fl">0.5</span>)),</span>
+<span id="cb18-8"><a href="index.html#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>),<span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/grandNombres-1.png" width="576" style="display: block; margin: auto;" /></p>
-
+ffalse{-91-76-111-105-32-102-97-105-98-108-101-32-100-101-115-32-103-114-97-110-100-115-32-110-111-109-98-114-101-115-93-}
 <div class="theorem">
-<span id="thm:unnamed-chunk-33" class="theorem"><strong>Théoreme 1.2  (Loi faible des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
+<span id="thm:unnamed-chunk-33" class="theorem"><strong>Théoreme 1.2  \iffalse (Loi faible des grands nombres)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid\)</span> de moyenne <span class="math inline">\(m\)</span>, alors
 <span class="math display">\[
 \lim_{n \rightarrow \infty}\mathbb{P}\left[|\overline{X}_n-m| &lt; \epsilon \right]=1, \;\; \forall \, \epsilon &gt; 0
 \]</span>
 </div>
-
-
+ffalse{-91-84-104-233-111-114-232-109-101-32-99-101-110-116-114-97-108-32-108-105-109-105-116-101-93-}
 <div class="theorem">
-<span id="thm:unnamed-chunk-34" class="theorem"><strong>Théoreme 1.3  (Théorème central limite)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid(m,\sigma^2)\)</span>, alors
+<span id="thm:unnamed-chunk-34" class="theorem"><strong>Théoreme 1.3  \iffalse (Théorème central limite)  </strong></span>Si <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> sont des variables aléatoires <span class="math inline">\(iid(m,\sigma^2)\)</span>, alors
 <span class="math display">\[
 \lim_{n \rightarrow \infty}\mathbb{P}\left[\frac{\overline{X}_n-m}{\sigma/\sqrt{n}} &lt; t \right]=\mathbb{P}(Z &lt;), \;\; \text{ avec } \; Z \sim N(0,1)
 \]</span>
 </div>
-
 <p><strong>Illustration sous R</strong></p>
 <p>Soit <span class="math inline">\(X_1, X_2,\ldots, X_{100}\)</span> une suite de variables aléatoires telle que <span class="math inline">\(X_i \stackrel{iid}{\sim}\mathcal{P(\lambda=4)}\)</span>. On sait que <span class="math inline">\(\mathbb{E}(X_i)=\mathbb{V}(X_i)=\lambda=4\)</span>.</p>
 <ol style="list-style-type: decimal">
@@ -844,24 +851,24 @@ La propriété de la variance totale donne,
 <li><p>Répéter <span class="math inline">\(100000\)</span> fois les instructions précédentes et stocker le résultat dans un objet que l’on appelle <code>mu</code>.</p></li>
 <li><p>Représenter l’histogramme de <code>mu</code>. Ajouter sur le même graphique la courbe de la densité de la loi normale standard.</p></li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># 1</span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb19-3" title="3">simPois=<span class="kw">rpois</span>(<span class="dt">n=</span><span class="dv">100</span>, <span class="dt">lambda=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb19-4" title="4">z=(<span class="kw">mean</span>(simPois)<span class="op">-</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="co"># 2</span></a>
-<a class="sourceLine" id="cb19-6" title="6">Z=<span class="cf">function</span>(){</a>
-<a class="sourceLine" id="cb19-7" title="7"> simPois=<span class="kw">rpois</span>(<span class="dt">n=</span><span class="dv">100</span>, <span class="dt">lambda=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb19-8" title="8">(<span class="kw">mean</span>(simPois)<span class="op">-</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)) </a>
-<a class="sourceLine" id="cb19-9" title="9">}</a>
-<a class="sourceLine" id="cb19-10" title="10"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb19-11" title="11">mu=<span class="kw">replicate</span>(<span class="dv">100000</span>, <span class="kw">Z</span>())</a></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># 3</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="kw">hist</span>(mu,<span class="dt">freq =</span> F, <span class="dt">main=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="kw">curve</span>(dnorm,<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">add=</span>T,<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb19-2"><a href="index.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb19-3"><a href="index.html#cb19-3" aria-hidden="true" tabindex="-1"></a>simPois<span class="ot">=</span><span class="fu">rpois</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">lambda=</span><span class="dv">4</span>)</span>
+<span id="cb19-4"><a href="index.html#cb19-4" aria-hidden="true" tabindex="-1"></a>z<span class="ot">=</span>(<span class="fu">mean</span>(simPois)<span class="sc">-</span><span class="dv">4</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>))</span>
+<span id="cb19-5"><a href="index.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb19-6"><a href="index.html#cb19-6" aria-hidden="true" tabindex="-1"></a>Z<span class="ot">=</span><span class="cf">function</span>(){</span>
+<span id="cb19-7"><a href="index.html#cb19-7" aria-hidden="true" tabindex="-1"></a> simPois<span class="ot">=</span><span class="fu">rpois</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">lambda=</span><span class="dv">4</span>)</span>
+<span id="cb19-8"><a href="index.html#cb19-8" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(simPois)<span class="sc">-</span><span class="dv">4</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)) </span>
+<span id="cb19-9"><a href="index.html#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="index.html#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb19-11"><a href="index.html#cb19-11" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">=</span><span class="fu">replicate</span>(<span class="dv">100000</span>, <span class="fu">Z</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb20-2"><a href="index.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mu,<span class="at">freq =</span> F, <span class="at">main=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb20-3"><a href="index.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(dnorm,<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="at">add=</span>T,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/histPois-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="processus-stochastique" class="section level2">
+<div id="processus-stochastique" class="section level2" number="1.7">
 <h2><span class="header-section-number">1.7</span> Processus stochastique</h2>
 <p>Un processus stochastique est simplement une collection de variables aléatoires <span class="math inline">\(\{X_t, t \in I\}\)</span>. L’indice <span class="math inline">\(t\)</span> représente souvent le temps et l’ensemble <span class="math inline">\(I\)</span> est l’ensemble d’indices du processus appelé aussi espace de temps. Les ensembles d’indices les plus courants sont <span class="math inline">\(I = \{0, 1, 2,\ldots\}\)</span>, représentant le temps <strong>discret</strong>, et <span class="math inline">\(I = [0, +\infty[\)</span>, représentant le temps <strong>continu</strong>. Les processus stochastiques en temps discret sont des séquences de variables aléatoires. Les processus en temps continu sont des collections non dénombrables de variables aléatoires.</p>
 <p>Les variables aléatoires d’un processus stochastique prennent des valeurs dans un espace d’états commun <span class="math inline">\(E\)</span>, discret ou continu. Un processus stochastique est spécifié par ses espaces de temps et d’état, et par les relations de dépendance entre ses variables aléatoires.</p>
@@ -880,7 +887,7 @@ La propriété de la variance totale donne,
 <h3>Exercice 2</h3>
 <p>Déterminer <span class="math inline">\(\mathbb{E}\left(X|Y=y \right)\)</span> lorsque la densité jointe du couple <span class="math inline">\((X,Y)\)</span> est:</p>
 <ol style="list-style-type: lower-roman">
-<li><span class="math inline">\(\displaystyle f(x,y)=\frac{y^2-x^2}{8}e^{-x},\;\; 0 &lt; y &lt; \infty\, , \;\; -y&lt;x&lt;y.\)</span></li>
+<li><span class="math inline">\(\displaystyle f(x,y)=\frac{y^2-x^2}{8}e^{-y},\;\; 0 &lt; y &lt; \infty\, , \;\; -y&lt;x&lt;y.\)</span></li>
 <li><span class="math inline">\(\displaystyle f(x,y)=\frac{e^{-x/y} e^{-y}}{y},\;\; 0 &lt; x &lt; \infty\, , \;\; 0&lt;y&lt;\infty.\)</span></li>
 </ol>
 </div>
@@ -960,62 +967,63 @@ $\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 
 <ol start="3" style="list-style-type: decimal">
 <li>Reprenons les questions avec des simulations sous R</li>
 </ol>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Créeons une fonction pour simuler la variable S_N</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="co"># pour N=n</span></a>
-<a class="sourceLine" id="cb21-3" title="3"> sn.func &lt;-<span class="st"> </span><span class="cf">function</span>(n){</a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="kw">sum</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>), n, <span class="dt">replace=</span>T,</a>
-<a class="sourceLine" id="cb21-5" title="5"><span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.55</span>, <span class="fl">0.2</span>)))</a>
-<a class="sourceLine" id="cb21-6" title="6">}</a>
-<a class="sourceLine" id="cb21-7" title="7"><span class="co"># Générer 10,000 valeurs aléatoires de N, avec lambda=0.5:</span></a>
-<a class="sourceLine" id="cb21-8" title="8"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
-<a class="sourceLine" id="cb21-9" title="9"> N &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">10000</span>, <span class="dt">lambda=</span><span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb21-10" title="10"> <span class="co"># Générer 10,000 valeurs aléatoires de S_N, conditionallement à N:</span></a>
-<a class="sourceLine" id="cb21-11" title="11"> <span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
-<a class="sourceLine" id="cb21-12" title="12"> SN &lt;-<span class="st"> </span><span class="kw">sapply</span>(N, sn.func)</a>
-<a class="sourceLine" id="cb21-13" title="13"><span class="co"># Déterminons la moyenne de S_N, qui doit être proche de 235*0.5=117.5</span></a>
-<a class="sourceLine" id="cb21-14" title="14"> <span class="kw">mean</span>(SN)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Créeons une fonction pour simuler la variable S_N</span></span>
+<span id="cb21-2"><a href="index.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pour N=n</span></span>
+<span id="cb21-3"><a href="index.html#cb21-3" aria-hidden="true" tabindex="-1"></a> sn.func <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb21-4"><a href="index.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>), n, <span class="at">replace=</span>T,</span>
+<span id="cb21-5"><a href="index.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.55</span>, <span class="fl">0.2</span>)))</span>
+<span id="cb21-6"><a href="index.html#cb21-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-7"><a href="index.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Générer 10,000 valeurs aléatoires de N, avec lambda=0.5:</span></span>
+<span id="cb21-8"><a href="index.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb21-9"><a href="index.html#cb21-9" aria-hidden="true" tabindex="-1"></a> N <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">10000</span>, <span class="at">lambda=</span><span class="fl">0.5</span>)</span>
+<span id="cb21-10"><a href="index.html#cb21-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># Générer 10,000 valeurs aléatoires de S_N, conditionallement à N:</span></span>
+<span id="cb21-11"><a href="index.html#cb21-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb21-12"><a href="index.html#cb21-12" aria-hidden="true" tabindex="-1"></a> SN <span class="ot">&lt;-</span> <span class="fu">sapply</span>(N, sn.func)</span>
+<span id="cb21-13"><a href="index.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Déterminons la moyenne de S_N, qui doit être proche de 235*0.5=117.5</span></span>
+<span id="cb21-14"><a href="index.html#cb21-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>(SN)</span></code></pre></div>
 <pre><code>[1] 116.74</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"> <span class="co"># Déterminons la variance de S_N,  qui doit être proche de 74500*0.5=37250</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="kw">var</span>(SN)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Déterminons la variance de S_N,  qui doit être proche de 74500*0.5=37250</span></span>
+<span id="cb23-2"><a href="index.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(SN)</span></code></pre></div>
 <pre><code>[1] 36465.42</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co">#par(mfrow=c(1,2))</span></a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="co">#plot(cumsum(SN[-(1:10)])/(11:10000), type=&quot;l&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;, main=&quot;Moyenne&quot;)</span></a>
-<a class="sourceLine" id="cb25-3" title="3"><span class="co">#abline(h=117.5, lwd=2, col=2)</span></a>
-<a class="sourceLine" id="cb25-4" title="4">vvS=<span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb25-5" title="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>) vvS[i]=<span class="kw">var</span>(SN[<span class="dv">1</span><span class="op">:</span>i])</a>
-<a class="sourceLine" id="cb25-6" title="6">vvS=vvS[<span class="op">-</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb25-7" title="7"><span class="co">#plot(vvS, type=&quot;l&quot;,xlab=&quot;&quot;, ylab=&quot;&quot;, main=&quot;Variance&quot;)</span></a>
-<a class="sourceLine" id="cb25-8" title="8"><span class="co">#abline(h=37250, lwd=2,col=2)</span></a>
-<a class="sourceLine" id="cb25-9" title="9">df1=<span class="kw">data.frame</span>(<span class="dt">SN=</span><span class="kw">cumsum</span>(SN)<span class="op">/</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>))</a>
-<a class="sourceLine" id="cb25-10" title="10">df2=<span class="kw">data.frame</span>(<span class="dt">V=</span>vvS)</a>
-<a class="sourceLine" id="cb25-11" title="11"><span class="co"># library(ggplot2)</span></a>
-<a class="sourceLine" id="cb25-12" title="12">gg1=<span class="kw">ggplot</span>(df1,<span class="kw">aes</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>))<span class="op">+</span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y=</span>SN),<span class="dt">size=</span><span class="fl">0.7</span>)<span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="fl">117.5</span>, <span class="dt">size=</span><span class="fl">0.9</span>, <span class="dt">col=</span><span class="dv">2</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb25-13" title="13">gg2=<span class="kw">ggplot</span>(df2,<span class="kw">aes</span>(<span class="dt">x=</span><span class="dv">2</span><span class="op">:</span><span class="dv">10000</span>, <span class="dt">y=</span>V))<span class="op">+</span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">0.7</span>)<span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">37250</span>, <span class="dt">size=</span><span class="fl">0.9</span>, <span class="dt">col=</span><span class="dv">2</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb25-14" title="14">ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(gg1,gg2, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Moyenne&quot;</span>,<span class="st">&quot;Variance&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#par(mfrow=c(1,2))</span></span>
+<span id="cb25-2"><a href="index.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(cumsum(SN[-(1:10)])/(11:10000), type=&quot;l&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;, main=&quot;Moyenne&quot;)</span></span>
+<span id="cb25-3"><a href="index.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(h=117.5, lwd=2, col=2)</span></span>
+<span id="cb25-4"><a href="index.html#cb25-4" aria-hidden="true" tabindex="-1"></a>vvS<span class="ot">=</span><span class="cn">NULL</span></span>
+<span id="cb25-5"><a href="index.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) vvS[i]<span class="ot">=</span><span class="fu">var</span>(SN[<span class="dv">1</span><span class="sc">:</span>i])</span>
+<span id="cb25-6"><a href="index.html#cb25-6" aria-hidden="true" tabindex="-1"></a>vvS<span class="ot">=</span>vvS[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb25-7"><a href="index.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(vvS, type=&quot;l&quot;,xlab=&quot;&quot;, ylab=&quot;&quot;, main=&quot;Variance&quot;)</span></span>
+<span id="cb25-8"><a href="index.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(h=37250, lwd=2,col=2)</span></span>
+<span id="cb25-9"><a href="index.html#cb25-9" aria-hidden="true" tabindex="-1"></a>df1<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">SN=</span><span class="fu">cumsum</span>(SN)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>))</span>
+<span id="cb25-10"><a href="index.html#cb25-10" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">V=</span>vvS)</span>
+<span id="cb25-11"><a href="index.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggplot2)</span></span>
+<span id="cb25-12"><a href="index.html#cb25-12" aria-hidden="true" tabindex="-1"></a>gg1<span class="ot">=</span><span class="fu">ggplot</span>(df1,<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>))<span class="sc">+</span><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>SN),<span class="at">size=</span><span class="fl">0.7</span>)<span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="fl">117.5</span>, <span class="at">size=</span><span class="fl">0.9</span>, <span class="at">col=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb25-13"><a href="index.html#cb25-13" aria-hidden="true" tabindex="-1"></a>gg2<span class="ot">=</span><span class="fu">ggplot</span>(df2,<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">10000</span>, <span class="at">y=</span>V))<span class="sc">+</span><span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">0.7</span>)<span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">37250</span>, <span class="at">size=</span><span class="fl">0.9</span>, <span class="at">col=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb25-14"><a href="index.html#cb25-14" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">ggarrange</span>(gg1,gg2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Moyenne&quot;</span>,<span class="st">&quot;Variance&quot;</span>))</span></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="solution-4" class="section level3 unnumbered">
 <h3>Solution 4</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb26-2" title="2">simExp=<span class="kw">rexp</span>(<span class="dt">n=</span><span class="dv">100</span>, <span class="dt">rate=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb26-3" title="3">z=(<span class="kw">mean</span>(simExp)<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">4</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb26-4" title="4"><span class="co"># 2</span></a>
-<a class="sourceLine" id="cb26-5" title="5">Z=<span class="cf">function</span>(){</a>
-<a class="sourceLine" id="cb26-6" title="6"> simExp=<span class="kw">rexp</span>(<span class="dt">n=</span><span class="dv">100</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb26-7" title="7">(<span class="kw">mean</span>(simExp)<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">4</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)) </a>
-<a class="sourceLine" id="cb26-8" title="8">}</a>
-<a class="sourceLine" id="cb26-9" title="9"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb26-10" title="10">mu=<span class="kw">replicate</span>(<span class="dv">100000</span>, <span class="kw">Z</span>())</a>
-<a class="sourceLine" id="cb26-11" title="11"></a>
-<a class="sourceLine" id="cb26-12" title="12"><span class="co"># 3</span></a>
-<a class="sourceLine" id="cb26-13" title="13"><span class="co">#hist(mu,freq = F, main=&quot;&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</span></a>
-<a class="sourceLine" id="cb26-14" title="14"><span class="co">#curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)</span></a>
-<a class="sourceLine" id="cb26-15" title="15">df=<span class="kw">data.frame</span>(<span class="dt">mu=</span>mu)</a>
-<a class="sourceLine" id="cb26-16" title="16">gh=<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>mu))<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span>..density..),<span class="dt">bins=</span><span class="dv">20</span>,<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb26-17" title="17"><span class="st">   </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(df<span class="op">$</span>mu), </a>
-<a class="sourceLine" id="cb26-18" title="18">                        <span class="dt">sd =</span> <span class="kw">sd</span>(df<span class="op">$</span>mu)),<span class="dt">size=</span><span class="fl">1.2</span>,<span class="dt">color=</span><span class="dv">2</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb26-19" title="19"><span class="st">   </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb26-20" title="20">gh</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb26-2"><a href="index.html#cb26-2" aria-hidden="true" tabindex="-1"></a>simExp<span class="ot">=</span><span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">rate=</span><span class="dv">4</span>)</span>
+<span id="cb26-3"><a href="index.html#cb26-3" aria-hidden="true" tabindex="-1"></a>z<span class="ot">=</span>(<span class="fu">mean</span>(simExp)<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>))</span>
+<span id="cb26-4"><a href="index.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb26-5"><a href="index.html#cb26-5" aria-hidden="true" tabindex="-1"></a>Z<span class="ot">=</span><span class="cf">function</span>(){</span>
+<span id="cb26-6"><a href="index.html#cb26-6" aria-hidden="true" tabindex="-1"></a> simExp<span class="ot">=</span><span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">100</span>,<span class="dv">4</span>)</span>
+<span id="cb26-7"><a href="index.html#cb26-7" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(simExp)<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)) </span>
+<span id="cb26-8"><a href="index.html#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-9"><a href="index.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb26-10"><a href="index.html#cb26-10" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">=</span><span class="fu">replicate</span>(<span class="dv">100000</span>, <span class="fu">Z</span>())</span>
+<span id="cb26-11"><a href="index.html#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="index.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb26-13"><a href="index.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(mu,freq = F, main=&quot;&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</span></span>
+<span id="cb26-14"><a href="index.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#curve(dnorm,-4,4,add=TRUE,col=2,lwd=3)</span></span>
+<span id="cb26-15"><a href="index.html#cb26-15" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">mu=</span>mu)</span>
+<span id="cb26-16"><a href="index.html#cb26-16" aria-hidden="true" tabindex="-1"></a>gh<span class="ot">=</span><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>mu))<span class="sc">+</span></span>
+<span id="cb26-17"><a href="index.html#cb26-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span>..density..),<span class="at">bins=</span><span class="dv">20</span>,<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>)<span class="sc">+</span></span>
+<span id="cb26-18"><a href="index.html#cb26-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fu">mean</span>(df<span class="sc">$</span>mu), </span>
+<span id="cb26-19"><a href="index.html#cb26-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sd =</span> <span class="fu">sd</span>(df<span class="sc">$</span>mu)),<span class="at">size=</span><span class="fl">1.2</span>,<span class="at">color=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb26-20"><a href="index.html#cb26-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb26-21"><a href="index.html#cb26-21" aria-hidden="true" tabindex="-1"></a>gh</span></code></pre></div>
 <p><img src="Calcul_Stochastique_files/figure-html/unnamed-chunk-36-1.png" width="480" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -1031,7 +1039,6 @@ $\mathbb{P}\bigl(X|X > 3 \bigr)=\displaystyle \frac{1}{\mathbb{P}(X > 3)}\int_2 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1050,6 +1057,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1070,6 +1078,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Calcul_Stochastique.pdf", "Calcul_Stochastique.epub", "Calcul_Stochastique.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection",
 "scroll_highlight": true

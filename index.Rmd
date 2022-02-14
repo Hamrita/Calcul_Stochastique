@@ -735,7 +735,7 @@ Pour chacune des variables aléatoires suivantes, déterminer la fonction géné
 
 Déterminer \(\mathbb{E}\left(X|Y=y \right)\) lorsque la densité jointe du couple \((X,Y)\) est:
 
-   i) \(\displaystyle f(x,y)=\frac{y^2-x^2}{8}e^{-x},\;\; 0 < y < \infty\, , \;\; -y<x<y. \)
+   i) \(\displaystyle f(x,y)=\frac{y^2-x^2}{8}e^{-y},\;\; 0 < y < \infty\, , \;\; -y<x<y. \)
    ii) \(\displaystyle f(x,y)=\frac{e^{-x/y} e^{-y}}{y},\;\; 0 < x < \infty\, , \;\; 0<y<\infty. \)
 
 ### Exercice 3 {-}
